@@ -27,7 +27,18 @@ class TypeNamingTest {
 		
 		int violationCount = linter.getAllViolations().size(); 
 		assertEquals(1, violationCount); 
+	}
+	
+	@Test
+	void testRecordClassNames() {
+		linter.registerPrinter(new ConsolePrinter());
+		linter.registerRule(new TypeNamingRule());
+		linter.registerSource("testFiles/namingConvention/recordClass.java");
 		
+		linter.run();
+		
+		int violationCount = linter.getAllViolations().size(); 
+		assertEquals(1, violationCount); 
 	}
 	
 	@Test

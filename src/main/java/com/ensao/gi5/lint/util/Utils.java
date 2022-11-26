@@ -1,5 +1,6 @@
 package com.ensao.gi5.lint.util;
 
+import com.ensao.gi5.lint.rules.violations.Violation;
 import com.ensao.gi5.lint.wrapper.CompilationUnitWrapper;
 import com.github.javaparser.JavaParser;
 import com.github.javaparser.ParseResult;
@@ -51,5 +52,13 @@ public class Utils {
 
     public static Collection<File> getFilesFromDirectory(File directory) {
         return FileUtils.listFiles(directory, new String[]{"java"}, true);
+    }
+    
+    public static Violation createNewInstanceOfViolation(String Description, String filename, int line) {
+    	final Violation violation = new Violation(); 
+    	violation.setDescription(Description);
+    	violation.setFileName(filename);
+    	violation.setLine(line);
+    	return violation;
     }
 }

@@ -6,9 +6,11 @@ import java.util.regex.Pattern;
 
 import com.ensao.gi5.lint.constantes.Constantes;
 import com.ensao.gi5.lint.rules.violations.Violation;
+import com.ensao.gi5.lint.util.Utils;
 import com.ensao.gi5.lint.visitor.TypeNamingVisitors;
 import com.ensao.gi5.lint.wrapper.CompilationUnitWrapper;
 import com.ensao.gi5.lint.wrapper.TypeNameWrapper;
+import com.github.javaparser.ast.body.TypeDeclaration;
 
 public class TypeNamingRule extends Rule {
 
@@ -21,19 +23,18 @@ public class TypeNamingRule extends Rule {
 	@Override
 	public void apply(CompilationUnitWrapper compilationUnit) {
 
-		List<TypeNameWrapper> typeNames = new ArrayList<>();
+		List<TypeNameWrapper<TypeDeclaration<?>>> typeNames = new ArrayList<>();
 		compilationUnit.accept(new TypeNamingVisitors(), typeNames);
 
 		typeNames.stream()
-					.filter(type -> !JAVA_TYPE_NAME_PATTERN.matcher(type.getName()).matches())
-					.forEach(type -> {
-						final Violation violation = new Violation();
-						violation.setDescription("The name '" + type.getName() + 
-								"' must be capitalized or doesn't have '_' character");
-						violation.setFileName(compilationUnit.getFileName());
-						violation.setLine(type.getLine());
-						addViolation(violation);
-						});
+				.filter(type -> !JAVA_TYPE_NAME_PATTERN.matcher(type.getNameWrapper().name()).matches())
+				.forEach(type -> {
+					String description = "The first letter of: '" + type.getNameWrapper().name()
+							+ "' must be capitalized or should not  contains a  '_' character";
+					Violation violation = Utils.createNewInstanceOfViolation(description, compilationUnit.getFileName(),
+							type.getNameWrapper().line());
+					addViolation(violation);
+				});
 	}
 
 	@Override
