@@ -29,7 +29,7 @@ public class ClassFieldsNameRule extends Rule{
 					.filter(field -> !CLASS_FIEDS_NAME_PATTERN.matcher(field.name()).matches())
 					.forEach(field -> {
 						String description = "The first letter of this field : '" + field.name() + "' must be in lowercase";
-						Violation violation = Utils.createNewInstanceOfViolation(description, field.name(), field.line());
+						Violation violation = Utils.createNewInstanceOfViolation(description, compilationUnit.getFileName(), field.line());
 						addViolation(violation); 
 					});
 	}
