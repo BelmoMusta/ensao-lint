@@ -1,4 +1,5 @@
 
 public enum Enun_Names {
-	Student;
+	Student,
+	Teacher;
 }
