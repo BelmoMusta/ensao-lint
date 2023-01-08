@@ -5,11 +5,13 @@ import com.github.javaparser.ast.CompilationUnit;
 import com.github.javaparser.ast.ImportDeclaration;
 import com.github.javaparser.ast.NodeList;
 import com.github.javaparser.ast.body.BodyDeclaration;
+import com.github.javaparser.ast.body.ConstructorDeclaration;
 import com.github.javaparser.ast.body.FieldDeclaration;
 import com.github.javaparser.ast.body.MethodDeclaration;
 import com.github.javaparser.ast.visitor.VoidVisitor;
 
 
+import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -38,6 +40,15 @@ public class CompilationUnitWrapper {
 				.collect(Collectors.toList());
 	}
 
+	public List<ConstructorDeclaration> getConstructors() {
+		return compilationUnit.getTypes()
+				.stream()
+				.flatMap(type -> type.getMembers().stream())
+				.filter(member -> member instanceof ConstructorDeclaration)
+				.map(member -> (ConstructorDeclaration) member)
+				.collect(Collectors.toList());
+	}
+
 	public List<FieldDeclaration> getFields() {
 		return compilationUnit.getTypes()
 				.stream()
@@ -46,6 +57,8 @@ public class CompilationUnitWrapper {
 				.map(member -> (FieldDeclaration) member)
 				.collect(Collectors.toList());
 	}
+
+
 
 	public <A> void accept(VoidVisitor<A> v, A arg) {
 		compilationUnit.accept(v, arg);}
