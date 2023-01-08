@@ -38,6 +38,15 @@ public class CompilationUnitWrapper {
 				.collect(Collectors.toList());
 	}
 
+	public List<FieldDeclaration> getFields() {
+		return compilationUnit.getTypes()
+				.stream()
+				.flatMap(type -> type.getMembers().stream())
+				.filter(member -> member instanceof FieldDeclaration)
+				.map(member -> (FieldDeclaration) member)
+				.collect(Collectors.toList());
+	}
+
 	public <A> void accept(VoidVisitor<A> v, A arg) {
 		compilationUnit.accept(v, arg);}
 	
