@@ -10,6 +10,88 @@ public class Example {
     public String getToto() {
         return toto;
     }
+    public String getToto() {
+        return toto;
+    }
+    public String getToto() {
+        return toto;
+    }
+    public String getToto() {
+        return toto;
+    }
+    public String getToto() {
+        return toto;
+    }
+    public String getToto() {
+        return toto;
+    }
+    public String getToto() {
+        return toto;
+    }public String getToto() {
+        return toto;
+    }
+    public String getToto() {
+        return toto;
+    }
+    public String getToto() {
+        return toto;
+    }
+    public String getToto() {
+        return toto;
+    }
+    public String getToto() {
+        return toto;
+    }
+    public String getToto() {
+        return toto;
+    }public String getToto() {
+        return toto;
+    }
+    public String getToto() {
+        return toto;
+    }
+    public String getToto() {
+        return toto;
+    }
+    public String getToto() {
+        return toto;
+    }
+    public String getToto() {
+        return toto;
+    }
+    public String getToto() {
+        return toto;
+    }
+    public String getToto() {
+        return toto;
+    }
+    public String getToto() {
+        return toto;
+    }
+    public String getToto() {
+        return toto;
+    }
+    public String getToto() {
+        return toto;
+    }
+    public String getToto() {
+        return toto;
+    }
+    public String getToto() {
+        return toto;
+    }
+    public String getToto() {
+        return toto;
+    }public String getToto() {
+        return toto;
+    }
+    public String getToto() {
+        return toto;
+    }
+
+
+
+
     
     public static void main(String[] args) {
         TestClass test = new TestClass();

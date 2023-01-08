@@ -26,7 +26,7 @@ public class MethodBodySizeRule extends Rule{
                 int lineCount = body.getEnd().get().line - body.getBegin().get().line + 1;
                 if (lineCount > this.maxLines) {
                     final Violation violation = new Violation();
-                    violation.setDescription("Method '" + m.getNameAsString() + "' Body max lines exceded");
+                    violation.setDescription("Method '" + m.getNameAsString() + "' Body max lines exceeded");
                     violation.setFileName(compilationUnit.getFileName());
                     violation.setLine(body.getBegin().get().line + this.maxLines + 1);
                     addViolation(violation);
