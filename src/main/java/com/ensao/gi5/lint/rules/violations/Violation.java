@@ -12,6 +12,16 @@ public class Violation implements Comparable<Violation>{
 	private int line;
     private Level level;
 
+    public Violation addRuleId(String ruleId){
+        this.ruleId = ruleId;
+        return this;
+    }
+
+    public Violation addLevel(Level level){
+        this.level = level;
+        return this;
+    }
+
     public void setFileName(String fileName) {
 		this.fileName = fileName;
 	}
@@ -41,7 +51,7 @@ public class Violation implements Comparable<Violation>{
     }
 
     public String toString(){
-		return level+" [" +ruleId +"] " + description + " at '" +fileName +":"+ line+"'";
+		return level+"\t[" +ruleId +"] " + description + " at '" +fileName +":"+ line+"'";
 	}
 
     @Override

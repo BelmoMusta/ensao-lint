@@ -14,5 +14,5 @@ public class ParseErrorExample {
         TestClass test = new TestClass();
     }
 
-    public static <T> void T errorMethod(){}
+    public static void errorMethod(){}
 }
