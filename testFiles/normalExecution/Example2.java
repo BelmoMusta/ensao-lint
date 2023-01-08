@@ -5,7 +5,8 @@ import FFFF;
 public class Example {
     private String toto;
     private String Titi;
-    private String Aymane;
+    public String Aymane;
+    int a = 7;
     
     public String getToto() {
         return toto;
