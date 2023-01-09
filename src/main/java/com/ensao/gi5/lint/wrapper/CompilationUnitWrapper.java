@@ -12,6 +12,7 @@ import com.github.javaparser.ast.visitor.VoidVisitor;
 
 
 import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -58,6 +59,15 @@ public class CompilationUnitWrapper {
 				.collect(Collectors.toList());
 	}
 
+	public List<FieldDeclaration> getConstants() {
+		return compilationUnit.getTypes()
+				.stream()
+				.flatMap(t -> t.getMembers().stream())
+				.filter(m -> m instanceof FieldDeclaration)
+				.map(m -> (FieldDeclaration) m)
+				.filter(f -> f.isFinal() && f.isStatic())
+				.collect(Collectors.toList());
+	}
 
 
 	public <A> void accept(VoidVisitor<A> v, A arg) {

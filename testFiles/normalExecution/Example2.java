@@ -7,6 +7,8 @@ public class Example {
     private String Titi;
     public String Aymane;
     int a = 7;
+
+    public static final double pi = 3.14;
     
     public String getToto() {
         return toto;

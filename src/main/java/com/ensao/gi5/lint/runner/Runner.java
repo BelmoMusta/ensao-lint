@@ -30,6 +30,7 @@ public class Runner {
         linter.registerRule(new MethodsNumPerClassRule());
         linter.registerRule(new ParamsNumPerMethodandConstructor());
         linter.registerRule(new AttributeVisibilityRule());
+        linter.registerRule(new ConstantNamingRule());
         linter.registerPrinter(new ConsolePrinter());
         linter.registerSource(directory);
         linter.run();
