@@ -44,6 +44,5 @@ public class RunnerTest {
         Assertions.assertThrows(IllegalStateException.class, () -> {
             Runner.main(new String[]{ARG_PARAM});
         });
-
     }
 }

@@ -8,6 +8,6 @@ public enum Level {
     LOW,
     LOWEST,
 
-    ;
+
 
 }

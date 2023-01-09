@@ -18,6 +18,7 @@ public class UnusedImportsRule extends Rule {
 
     @Override
     public void apply(CompilationUnitWrapper compilationUnit) {
+
         final Set<ImportWrapper> declaredImports = compilationUnit.getImports()
                 .stream()
                 .filter(imprt -> !imprt.isAsterisk())

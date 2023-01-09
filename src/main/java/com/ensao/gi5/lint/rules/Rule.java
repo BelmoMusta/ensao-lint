@@ -3,13 +3,15 @@ package com.ensao.gi5.lint.rules;
 import com.ensao.gi5.lint.rules.violations.Violation;
 import com.ensao.gi5.lint.wrapper.CompilationUnitWrapper;
 
+import java.util.Arrays;
 import java.util.Objects;
 import java.util.Set;
 import java.util.TreeSet;
 
 public abstract class Rule {
-    private final String id;
-    private final Level level;
+    protected final String id;
+    protected final Level level;
+
 
     protected final Set<Violation> violations = new TreeSet<>();
 
@@ -19,8 +21,10 @@ public abstract class Rule {
     }
 
     public final void addViolation(Violation violation) {
-        violation.setRuleId(getId());
-        violation.setLevel(getLevel());
+        if(violation.getRuleId() == null)
+            violation.setRuleId(getId());
+        if(violation.getLevel() == null)
+            violation.setLevel(getLevel());
         violations.add(violation);
     }
 
@@ -37,6 +41,7 @@ public abstract class Rule {
     public Level getLevel() {
         return level;
     }
+
 
     public abstract boolean isActive();
 

@@ -32,7 +32,7 @@ public class LinterTest {
 
         assertEquals(1, linter.getRules().size());
         assertEquals(1, linter.getPrinters().size());
-        assertEquals(2, linter.getSources().size());
+        assertEquals(3, linter.getSources().size());
         assertFalse(stringWriter.toString().isEmpty()); // make sur something is written
         int violationCount = linter.getAllViolations().size();
 
