@@ -4,10 +4,7 @@ import com.github.javaparser.Problem;
 import com.github.javaparser.ast.CompilationUnit;
 import com.github.javaparser.ast.ImportDeclaration;
 import com.github.javaparser.ast.NodeList;
-import com.github.javaparser.ast.body.BodyDeclaration;
-import com.github.javaparser.ast.body.ConstructorDeclaration;
-import com.github.javaparser.ast.body.FieldDeclaration;
-import com.github.javaparser.ast.body.MethodDeclaration;
+import com.github.javaparser.ast.body.*;
 import com.github.javaparser.ast.visitor.VoidVisitor;
 
 
@@ -66,6 +63,16 @@ public class CompilationUnitWrapper {
 				.filter(m -> m instanceof FieldDeclaration)
 				.map(m -> (FieldDeclaration) m)
 				.filter(f -> f.isFinal() && f.isStatic())
+				.collect(Collectors.toList());
+	}
+
+	public List<TypeDeclaration> getTypeDeclaration() {
+		return compilationUnit.getTypes()
+				.stream()
+				.filter(type -> type instanceof ClassOrInterfaceDeclaration ||
+				type instanceof AnnotationDeclaration ||
+				type instanceof EnumDeclaration)
+				.map(TypeDeclaration.class::cast)
 				.collect(Collectors.toList());
 	}
 
