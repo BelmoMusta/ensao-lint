@@ -28,14 +28,15 @@ public class StatementVisitor extends VoidVisitorAdapter<Map<String, List<Statem
 
     @Override
     public void visit(BlockStmt n, Map<String, List<StatementWrapper>> arg) {
+
         initKey(Constantes.LINT_REG_009, arg);
-        initKey(Constantes.LINT_REG_006, arg);
         n.getStatements().stream().filter(s -> s.toString().contains("new")).forEach(s -> {
             arg.get(Constantes.LINT_REG_009).add(
                     new StatementWrapper(Constantes.LINT_REG_009, s)
             );
         });
 
+        initKey(Constantes.LINT_REG_006, arg);
         n.getStatements().stream().filter(s -> Pattern.compile("==|!=|<|>|>=|<=")
                 .matcher(s.toString()).find()).forEach(s ->
                     arg.get(Constantes.LINT_REG_006).add(new StatementWrapper(Constantes.LINT_REG_006, s))

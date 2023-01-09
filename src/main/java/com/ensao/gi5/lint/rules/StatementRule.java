@@ -17,7 +17,7 @@ public class StatementRule extends Rule{
     final static String IF_PATTERN = "([\\S\\s])*(\\{[\\S\\s]*\\})";
     final static String CATCH_PATTERN = "(print|log)";
     final static String ANONYMOUS_PATTERN = "new [\\s\\S]+\\{[\\s\\S]*\\}";
-    final static String BOOLEAN_PATTERN = "(([\\w\\d\\s])+(==|!=|<|>|>=|<=)[\\w\\d\\s]+([&\\|]{2})?)+";
+    final static String BOOLEAN_PATTERN = "(([\\w\\d\\s.])+(==|!=|<|>|>=|<=)[\\w\\d\\s.]+([&\\|]{2})?)+";
 
     public StatementRule() {
         super(Constantes.LINT_REG_006, Level.LOW);
@@ -41,22 +41,22 @@ public class StatementRule extends Rule{
         });
 
         //LINT_REG_009
-        checkViolationWithPattern(Constantes.LINT_REG_009, statements, cu, ANONYMOUS_PATTERN, true);
-
-
-        //LINT_REG_018
-        checkViolationWithPattern(Constantes.LINT_REG_018, statements, cu, IF_PATTERN, false);
-
-
-        //LINT_REG_015
-        checkViolationWithPattern(Constantes.LINT_REG_015, statements, cu, CATCH_PATTERN, false);
+        checkViolationWithRegex(Constantes.LINT_REG_009, statements, cu, ANONYMOUS_PATTERN, true);
 
         //LINT_REG_010
-        checkViolationWithPattern(Constantes.LINT_REG_010, statements, cu, ANY_PATTERN, true);
+        checkViolationWithRegex(Constantes.LINT_REG_010, statements, cu, ANY_PATTERN, true);
+
+        //LINT_REG_015
+        checkViolationWithRegex(Constantes.LINT_REG_015, statements, cu, CATCH_PATTERN, false);
+
+        //LINT_REG_018
+        checkViolationWithRegex(Constantes.LINT_REG_018, statements, cu, IF_PATTERN, false);
+
+
 
     }
 
-    private void checkViolationWithPattern(String ruleId, Map<String, List<StatementWrapper>> statements, CompilationUnitWrapper cu, String regex, boolean value){
+    private void checkViolationWithRegex(String ruleId, Map<String, List<StatementWrapper>> statements, CompilationUnitWrapper cu, String regex, boolean value){
         Optional.ofNullable(statements.get(ruleId)).ifPresent(stmts ->{
             for(StatementWrapper stmt : stmts ){
                 if(Pattern.compile(regex).matcher(stmt.getStatement().toString()).find() == value){

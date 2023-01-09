@@ -24,27 +24,31 @@ public class ClassRule extends Rule{
 
         for(ClassWrapper cls : classes){
             if(cls.getMethods().size()>20){
-                addViolation(ViolationFactory.create(Constantes.LINT_REG_011, cu, cls.getLine(), cls.getName()));
+                addViolation(ViolationFactory.create(Constantes.LINT_REG_011, cu, cls.getLine(), cls.getName(), cls.getMethods().size()));
             }
 
             for(Constructor constructor : cls.getConstructors()){
                 if(constructor.getParameters().size()>2)
-                    addViolation(ViolationFactory.create(Constantes.LINT_REG_012, cu, constructor.getLine(), constructor.getName()));
+                    addViolation(ViolationFactory.create(Constantes.LINT_REG_012, cu, constructor.getLine(), constructor.getName(), constructor.getParameters().size()));
             }
 
             for(Method method : cls.getMethods()){
                 if(method.getLinesCount()>30) {
                     addViolation(ViolationFactory.create(Constantes.LINT_REG_008, cu, method.getLine(),
-                            method.getName(), cls.getName()));
+                            method.getName(), cls.getName(), method.getLinesCount()));
                 }
                 if(method.getParameters().size()>2) {
-                    addViolation(ViolationFactory.create(Constantes.LINT_REG_012, cu, method.getLine(), method.getName()));
+                    addViolation(ViolationFactory.create(Constantes.LINT_REG_012, cu, method.getLine(),
+                            method.getName(), method.getParameters().size()));
                 }
                 if(method.getReturnCount()>1) {
                     addViolation(ViolationFactory.create(Constantes.LINT_REG_014, cu, method.getLine(), method.getName()));
                 }
                 if(method.getThrowCount()>1) {
                     addViolation(ViolationFactory.create(Constantes.LINT_REG_014, cu, method.getLine(), method.getName()));
+                }
+                if(!method.isUsed() && "private".equals(method.getAccessSpecifier())){
+                    addViolation(ViolationFactory.create(Constantes.LINT_REG_017, cu, method.getLine(), method.toString(), cls.getName()));
                 }
             }
         }

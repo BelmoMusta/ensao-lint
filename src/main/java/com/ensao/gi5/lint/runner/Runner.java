@@ -27,11 +27,11 @@ public class Runner {
         final Linter linter = new Linter();
         //linter.registerRule(new UnusedImportsRule());
         linter.registerRule(new ParseErrorRule());
-        //linter.registerRule(new NamingRule());
-        //linter.registerRule(new ClassRule());
+        linter.registerRule(new NamingRule());
+        linter.registerRule(new ClassRule());
         linter.registerRule(new StatementRule());
-        //linter.registerRule(new EnumRule());
-        //linter.registerRule(new UnusedDefinitionsRule());
+        linter.registerRule(new EnumRule());
+        linter.registerRule(new UnusedVariablesRule());
         linter.registerPrinter(new ConsolePrinter());
         linter.registerSource(directory);
         linter.run();

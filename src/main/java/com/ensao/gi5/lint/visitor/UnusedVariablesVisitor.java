@@ -8,11 +8,10 @@ import com.github.javaparser.ast.stmt.Statement;
 import com.github.javaparser.ast.visitor.VoidVisitorAdapter;
 
 import java.util.List;
-import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class UnusedDefinitions extends VoidVisitorAdapter<List<VariableWrapper>> {
+public class UnusedVariablesVisitor extends VoidVisitorAdapter<List<VariableWrapper>> {
 
 
 
