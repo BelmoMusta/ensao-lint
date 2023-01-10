@@ -1,5 +1,6 @@
 package com.ensao.gi5.lint.wrapper;
 
+import com.ensao.gi5.lint.visitor.IfElseVisitor;
 import com.github.javaparser.Problem;
 import com.github.javaparser.ast.CompilationUnit;
 import com.github.javaparser.ast.ImportDeclaration;
@@ -9,6 +10,7 @@ import com.github.javaparser.ast.visitor.VoidVisitor;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 
 public class CompilationUnitWrapper {
 	private final CompilationUnit compilationUnit;
