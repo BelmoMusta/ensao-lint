@@ -12,55 +12,54 @@ public class ImportWrapper {
 	private final String importDeclarationFQN;
 	private final String importDeclaration;
 	private final int line;
-	
-	
+
 	public ImportWrapper(ImportDeclaration importDeclaration) {
 		this.importDeclarationFQN = importDeclaration.getNameAsString();
 		this.importDeclaration = Utils.convertFQNToSimpleClassName(importDeclaration.getNameAsString());
-		this.line = importDeclaration.getBegin().map(p ->p.line).orElse(-1);
+		this.line = importDeclaration.getBegin().map(p -> p.line).orElse(-1);
 	}
-	
+
 	public ImportWrapper(String importDeclaration) {
 		this.importDeclarationFQN = importDeclaration;
 		this.importDeclaration = Utils.convertFQNToSimpleClassName(importDeclaration);
 		this.line = 0;
 	}
-	
+
 	public ImportWrapper(NameExpr name) {
 		this(name.getNameAsString());
 	}
-	
+
 	public ImportWrapper(Name name) {
 		this(name.asString());
 	}
-	
+
 	public ImportWrapper(SimpleName name) {
 		this(name.asString());
 	}
-	
+
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) {
-            return true;
-        }
+			return true;
+		}
 
 		if (!(o instanceof ImportWrapper)) {
-            return false;
-        }
+			return false;
+		}
 		ImportWrapper that = (ImportWrapper) o;
 		return Objects.equals(importDeclaration, that.importDeclaration);
 	}
-	
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(importDeclaration);
 	}
-	
+
 	@Override
 	public String toString() {
 		return importDeclarationFQN;
 	}
-	
+
 	public int getLine() {
 		return line;
 	}

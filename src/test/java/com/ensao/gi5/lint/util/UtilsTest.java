@@ -1,6 +1,5 @@
 package com.ensao.gi5.lint.util;
 
-import com.ensao.gi5.lint.util.Utils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

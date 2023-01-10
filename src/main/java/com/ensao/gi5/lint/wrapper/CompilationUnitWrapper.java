@@ -19,21 +19,24 @@ public class CompilationUnitWrapper {
 		this.compilationUnit = compilationUnit;
 		this.fileName = fileName;
 	}
-	
-	public NodeList<ImportDeclaration> getImports() {return compilationUnit.getImports();}
+
+	public NodeList<ImportDeclaration> getImports() {
+		return compilationUnit.getImports();
+	}
 
 	public <A> void accept(VoidVisitor<A> v, A arg) {
-		compilationUnit.accept(v, arg);}
-	
+		compilationUnit.accept(v, arg);
+	}
+
 	public String getFileName() {
 		return fileName;
 	}
-	
-    public void addProblems(Collection<Problem> problems){
-        this.problems.addAll(problems);
-    }
 
-    public List<Problem> getProblems() {
-        return problems;
-    }
+	public void addProblems(Collection<Problem> problems) {
+		this.problems.addAll(problems);
+	}
+
+	public List<Problem> getProblems() {
+		return problems;
+	}
 }
