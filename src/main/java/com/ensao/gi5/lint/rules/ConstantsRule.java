@@ -1,0 +1,53 @@
+package com.ensao.gi5.lint.rules;
+
+import com.ensao.gi5.lint.constantes.Constantes;
+import com.ensao.gi5.lint.rules.violations.Violation;
+import com.ensao.gi5.lint.wrapper.CompilationUnitWrapper;
+import com.github.javaparser.StaticJavaParser;
+import com.github.javaparser.ast.CompilationUnit;
+import com.github.javaparser.ast.Modifier;
+import com.github.javaparser.ast.body.FieldDeclaration;
+import com.github.javaparser.ast.body.VariableDeclarator;
+import java.io.File;
+import java.util.List;
+
+public class ConstantsRule extends Rule{
+    public ConstantsRule() {
+        super(Constantes.LINT_REG_005, Level.MEDIUM);
+    }
+    @Override
+    public void apply(CompilationUnitWrapper compilationUnit) {
+        try{
+            CompilationUnit unit = StaticJavaParser.parse(new File(compilationUnit.getFileName()));
+            List<FieldDeclaration> fields = unit.findAll(FieldDeclaration.class);
+            for (FieldDeclaration field : fields) {
+                boolean isFinal = field.getModifiers().contains(Modifier.finalModifier());
+                boolean hasInitializer = field.getVariables().get(0).getInitializer().isPresent();
+                if(isFinal && hasInitializer) {
+                    List<VariableDeclarator> variables = field.getVariables();
+                    for (VariableDeclarator variable :variables
+                    ) {
+                        String variableName = variable.getNameAsString();
+                        boolean containUnderscore = variableName.contains("_");
+                        if (Character.isLowerCase(variableName.charAt(0))
+                              || !containUnderscore) {
+                            final Violation violation = new Violation();
+                            violation.setDescription("Constants error");
+                            violation.setFileName(compilationUnit.getFileName());
+                            int line =variable.getRange().isPresent()?variable.getRange().get().begin.line:0;
+                            violation.setLine(line);
+                            addViolation(violation);
+                        }
+                    }
+                }
+            }
+        }
+        catch (Exception e){
+        }
+    }
+
+    @Override
+    public boolean isActive() {
+        return true;
+    }
+}
