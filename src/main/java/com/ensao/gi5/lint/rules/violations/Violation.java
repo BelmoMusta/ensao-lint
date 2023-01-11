@@ -10,7 +10,7 @@ public class Violation implements Comparable<Violation>{
 	private String ruleId;
 	private String fileName;
 	private int line;
-    private Level level;
+        private Level level;
 
     public void setFileName(String fileName) {
 		this.fileName = fileName;
