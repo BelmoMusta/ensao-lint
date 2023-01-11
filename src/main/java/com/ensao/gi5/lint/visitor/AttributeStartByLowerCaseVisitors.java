@@ -8,7 +8,7 @@ import com.github.javaparser.ast.body.ClassOrInterfaceDeclaration;
 import com.github.javaparser.ast.body.FieldDeclaration;
 import com.github.javaparser.ast.visitor.VoidVisitorAdapter;
 
-public class AttributeStartByLowerCaseVisitor extends VoidVisitorAdapter<Set<AttributeStartByLowerCaseWrapper>> {
+public class AttributeStartByLowerCaseVisitors extends VoidVisitorAdapter<Set<AttributeStartByLowerCaseWrapper>> {
 	  @Override
 	    public void visit(ClassOrInterfaceDeclaration classOrInterfaceDeclaration, Set<AttributeStartByLowerCaseWrapper> arg) {
 		  for(FieldDeclaration field: classOrInterfaceDeclaration.getFields())
