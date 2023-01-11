@@ -1,5 +1,6 @@
 package com.ensao.gi5.lint.util;
 
+import com.ensao.gi5.lint.rules.violations.Violation;
 import com.ensao.gi5.lint.wrapper.CompilationUnitWrapper;
 import com.github.javaparser.JavaParser;
 import com.github.javaparser.ParseResult;
@@ -9,12 +10,44 @@ import org.apache.commons.io.FileUtils;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.Writer;
 import java.util.Collection;
 
 public class Utils {
      Utils() {
         throw new IllegalStateException("not to be instantiated");
     }
+    //Creation des methodes de generation de sortie
+    public static void writeCsv(Collection<Violation> violations, Writer writer) throws IOException {
+        for (Violation violation : violations) {
+            writer.append(violation.toString()).append('\n');
+        }
+        violations.stream().map(Violation::toString).forEach(t -> {
+            try {
+                writer.write(t);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+        writer.flush();
+        writer.close();
+    }
+
+
+
+    public static void writeHtml(Collection<Violation> violations, Writer writer) throws IOException {
+        for (Violation violation : violations) {
+            writer.append(violation.toString()).append('\n');
+        }
+    }
+
+    public static void writeMarkdown(Collection<Violation> violations, Writer writer) throws IOException {
+        for (Violation violation : violations) {
+            writer.append(violation.toString()).append('\n');
+        }
+    }
+
     public static String convertFQNToSimpleClassName(String fqn) {
         final String result;
         if (fqn == null) {

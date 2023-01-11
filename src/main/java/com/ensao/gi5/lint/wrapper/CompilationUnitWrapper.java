@@ -1,16 +1,14 @@
 package com.ensao.gi5.lint.wrapper;
 
-import com.ensao.gi5.lint.visitor.IfElseVisitor;
 import com.github.javaparser.Problem;
 import com.github.javaparser.ast.CompilationUnit;
 import com.github.javaparser.ast.ImportDeclaration;
+import com.github.javaparser.ast.Node;
 import com.github.javaparser.ast.NodeList;
+import com.github.javaparser.ast.expr.VariableDeclarationExpr;
 import com.github.javaparser.ast.visitor.VoidVisitor;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class CompilationUnitWrapper {
 	private final CompilationUnit compilationUnit;
@@ -23,7 +21,9 @@ public class CompilationUnitWrapper {
 	}
 	
 	public NodeList<ImportDeclaration> getImports() {return compilationUnit.getImports();}
-
+	public List<Node> getChildNodes(){
+		return compilationUnit.getChildNodes();
+	}
 	public <A> void accept(VoidVisitor<A> v, A arg) {
 		compilationUnit.accept(v, arg);}
 	
@@ -38,4 +38,6 @@ public class CompilationUnitWrapper {
     public List<Problem> getProblems() {
         return problems;
     }
+
+
 }
