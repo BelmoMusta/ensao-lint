@@ -5,20 +5,20 @@ import java.util.Objects;
 import com.github.javaparser.ast.body.FieldDeclaration;
 import com.github.javaparser.ast.expr.SimpleName;
 
-public class VariableStartByLowerCaseWrapper {
+public class AttributeStartByLowerCaseWrapper {
 	private final String fieldName;
 	private final int line;
 	
-	public VariableStartByLowerCaseWrapper(String fieldName) {
+	public AttributeStartByLowerCaseWrapper(String fieldName) {
 		this.fieldName = fieldName;
 		this.line = 0;
 	}
-	public VariableStartByLowerCaseWrapper(FieldDeclaration fieldName) {
+	public AttributeStartByLowerCaseWrapper(FieldDeclaration fieldName) {
 		this.fieldName = fieldName.toString();
 		this.line = fieldName.getBegin().map(p ->p.line).orElse(-1);
 
 	}
-	public VariableStartByLowerCaseWrapper(SimpleName fieldName) {
+	public AttributeStartByLowerCaseWrapper(SimpleName fieldName) {
 		this.fieldName = fieldName.toString();
 		this.line = fieldName.getBegin().map(p ->p.line).orElse(-1);
 	}
@@ -28,10 +28,10 @@ public class VariableStartByLowerCaseWrapper {
             return true;
         }
 
-		if (!(o instanceof VariableStartByLowerCaseWrapper)) {
+		if (!(o instanceof AttributeStartByLowerCaseWrapper)) {
             return false;
         }
-		VariableStartByLowerCaseWrapper that = (VariableStartByLowerCaseWrapper) o;
+		AttributeStartByLowerCaseWrapper that = (AttributeStartByLowerCaseWrapper) o;
 		return Objects.equals(fieldName, that.getFieldName());
 	}
 	
