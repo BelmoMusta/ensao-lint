@@ -14,9 +14,9 @@ public class VariableStartByLowerCaseVisitors extends VoidVisitorAdapter<Set<Var
 	
 	  
 	  @Override
-	  public void visit(VariableDeclarationExpr es, Set<VariableStartByLowerCaseWrapper> arg ) {
-		  es.getVariables().forEach(e-> arg.add(new VariableStartByLowerCaseWrapper(e.getName())));
-		  super.visit(es, arg);
+	  public void visit(VariableDeclarationExpr variableDeclarationExpr, Set<VariableStartByLowerCaseWrapper> arg ) {		 
+		  variableDeclarationExpr.getVariables().forEach(e-> arg.add(new VariableStartByLowerCaseWrapper(e.getName())));
+		  super.visit(variableDeclarationExpr, arg);
 	  }
 	 
 

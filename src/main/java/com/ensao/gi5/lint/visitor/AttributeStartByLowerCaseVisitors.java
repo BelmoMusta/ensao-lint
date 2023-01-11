@@ -12,8 +12,9 @@ public class AttributeStartByLowerCaseVisitors extends VoidVisitorAdapter<Set<At
 	  @Override
 	    public void visit(ClassOrInterfaceDeclaration classOrInterfaceDeclaration, Set<AttributeStartByLowerCaseWrapper> arg) {
 		  for(FieldDeclaration field: classOrInterfaceDeclaration.getFields())
-		    {
-			    arg.add(new AttributeStartByLowerCaseWrapper(field.getVariable(0).getName()));
+		    {	if(!field.isFinal()) {
+			    	arg.add(new AttributeStartByLowerCaseWrapper(field.getVariable(0).getName()));
+		        }
 		    }
 	        super.visit(classOrInterfaceDeclaration, arg);
 	    }

@@ -1,23 +1,16 @@
 package com.ensao.gi5.lint.wrapper;
 
-
 import java.util.Objects;
-
 
 import com.github.javaparser.ast.expr.SimpleName;
 
-public class VariableStartByLowerCaseWrapper {	
+public class VariableWrapper {
 	private final String fieldName;
 	private final int line;
 	
-	
-	
-	public VariableStartByLowerCaseWrapper(SimpleName fieldName) {
-		
-		 this.fieldName = fieldName.asString();
-		 this.line = fieldName.getBegin().map(p ->p.line).orElse(-1);
-
-		   
+	public VariableWrapper(SimpleName simpleName) {
+		this.fieldName = simpleName.toString();
+		this.line = simpleName.getBegin().map(p ->p.line).orElse(-1);		
 	}
 	
 	@Override
@@ -44,5 +37,6 @@ public class VariableStartByLowerCaseWrapper {
 	public int getLine() {
 		return this.line;
 	}
+	
 
 }
