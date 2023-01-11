@@ -39,6 +39,7 @@ public class Runner {
         linter.registerRule(new ConstantsRule());
         linter.registerRule(new EnumerationRule());
         linter.registerRule(new AnonymousRule());
+        linter.registerRule(new LambdaRule());
         linter.registerPrinter(new ConsolePrinter());
         linter.registerSource(directory);
         linter.run();
