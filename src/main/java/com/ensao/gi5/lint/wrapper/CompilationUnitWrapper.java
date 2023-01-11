@@ -23,7 +23,8 @@ public class CompilationUnitWrapper {
 	public NodeList<ImportDeclaration> getImports() {return compilationUnit.getImports();}
 
 	public <A> void accept(VoidVisitor<A> v, A arg) {
-		compilationUnit.accept(v, arg);}
+		compilationUnit.accept(v, arg);
+	}
 	
 	public String getFileName() {
 		return fileName;
