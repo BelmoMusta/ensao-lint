@@ -29,13 +29,16 @@ public class Runner {
         linter.registerRule(new ClassNameRule());
         linter.registerRule(new LocalVariablesRule());
         linter.registerRule(new AttributesRule());
-        linter.registerRule(new ConstantsRule());
+
         linter.registerRule(new MethodLengthRule());
         linter.registerRule(new NumberOfParametersRule());
         linter.registerRule(new NumberOfMethodsByClassRule());
         linter.registerRule(new AttributesVisibilityRule());
         linter.registerRule(new UnusedPrivateMethodsRule());
         linter.registerRule(new IfElseRule());
+        linter.registerRule(new ConstantsRule());
+        linter.registerRule(new EnumerationRule());
+        linter.registerRule(new AnonymousRule());
         linter.registerPrinter(new ConsolePrinter());
         linter.registerSource(directory);
         linter.run();
