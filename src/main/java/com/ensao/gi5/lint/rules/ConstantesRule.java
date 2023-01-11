@@ -5,6 +5,7 @@ import java.util.Set;
 
 import com.ensao.gi5.lint.constantes.Constantes;
 import com.ensao.gi5.lint.rules.violations.Violation;
+import com.ensao.gi5.lint.rules.violations.ViolationFactory;
 import com.ensao.gi5.lint.visitor.ConstantesVisitor;
 import com.ensao.gi5.lint.wrapper.CompilationUnitWrapper;
 import com.ensao.gi5.lint.wrapper.ElementWrapper;
@@ -20,10 +21,8 @@ public class ConstantesRule extends Rule {
 		Set<ElementWrapper> constantes = new LinkedHashSet<ElementWrapper>();
 		compilationUnit.accept(new ConstantesVisitor(), constantes);
 		constantes.stream().filter(c->!c.getName().equals(c.getName().toUpperCase())).forEach(c->{
-			final Violation violation = new Violation();
-			violation.setDescription("class's constantes must be UpperCase '" + c.getName() + "'");
-			violation.setFileName(compilationUnit.getFileName());
-			violation.setLine(c.getLine());
+			final Violation violation = ViolationFactory.createViolation(getId(), c.getName(),
+					compilationUnit.getFileName(), c.getLine());
 			addViolation(violation);
 		});
 

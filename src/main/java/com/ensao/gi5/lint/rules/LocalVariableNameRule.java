@@ -5,6 +5,7 @@ import java.util.Set;
 
 import com.ensao.gi5.lint.constantes.Constantes;
 import com.ensao.gi5.lint.rules.violations.Violation;
+import com.ensao.gi5.lint.rules.violations.ViolationFactory;
 import com.ensao.gi5.lint.visitor.LocalVariableVisitor;
 import com.ensao.gi5.lint.wrapper.CompilationUnitWrapper;
 import com.ensao.gi5.lint.wrapper.ElementWrapper;
@@ -20,10 +21,8 @@ public class LocalVariableNameRule extends Rule {
 		final Set<ElementWrapper> localVariables = new LinkedHashSet<>();
 		compilationUnit.accept(new LocalVariableVisitor(), localVariables);
 		localVariables.stream().filter(l->!l.getName().matches("[a-z].*")).forEach(l->{
-			final Violation violation = new Violation();
-			violation.setDescription("local varible does not start with lower case '" + l.getName() + "'");
-			violation.setFileName(compilationUnit.getFileName());
-			violation.setLine(l.getLine());
+			final Violation violation = ViolationFactory.createViolation(getId(), l.getName(),
+					compilationUnit.getFileName(), l.getLine());
 			addViolation(violation);
 		});
 	}

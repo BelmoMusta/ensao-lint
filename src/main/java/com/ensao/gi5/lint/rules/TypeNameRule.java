@@ -5,6 +5,7 @@ import java.util.Set;
 
 import com.ensao.gi5.lint.constantes.Constantes;
 import com.ensao.gi5.lint.rules.violations.Violation;
+import com.ensao.gi5.lint.rules.violations.ViolationFactory;
 import com.ensao.gi5.lint.visitor.TypeNameVisitor;
 import com.ensao.gi5.lint.wrapper.CompilationUnitWrapper;
 import com.ensao.gi5.lint.wrapper.ElementWrapper;
@@ -17,26 +18,13 @@ public class TypeNameRule extends Rule {
 
 	@Override
 	public void apply(CompilationUnitWrapper compilationUnit) {
-		final Set<ElementWrapper> typeNameWrappers = new LinkedHashSet<>();
-		compilationUnit.accept(new TypeNameVisitor(), typeNameWrappers);
-		for (ElementWrapper typeNameWrapper : typeNameWrappers) {
-			String typeName = typeNameWrapper.getName();
-			if (!Character.isUpperCase(typeName.charAt(0))) {
-				final Violation violation = new Violation();
-				violation.setDescription("Type Name does not start with UpperCase '" + typeNameWrapper + "'");
-				violation.setFileName(compilationUnit.getFileName());
-				violation.setLine(typeNameWrapper.getLine());
-				addViolation(violation);
-			}
-
-			if (typeName.contains("_")) {
-				final Violation violation = new Violation();
-				violation.setDescription("Type Name contains underscore '" + typeNameWrapper + "'");
-				violation.setFileName(compilationUnit.getFileName());
-				violation.setLine(typeNameWrapper.getLine());
-				addViolation(violation);
-			}
-		}
+		final Set<ElementWrapper> names = new LinkedHashSet<>();
+		compilationUnit.accept(new TypeNameVisitor(), names);
+		names.stream().filter(n->!Character.isUpperCase(n.getName().charAt(0))).forEach(n->{
+			final Violation violation = ViolationFactory.createViolation(getId(), n.getName(),
+					compilationUnit.getFileName(), n.getLine());
+			addViolation(violation);
+		});
 	}
 
 	@Override
