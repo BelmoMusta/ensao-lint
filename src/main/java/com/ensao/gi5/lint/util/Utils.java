@@ -4,12 +4,14 @@ import com.ensao.gi5.lint.rules.violations.Violation;
 import com.ensao.gi5.lint.wrapper.CompilationUnitWrapper;
 import com.github.javaparser.JavaParser;
 import com.github.javaparser.ParseResult;
+import com.github.javaparser.Position;
 import com.github.javaparser.ast.CompilationUnit;
 import org.apache.commons.io.FileUtils;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Collection;
+import java.util.Optional;
 
 public class Utils {
      Utils() {
@@ -60,5 +62,9 @@ public class Utils {
     	violation.setFileName(filename);
     	violation.setLine(line);
     	return violation;
+    }
+    
+    public static int getLine(Optional<Position> position) {
+    	return position.map( p -> p.line).orElse(-1); 
     }
 }

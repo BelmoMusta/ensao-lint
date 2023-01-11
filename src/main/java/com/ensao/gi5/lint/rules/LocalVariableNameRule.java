@@ -12,7 +12,7 @@ import com.ensao.gi5.lint.wrapper.CompilationUnitWrapper;
 import com.ensao.gi5.lint.wrapper.NameWrapper;
 
 public class LocalVariableNameRule extends Rule {
-	private static final Pattern VARIABLE_NAME_PATTERN = Pattern.compile("^[a-z][a-zA-Z\\d_$]*");
+	private static final Pattern LOCAL_VARIABLE_NAME_PATTERN = Pattern.compile("^[a-z][a-zA-Z\\d_$]*");
 
 	public LocalVariableNameRule() {
 		super(Constantes.LINT_REG_003, Level.HIGH);
@@ -24,7 +24,7 @@ public class LocalVariableNameRule extends Rule {
 		compilationUnit.accept(new LocalVariableNameVisitor(), variables);
 		
 		variables.stream()
-					.filter(field -> !VARIABLE_NAME_PATTERN.matcher(field.name()).matches())
+					.filter(field -> !LOCAL_VARIABLE_NAME_PATTERN.matcher(field.name()).matches())
 					.forEach(field -> {
 							String description = "The first letter of this field : '" + field.name()
 										+ "' must be in lowercase";

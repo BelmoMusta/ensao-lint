@@ -1,7 +1,7 @@
 package com.ensao.gi5.lint.rules;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 import com.ensao.gi5.lint.constantes.Constantes;
 import com.ensao.gi5.lint.rules.violations.Violation;
@@ -19,15 +19,18 @@ public class MethodBodyRule extends Rule {
 	@Override
 	public void apply(CompilationUnitWrapper compilationUnit) {
 
-		List<NameWrapper> methodNames = new ArrayList<>(); 
+		Map<NameWrapper, Integer> methodBodyLength = new LinkedHashMap<>(); 
+		compilationUnit.accept(new MethodBodyVisitor(), methodBodyLength);
 		
-		compilationUnit.accept(new MethodBodyVisitor(), methodNames);
 		
-		methodNames.forEach(methodName -> {
-			String description = String.format("The body of the method: '%s' must not exceed 30 lines", methodName.name());
-			Violation violation = Utils.createNewInstanceOfViolation(description, compilationUnit.getFileName(), methodName.line());
-			addViolation(violation);
+		methodBodyLength.forEach((methodName, bodyLength) -> {
+			if(bodyLength > 30) {
+				String description = String.format("The body of the method: '%s' must not exceed 30 lines (it has %d lines)", methodName.name(), bodyLength);
+				Violation violation = Utils.createNewInstanceOfViolation(description, compilationUnit.getFileName(), methodName.line());
+				addViolation(violation);
+			}
 		});
+		
 		
 	}
 

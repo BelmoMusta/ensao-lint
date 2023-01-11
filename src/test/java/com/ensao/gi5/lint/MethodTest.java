@@ -7,8 +7,9 @@ import org.junit.jupiter.api.Test;
 
 import com.ensao.gi5.lint.printer.ConsolePrinter;
 import com.ensao.gi5.lint.rules.MethodBodyRule;
+import com.ensao.gi5.lint.rules.NumberOfMethodRule;
 
-class MethodBodyTest {
+class MethodTest {
 
 	Linter linter;
 
@@ -27,6 +28,17 @@ class MethodBodyTest {
 		
 		assertEquals(1, linter.getAllViolations().size());
 
+	}
+	
+	@Test
+	void testNumberOfMethodPerClass() {
+		linter.registerRule(new NumberOfMethodRule());
+		linter.registerSource("testFiles/methodRule/Student.java");
+		linter.registerPrinter(new ConsolePrinter()); 
+		
+		linter.run();
+		
+		assertEquals(1, linter.getAllViolations().size());
 	}
 
 
