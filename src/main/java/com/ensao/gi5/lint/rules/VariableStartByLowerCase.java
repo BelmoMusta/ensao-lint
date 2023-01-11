@@ -27,7 +27,7 @@ public class VariableStartByLowerCase extends Rule {
 	                final Violation violation = new Violation();
 	                violation.setDescription("variable name starts with upper case '" + fieldName.getFieldName() + "'");
 	                violation.setFileName(compilationUnit.getFileName());
-	                violation.setLine(2);
+	                violation.setLine(fieldName.getLine());
 	                addViolation(violation);
 	            }
 	    }

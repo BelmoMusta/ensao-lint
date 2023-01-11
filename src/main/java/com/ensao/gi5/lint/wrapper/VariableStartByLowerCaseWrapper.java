@@ -7,15 +7,20 @@ import com.github.javaparser.ast.expr.SimpleName;
 
 public class VariableStartByLowerCaseWrapper {
 	private final String fieldName;
+	private final int line;
 	
 	public VariableStartByLowerCaseWrapper(String fieldName) {
 		this.fieldName = fieldName;
+		this.line = 0;
 	}
 	public VariableStartByLowerCaseWrapper(FieldDeclaration fieldName) {
 		this.fieldName = fieldName.toString();
+		this.line = fieldName.getBegin().map(p ->p.line).orElse(-1);
+
 	}
 	public VariableStartByLowerCaseWrapper(SimpleName fieldName) {
 		this.fieldName = fieldName.toString();
+		this.line = fieldName.getBegin().map(p ->p.line).orElse(-1);
 	}
 	@Override
 	public boolean equals(Object o) {
@@ -41,6 +46,9 @@ public class VariableStartByLowerCaseWrapper {
 	}
 	public String getFieldName() {
 		return this.fieldName;
+	}
+	public int getLine() {
+		return this.line;
 	}
 
 }
