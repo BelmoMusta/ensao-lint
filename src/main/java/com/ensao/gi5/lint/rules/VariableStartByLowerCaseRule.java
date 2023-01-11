@@ -15,16 +15,12 @@ public class VariableStartByLowerCaseRule extends Rule {
 	}
 	@Override
 	public void apply(CompilationUnitWrapper compilationUnitWrapper) {
-          final Set<VariableStartByLowerCaseWrapper> fieldNames = new LinkedHashSet<>();
-  		//compilationUnit.accept(new AttributeStartByLowerCaseVisitors(), fieldNames);
-
-		 // final VariableStartByLowerCaseWrapper fieldNames = new VariableStartByLowerCaseWrapper(compilationUnitWrapper.getCompilationUnit());
+            final Set<VariableStartByLowerCaseWrapper> fieldNames = new LinkedHashSet<>();
 			compilationUnitWrapper.accept(new VariableStartByLowerCaseVisitors(), fieldNames);
 			for (VariableStartByLowerCaseWrapper fieldName : fieldNames) {
-		            if (!fieldName.getFieldName().toString().split(" ")[1].matches("^[\t*a-z].*")) {
-		                final Violation violation = new Violation();
-		                
-		                violation.setDescription("variable name starts with upper case '" + fieldName.getFieldName().toString().split(" ")[1]+ "'");
+		            if (!fieldName.getFieldName().toString().matches("^[\t*a-z].*")) {
+		                final Violation violation = new Violation();		                
+		                violation.setDescription("variable name starts with upper case '" + fieldName.getFieldName().toString()+ "'");
 		                violation.setFileName(compilationUnitWrapper.getFileName());
 		                violation.setLine(fieldName.getLine());
 		                addViolation(violation);
