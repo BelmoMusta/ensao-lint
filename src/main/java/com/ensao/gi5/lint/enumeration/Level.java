@@ -1,4 +1,4 @@
-package com.ensao.gi5.lint.rules;
+package com.ensao.gi5.lint.enumeration;
 
 public enum Level {
     BLOCKER,

@@ -8,22 +8,21 @@ import com.github.javaparser.ast.expr.SimpleName;
 
 import java.util.Objects;
 
-public class ImportWrapper {
+public class ImportWrapper extends AbstractWrapper{
 	private final String importDeclarationFQN;
 	private final String importDeclaration;
-	private final int line;
 	
 	
 	public ImportWrapper(ImportDeclaration importDeclaration) {
+		super(importDeclaration.getBegin().map(p ->p.line).orElse(-1));
 		this.importDeclarationFQN = importDeclaration.getNameAsString();
 		this.importDeclaration = Utils.convertFQNToSimpleClassName(importDeclaration.getNameAsString());
-		this.line = importDeclaration.getBegin().map(p ->p.line).orElse(-1);
 	}
 	
 	public ImportWrapper(String importDeclaration) {
+		super(0);
 		this.importDeclarationFQN = importDeclaration;
 		this.importDeclaration = Utils.convertFQNToSimpleClassName(importDeclaration);
-		this.line = 0;
 	}
 	
 	public ImportWrapper(NameExpr name) {
@@ -60,8 +59,5 @@ public class ImportWrapper {
 	public String toString() {
 		return importDeclarationFQN;
 	}
-	
-	public int getLine() {
-		return line;
-	}
+
 }

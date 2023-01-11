@@ -1,6 +1,6 @@
 package com.ensao.gi5.lint.rules.violations;
 
-import com.ensao.gi5.lint.rules.Level;
+import com.ensao.gi5.lint.enumeration.Level;
 
 import java.util.Comparator;
 import java.util.Objects;
@@ -11,6 +11,14 @@ public class Violation implements Comparable<Violation>{
 	private String fileName;
 	private int line;
     private Level level;
+
+    public Violation() {}
+
+    public Violation(Violation violation) {
+        this.description = violation.description;
+        this.fileName = violation.fileName;
+        this.line = violation.line;
+    }
 
     public void setFileName(String fileName) {
 		this.fileName = fileName;
