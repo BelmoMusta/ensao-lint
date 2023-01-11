@@ -1,7 +1,7 @@
 public class ClassAttributesNaming {
-    private int X = 0;
-    private int Y = 0;
-    private int z = 0;
+    private int X ;
+    private int Y ;
+    private int z ;
 
     public int getX() {
         return X;

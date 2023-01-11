@@ -15,12 +15,10 @@ public class ParseErrorRule extends Rule {
 
     @Override
     public void apply(CompilationUnitWrapper compilationUnit) {
-
         for (Problem problem : compilationUnit.getProblems()) {
             final Violation violation = new Violation();
             violation.setDescription(problem.getMessage());
             violation.setFileName(compilationUnit.getFileName());
-
             int line = problem.getLocation()
                     .map(TokenRange::getBegin)
                     .flatMap(JavaToken::getRange)
