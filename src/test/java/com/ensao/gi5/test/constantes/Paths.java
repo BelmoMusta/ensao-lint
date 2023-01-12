@@ -10,6 +10,7 @@ public class Paths {
 	public static final String LOCAL_VARIABLE_FILE_PATH = ROOT_PATH + "localVariable/Test.java";
 	public static final String BOOLEAN_EXPRESSIONS_FILE_PATH = ROOT_PATH + "booleanExpressions/Test.java";
 	public static final String ENUMERATION_ELEMENTS_FILE_PATH = ROOT_PATH + "enumeration/Test.java";
+	public static final String METHOD_BODY_FILE_PATH = ROOT_PATH + "methodBody/Test.java";
 
 	public Paths() {
 		throw new IllegalStateException("not to be instantiated");

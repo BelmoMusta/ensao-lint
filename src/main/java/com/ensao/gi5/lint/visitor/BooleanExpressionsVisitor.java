@@ -1,18 +1,15 @@
 package com.ensao.gi5.lint.visitor;
 
 import java.util.Set;
-import java.util.regex.Pattern;
 
-import com.ensao.gi5.lint.wrapper.StatementWrapper;
-import com.github.javaparser.ast.stmt.BlockStmt;
+import com.github.javaparser.ast.expr.BinaryExpr;
 import com.github.javaparser.ast.visitor.VoidVisitorAdapter;
 
-public class BooleanExpressionsVisitor extends VoidVisitorAdapter<Set<StatementWrapper>>{
+public class BooleanExpressionsVisitor extends VoidVisitorAdapter<Set<BinaryExpr>>{
 	
 	@Override
-	public void visit(BlockStmt bs,Set<StatementWrapper> arg) {
-		bs.getStatements().stream().filter(s -> Pattern.compile("==|!=|<|>|>=|<=")
-                .matcher(s.toString()).find()).forEach(s ->arg.add(new StatementWrapper(s)));
+	public void visit(BinaryExpr be,Set<BinaryExpr> arg) {
+		arg.add(be);
 	}
 	
 }
