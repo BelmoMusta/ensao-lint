@@ -28,7 +28,8 @@ public class Runner {
 //        linter.registerRule(new EnumRule());
 //        linter.registerRule(new MethodBodyRule());
 //        linter.registerRule(new IfElseRule());
-        linter.registerRule(new MethodsPerClassRule());
+//        linter.registerRule(new MethodsPerClassRule());
+//        linter.registerRule(new LocalVariablesRule());
         linter.registerPrinter(new ConsolePrinter());
         linter.registerSource(directory);
         linter.run();
