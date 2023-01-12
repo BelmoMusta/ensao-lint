@@ -4,6 +4,7 @@ import com.ensao.gi5.lint.Linter;
 import com.ensao.gi5.lint.printer.ConsolePrinter;
 import com.ensao.gi5.lint.rules.AttributeStartByLowerCaseRule;
 import com.ensao.gi5.lint.rules.ConstantsInUpperCaseRule;
+import com.ensao.gi5.lint.rules.EnumElementIsUpperRule;
 import com.ensao.gi5.lint.rules.UnusedImportsRule;
 import com.ensao.gi5.lint.rules.VariableStartByLowerCaseRule;
 
@@ -30,7 +31,8 @@ public class Runner {
         linter.registerRule(new UnusedImportsRule());
         linter.registerRule(new ConstantsInUpperCaseRule());
         linter.registerRule(new AttributeStartByLowerCaseRule());
-        linter.registerRule(new VariableStartByLowerCaseRule());        
+        linter.registerRule(new VariableStartByLowerCaseRule());   
+        linter.registerRule(new EnumElementIsUpperRule());
         linter.registerPrinter(new ConsolePrinter());
         linter.registerSource(directory);
         linter.run();

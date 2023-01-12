@@ -13,7 +13,6 @@ public class ConstantsInUpperCaseVisitors extends VoidVisitorAdapter<Set<Variabl
 	  @Override
 	    public void visit(FieldDeclaration fieldDeclaration, Set<VariableWrapper> arg) {		  
 		  if(fieldDeclaration.isFinal()) {
-			  System.out.println(fieldDeclaration.getVariables());
 			  fieldDeclaration.getVariables().forEach(e-> arg.add(new VariableWrapper(e.getName())));
 			  super.visit(fieldDeclaration, arg);
 		  }
