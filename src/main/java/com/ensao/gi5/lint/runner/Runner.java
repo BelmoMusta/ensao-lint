@@ -2,10 +2,7 @@ package com.ensao.gi5.lint.runner;
 
 import com.ensao.gi5.lint.Linter;
 import com.ensao.gi5.lint.printer.ConsolePrinter;
-import com.ensao.gi5.lint.rules.EnumRule;
-import com.ensao.gi5.lint.rules.IfElseRule;
-import com.ensao.gi5.lint.rules.MethodBodyRule;
-import com.ensao.gi5.lint.rules.UnusedImportsRule;
+import com.ensao.gi5.lint.rules.*;
 
 public class Runner {
     public static void main(String[] args) {
@@ -30,7 +27,8 @@ public class Runner {
         linter.registerRule(new UnusedImportsRule());
 //        linter.registerRule(new EnumRule());
 //        linter.registerRule(new MethodBodyRule());
-        linter.registerRule(new IfElseRule());
+//        linter.registerRule(new IfElseRule());
+        linter.registerRule(new MethodsPerClassRule());
         linter.registerPrinter(new ConsolePrinter());
         linter.registerSource(directory);
         linter.run();
