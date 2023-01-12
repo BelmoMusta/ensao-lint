@@ -9,7 +9,7 @@ import com.github.javaparser.ast.stmt.ExpressionStmt;
 import com.github.javaparser.ast.visitor.VoidVisitorAdapter;
 
 public class CatchLogExceptions extends Rule{
-    protected CatchLogExceptions() {
+    public CatchLogExceptions() {
         super(Constantes.LINT_REG_015, Level.LOW);
     }
 
