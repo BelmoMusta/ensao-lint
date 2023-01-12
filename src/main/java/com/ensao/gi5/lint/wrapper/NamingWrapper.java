@@ -26,19 +26,19 @@ public class NamingWrapper {
     public NamingWrapper(ClassOrInterfaceDeclaration classOrInterfaceDeclaration) {
         this.name = classOrInterfaceDeclaration.getNameAsString();
         this.type = classOrInterfaceDeclaration.isInterface()?"L'Interface ":"La Class ";
-        this.line = classOrInterfaceDeclaration.getBegin().map(p -> p.line).orElse(-1);
+        this.line = classOrInterfaceDeclaration.getBegin().map(var -> var.line).orElse(-1);
     }
 
     public NamingWrapper(EnumDeclaration enumDeclaration) {
         this.name = enumDeclaration.getNameAsString();
         this.type = "L'Enumeration ";
-        this.line = enumDeclaration.getBegin().map(p -> p.line).orElse(-1);
+        this.line = enumDeclaration.getBegin().map(var -> var.line).orElse(-1);
     }
 
     public NamingWrapper(AnnotationDeclaration annotationDeclaration) {
         this.name = annotationDeclaration.getNameAsString();
         this.type = "Annotation "+annotationDeclaration.getNameAsString();
-        this.line = annotationDeclaration.getBegin().map(p -> p.line).orElse(-1);
+        this.line = annotationDeclaration.getBegin().map(var -> var.line).orElse(-1);
     }
 
 }

@@ -5,6 +5,8 @@ import com.ensao.gi5.lint.wrapper.CompilationUnitWrapper;
 import com.github.javaparser.JavaParser;
 import com.github.javaparser.ParseResult;
 import com.github.javaparser.ast.CompilationUnit;
+import com.github.javaparser.ast.body.ClassOrInterfaceDeclaration;
+import com.github.javaparser.ast.body.FieldDeclaration;
 import com.github.javaparser.ast.expr.SimpleName;
 import org.apache.commons.io.FileUtils;
 
@@ -18,6 +20,17 @@ public class Utils {
      Utils() {
         throw new IllegalStateException("not to be instantiated");
     }
+
+
+    //Methodes pour trouver le nom d'une classe a partir de son attribut/methode
+    public static String findClassName(FieldDeclaration fieldDeclaration){
+        final String[] nameOfClass = new String[1];
+        fieldDeclaration.getParentNode().ifPresent(p->{
+            nameOfClass[0] = ((ClassOrInterfaceDeclaration) p).getFullyQualifiedName().orElse(null);
+        });
+        return nameOfClass[0];
+    }
+
     //Creation des methodes de generation de sortie
     public static void writeCsv(Collection<Violation> violations, Writer writer) throws IOException {
         for (Violation violation : violations) {
@@ -33,7 +46,6 @@ public class Utils {
         writer.flush();
         writer.close();
     }
-
 
 
     public static void writeHtml(Collection<Violation> violations, Writer writer) throws IOException {
