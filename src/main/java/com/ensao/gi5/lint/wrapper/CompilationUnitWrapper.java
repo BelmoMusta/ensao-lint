@@ -5,6 +5,7 @@ import com.github.javaparser.Problem;
 import com.github.javaparser.ast.CompilationUnit;
 import com.github.javaparser.ast.ImportDeclaration;
 import com.github.javaparser.ast.NodeList;
+import com.github.javaparser.ast.body.EnumDeclaration;
 import com.github.javaparser.ast.body.FieldDeclaration;
 import com.github.javaparser.ast.body.MethodDeclaration;
 import com.github.javaparser.ast.visitor.VoidVisitor;
@@ -69,6 +70,15 @@ public class CompilationUnitWrapper {
 				.flatMap(type -> type.getMembers().stream())
 				.filter(member -> member instanceof MethodDeclaration)
 				.map(member -> (MethodDeclaration) member)
+				.collect(Collectors.toList());
+	}
+
+	// get all enums within a compilation unit
+	public List<EnumDeclaration> getEnums() {
+		return compilationUnit.getTypes()
+				.stream()
+				.filter(type -> type instanceof EnumDeclaration)
+				.map(type -> (EnumDeclaration) type)
 				.collect(Collectors.toList());
 	}
 }
