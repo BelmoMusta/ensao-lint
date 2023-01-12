@@ -10,6 +10,7 @@ public class Methode {
     final private List<Parametre> parametres;
     final private String accessSpecifier;
     final private int ligne;
+	private int lignesCounts;
 
 
     public Methode(String name, String returnType, String accessSpecifier, int ligne) {
@@ -18,6 +19,7 @@ public class Methode {
         this.accessSpecifier = accessSpecifier;
         this.parametres = new ArrayList<>();
         this.ligne = ligne;
+        this.lignesCounts = 0;
     }
 
     public String getName() {
@@ -40,6 +42,14 @@ public class Methode {
         return ligne;
     }
 
+    public void setLinesCount(int lignes) {
+        this.lignesCounts = lignes;
+    }
+
+    public int getLinesCount() {
+        return lignesCounts;
+    }
+    
     @Override
     public String toString() {
         return String.format("%s %s(%s)", this.returnType, this.name,
