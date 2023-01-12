@@ -29,12 +29,13 @@ public class Runner {
         linter.registerRule(new javaTypesIdentifierRule()); //LINT_REG_002
         linter.registerRule(new localVariablIdentifierRule()); //LINT_REG_003
         linter.registerRule(new classAttributeRule()); //LINT_REG_004
+        linter.registerRule(new classConstantsRule()); //LINT_REG_005
         linter.registerRule(new enumerationRule()); //LINT_REG_007
         linter.registerRule(new functionContentRule()); //LINT_REG_008
         linter.registerRule(new NumberofFunctionsExeededRule()); //LINT_REG_011
         linter.registerRule(new argsSizeRule()); //LINT_REG_012
         linter.registerRule(new classAttributeVisibiltiyRule());//LINT_REG_013
-        linter.registerRule(new classConstantsRule()); //LINT_REG_005
+   
 
         linter.registerPrinter(new ConsolePrinter());
         linter.registerSource(directory);
