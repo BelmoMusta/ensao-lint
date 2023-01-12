@@ -30,6 +30,8 @@ public class Runner {
 //        linter.registerRule(new IfElseRule());
 //        linter.registerRule(new MethodsPerClassRule());
 //        linter.registerRule(new LocalVariablesRule());
+        linter.registerRule(new BooleanExpressionOperandRule());
+
         linter.registerPrinter(new ConsolePrinter());
         linter.registerSource(directory);
         linter.run();
