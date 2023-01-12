@@ -1,14 +1,19 @@
 package com.ensao.gi5.lint.wrapper;
 
-public abstract class ElementWrapper {
+public class ElementWrapper {
 
-	protected String name;
-	protected int line;
-
+	private String name;
+	private int line;
+	
+	public ElementWrapper(String name,int line) {
+		this.line=line;
+		this.name=name;
+	}
+	
 	public String getName() {
 		return name;
 	}
-
+	
 	public void setName(String name) {
 		this.name = name;
 	}

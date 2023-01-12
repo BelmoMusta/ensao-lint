@@ -5,7 +5,7 @@ import java.util.Set;
 import com.github.javaparser.ast.body.MethodDeclaration;
 import com.github.javaparser.ast.visitor.VoidVisitorAdapter;
 
-public class MethodBodyVisitor extends VoidVisitorAdapter<Set<MethodDeclaration>>{
+public class MethodVisitor extends VoidVisitorAdapter<Set<MethodDeclaration>>{
 
 	@Override
 	public void visit(MethodDeclaration md,Set<MethodDeclaration> arg) {

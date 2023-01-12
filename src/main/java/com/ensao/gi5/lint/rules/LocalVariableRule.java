@@ -6,23 +6,23 @@ import java.util.Set;
 import com.ensao.gi5.lint.constantes.Constantes;
 import com.ensao.gi5.lint.rules.violations.Violation;
 import com.ensao.gi5.lint.rules.violations.ViolationFactory;
-import com.ensao.gi5.lint.visitor.AttributeVisitor;
+import com.ensao.gi5.lint.visitor.LocalVariableVisitor;
 import com.ensao.gi5.lint.wrapper.CompilationUnitWrapper;
 import com.ensao.gi5.lint.wrapper.ElementWrapper;
 
-public class AttributeNameRule extends Rule {
+public class LocalVariableRule extends Rule {
 
-	public AttributeNameRule() {
-		super(Constantes.LINT_REG_004, Level.HIGH);
+	public LocalVariableRule() {
+		super(Constantes.LINT_REG_003, Level.HIGH);
 	}
 
 	@Override
 	public void apply(CompilationUnitWrapper compilationUnit) {
-		Set<ElementWrapper> attributes = new LinkedHashSet<ElementWrapper>();
-		compilationUnit.accept(new AttributeVisitor(), attributes);
-		attributes.stream().filter(a -> !a.getName().matches("[a-z].*")).forEach(a -> {
-			final Violation violation = ViolationFactory.createViolation(getId(), a.getName(),
-					compilationUnit.getFileName(), a.getLine());
+		final Set<ElementWrapper> localVariables = new LinkedHashSet<>();
+		compilationUnit.accept(new LocalVariableVisitor(), localVariables);
+		localVariables.stream().filter(l->!l.getName().matches("[a-z].*")).forEach(l->{
+			final Violation violation = ViolationFactory.createViolation(getId(), l.getName(),
+					compilationUnit.getFileName(), l.getLine());
 			addViolation(violation);
 		});
 	}
@@ -32,4 +32,5 @@ public class AttributeNameRule extends Rule {
 		return true;
 	}
 
+	
 }

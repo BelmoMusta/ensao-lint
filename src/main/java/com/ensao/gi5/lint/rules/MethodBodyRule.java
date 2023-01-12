@@ -6,7 +6,7 @@ import java.util.Set;
 import com.ensao.gi5.lint.constantes.Constantes;
 import com.ensao.gi5.lint.rules.violations.Violation;
 import com.ensao.gi5.lint.rules.violations.ViolationFactory;
-import com.ensao.gi5.lint.visitor.MethodBodyVisitor;
+import com.ensao.gi5.lint.visitor.MethodVisitor;
 import com.ensao.gi5.lint.wrapper.CompilationUnitWrapper;
 import com.github.javaparser.ast.body.MethodDeclaration;
 
@@ -19,7 +19,7 @@ public class MethodBodyRule extends Rule {
 	@Override
 	public void apply(CompilationUnitWrapper compilationUnit) {
 		Set<MethodDeclaration> mds = new HashSet<MethodDeclaration>();
-		compilationUnit.accept(new MethodBodyVisitor(), mds);
+		compilationUnit.accept(new MethodVisitor(), mds);
 		mds.stream()
 				.filter(m -> m.getEnd().map(p -> p.line).orElse(-1) - m.getBegin().map(p -> p.line).orElse(-1) + 1 > 30)
 				.forEach(e -> {
