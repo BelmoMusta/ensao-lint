@@ -2,12 +2,12 @@ package com.ensao.gi5.lint.rules;
 
 import com.ensao.gi5.lint.constantes.Constantes;
 import com.ensao.gi5.lint.rules.violations.Violation;
+import com.ensao.gi5.lint.rules.violations.ViolationMaker;
 import com.ensao.gi5.lint.visitor.ParameterVisitor;
 import com.ensao.gi5.lint.wrapper.CompilationUnitWrapper;
-import com.ensao.gi5.lint.wrapper.MethodParameterWrapper;
+import com.ensao.gi5.lint.wrapper.RuleCountWrapper;
 import com.github.javaparser.StaticJavaParser;
 import com.github.javaparser.ast.CompilationUnit;
-import com.github.javaparser.ast.body.MethodDeclaration;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -22,18 +22,18 @@ public class NumberOfParametersRule extends Rule {
     public void apply(CompilationUnitWrapper compilationUnit) {
         try {
             CompilationUnit unit = StaticJavaParser.parse(new File(compilationUnit.getFileName()));
-            List<MethodDeclaration> methods = unit.findAll(MethodDeclaration.class);
-
-            List<MethodParameterWrapper> methodParameterCounts = new ArrayList<>();
+            List<RuleCountWrapper> methodParameterCounts = new ArrayList<>();
             new ParameterVisitor().visit(unit, methodParameterCounts);
 
-            for (MethodParameterWrapper methodParameterCount : methodParameterCounts) {
-                if(methodParameterCount.getParameterCount() > 2) {
-                    final Violation violation = new Violation();
-                    violation.setDescription("Number of parameters exceeds 2");
-                    violation.setFileName(compilationUnit.getFileName());
+            for (RuleCountWrapper methodParameterCount : methodParameterCounts) {
+                if(methodParameterCount.getCount() > 2) {
+
+
                     int line = methodParameterCount.getLine();
-                    violation.setLine(line);
+                    Violation violation = ViolationMaker.makeViolation(
+                            compilationUnit.getFileName(),
+                            "Number of parameters exceeds 2",
+                            line);
                     addViolation(violation);
                 }
             }

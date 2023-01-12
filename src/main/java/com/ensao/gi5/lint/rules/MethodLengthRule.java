@@ -2,12 +2,11 @@ package com.ensao.gi5.lint.rules;
 
 import com.ensao.gi5.lint.constantes.Constantes;
 import com.ensao.gi5.lint.rules.violations.Violation;
+import com.ensao.gi5.lint.rules.violations.ViolationMaker;
+import com.ensao.gi5.lint.visitor.MethodLengthVisitor;
 import com.ensao.gi5.lint.wrapper.CompilationUnitWrapper;
-import com.github.javaparser.StaticJavaParser;
-import com.github.javaparser.ast.CompilationUnit;
-import com.github.javaparser.ast.body.MethodDeclaration;
-
-import java.io.File;
+import com.ensao.gi5.lint.wrapper.RuleCountWrapper;
+import java.util.ArrayList;
 import java.util.List;
 
 public class MethodLengthRule extends Rule {
@@ -18,16 +17,15 @@ public class MethodLengthRule extends Rule {
     @Override
     public void apply(CompilationUnitWrapper compilationUnit) {
         try {
-            CompilationUnit unit = StaticJavaParser.parse(new File(compilationUnit.getFileName()));
-            List<MethodDeclaration> methods = unit.findAll(MethodDeclaration.class);
-            for (MethodDeclaration method : methods) {
-                int methodLength = method.getEnd().get().line - method.getBegin().get().line + 1;
-                if (methodLength >= 30) {
-                    final Violation violation = new Violation();
-                    violation.setDescription("Method body exceed 30 lines ");
-                    violation.setFileName(compilationUnit.getFileName());
-                    int line = method.getBegin().get().line;
-                    violation.setLine(line);
+            List<RuleCountWrapper> methods = new ArrayList<>();
+            compilationUnit.accept(new MethodLengthVisitor(methods),null);
+            if(methods.size() != 0){
+                for (RuleCountWrapper method:methods
+                     ) {
+                    Violation violation = ViolationMaker.makeViolation(
+                            compilationUnit.getFileName(),
+                            "Method body exceed 30 lines ",
+                            method.getLine());
                     addViolation(violation);
                 }
             }

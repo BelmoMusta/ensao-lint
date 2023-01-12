@@ -2,13 +2,11 @@ package com.ensao.gi5.lint.rules;
 
 import com.ensao.gi5.lint.constantes.Constantes;
 import com.ensao.gi5.lint.rules.violations.Violation;
+import com.ensao.gi5.lint.rules.violations.ViolationMaker;
+import com.ensao.gi5.lint.visitor.LocalVariableVisitor;
 import com.ensao.gi5.lint.wrapper.CompilationUnitWrapper;
-import com.github.javaparser.StaticJavaParser;
-import com.github.javaparser.ast.CompilationUnit;
-import com.github.javaparser.ast.body.MethodDeclaration;
-import com.github.javaparser.ast.body.VariableDeclarator;
-
-import java.io.File;
+import com.ensao.gi5.lint.wrapper.RuleWrapper;
+import java.util.ArrayList;
 import java.util.List;
 
 public class LocalVariablesRule extends Rule {
@@ -18,22 +16,15 @@ public class LocalVariablesRule extends Rule {
     @Override
     public void apply(CompilationUnitWrapper compilationUnit) {
         try{
-            CompilationUnit unit = StaticJavaParser.parse(new File(compilationUnit.getFileName()));
-            List<MethodDeclaration> methods = unit.findAll(MethodDeclaration.class);
-            for (MethodDeclaration method: methods
-                 ) {
-                List<VariableDeclarator> localVariables = method.findAll(VariableDeclarator.class);
-
-                for (VariableDeclarator localVariable : localVariables) {
-                    String locVar= localVariable.toString().split("=")[0] ;
-                    if (!Character.isLowerCase(locVar.charAt(0))) {
-                        final Violation violation = new Violation();
-                        violation.setDescription("Local variable error");
-                        violation.setFileName(compilationUnit.getFileName());
-                        int line =localVariable.getRange().isPresent()?localVariable.getRange().get().begin.line:0;
-                        violation.setLine(line);
-                        addViolation(violation);
-                    }
+            List<RuleWrapper> variables = new ArrayList<>();
+            compilationUnit.accept(new LocalVariableVisitor(variables),null);
+            if (variables.size() != 0) {
+                for (RuleWrapper variable : variables) {
+                    Violation violation = ViolationMaker.makeViolation(
+                            compilationUnit.getFileName(),
+                            "Local variable error",
+                            variable.getLine());
+                    addViolation(violation);
                 }
             }
         }

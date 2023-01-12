@@ -1,21 +1,21 @@
 package com.ensao.gi5.lint.visitor;
 
+import com.ensao.gi5.lint.wrapper.RuleWrapper;
 import com.github.javaparser.ast.expr.LambdaExpr;
 import com.github.javaparser.ast.visitor.VoidVisitorAdapter;
+import java.util.List;
 
-import java.util.Hashtable;
-
-public class LambdaVisitor extends VoidVisitorAdapter<Void> {
-    private Hashtable<String,Integer> intuitiveLambdas;
-    public LambdaVisitor(Hashtable<String,Integer> intuitiveLambdas){
+public class LambdaVisitor extends VoidVisitorAdapter<List<RuleWrapper>> {
+    private List<RuleWrapper> intuitiveLambdas;
+    public LambdaVisitor(List<RuleWrapper> intuitiveLambdas){
         this.intuitiveLambdas = intuitiveLambdas;
     }
 
     @Override
-    public void visit(LambdaExpr n, Void arg) {
+    public void visit(LambdaExpr n, List<RuleWrapper> arg) {
         super.visit(n, arg);
         if(isIntuitiveLambda(n)){
-            intuitiveLambdas.put(n.toString(),n.getBegin().get().line);
+            intuitiveLambdas.add(new RuleWrapper(n.toString(),n.getBegin().get().line));
         }
     }
 
