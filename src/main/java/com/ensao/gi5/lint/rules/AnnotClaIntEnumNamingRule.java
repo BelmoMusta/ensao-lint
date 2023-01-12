@@ -32,7 +32,7 @@ public class AnnotClaIntEnumNamingRule extends Rule {
                     this.typeDeclarationCheck(td, "interface", compilationUnit);
 
                 } else {
-                    this.typeDeclarationCheck(td, "classe", compilationUnit);
+                    this.typeDeclarationCheck(td, "class", compilationUnit);
                 }
 
         }
@@ -47,13 +47,13 @@ public class AnnotClaIntEnumNamingRule extends Rule {
     public void typeDeclarationCheck(TypeDeclaration typeDeclaration, String category, CompilationUnitWrapper compilationUnit) {
         if (typeDeclaration.getNameAsString().contains("_")) {
             Violation violation = new Violation();
-            violation.setDescription("Le nom de" + category + " '" + typeDeclaration.getNameAsString() + "' ne doit pas contenir de '_'");
+            violation.setDescription("Name of " + category + " '" + typeDeclaration.getNameAsString() + "' ne doit pas contenir de '_'");
             violation.setFileName(compilationUnit.getFileName());
             violation.setLine(typeDeclaration.getRange().get().begin.line);
             addViolation(violation);
         } else if (Character.isLowerCase(typeDeclaration.getNameAsString().charAt(0))) {
             Violation violation = new Violation();
-            violation.setDescription("Le nom de " + category + " '" + typeDeclaration.getNameAsString() + "' doit commencer avec majuscule");
+            violation.setDescription("Name of " + category + " '" + typeDeclaration.getNameAsString() + "' doit commencer avec majuscule");
             violation.setFileName(compilationUnit.getFileName());
             violation.setLine(typeDeclaration.getRange().get().begin.line);
             addViolation(violation);
