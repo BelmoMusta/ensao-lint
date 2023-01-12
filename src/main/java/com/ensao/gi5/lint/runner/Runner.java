@@ -5,13 +5,10 @@ import com.ensao.gi5.lint.printer.ConsolePrinter;
 import com.ensao.gi5.lint.rules.*;
 import com.ensao.gi5.lint.rules.violations.Violation;
 import com.ensao.gi5.lint.util.Utils;
-
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.Writer;
 import java.util.Collection;
-import java.util.Locale;
 import java.util.Scanner;
 
 public class Runner {
@@ -51,6 +48,7 @@ public class Runner {
         linter.registerRule(new LambdaRule());
         linter.registerRule(new ReturnCountRule());
         linter.registerRule(new NumberOfParametersRule());
+        linter.registerRule(new CatchExceptionRule());
         linter.registerPrinter(new ConsolePrinter());
         linter.registerSource(directory);
         linter.run();
