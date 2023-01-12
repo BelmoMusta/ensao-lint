@@ -32,7 +32,6 @@ public class MethodLengthRule extends Rule {
                 }
             }
         } catch (Exception e) {
-            // Handle exception
         }
     }
 
