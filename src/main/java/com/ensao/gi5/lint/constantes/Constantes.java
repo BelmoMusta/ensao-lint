@@ -11,6 +11,7 @@ public class Constantes {
 	public static final String LINT_REG_007 = "LINT_REG_007"; 
 	public static final String LINT_REG_008 = "LINT_REG_008"; 
 	public static final String LINT_REG_009 = "LINT_REG_009"; 
+	public static final String LINT_REG_010 = "LINT_REG_010"; 
 	public static final String LINT_REG_011 = "LINT_REG_011"; 
 
     private Constantes() {

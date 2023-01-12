@@ -1,6 +1,6 @@
 package com.ensao.gi5.lint.visitor;
 
-import java.util.List;
+import java.util.Set;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -11,16 +11,16 @@ import com.github.javaparser.ast.body.FieldDeclaration;
 import com.github.javaparser.ast.body.VariableDeclarator;
 import com.github.javaparser.ast.visitor.VoidVisitorAdapter;
 
-public class ConstantNameVisitor extends VoidVisitorAdapter<List<NameWrapper>> {
+public class ConstantNameVisitor extends VoidVisitorAdapter<Set<NameWrapper>> {
 	
-	Function<VariableDeclarator, NameWrapper> mapper = field -> new NameWrapper(field.getNameAsString(),
+	Function<VariableDeclarator, NameWrapper> toNameWrapper = field -> new NameWrapper(field.getNameAsString(),
 			Utils.getLine(field.getBegin()));
 
 	@Override
-	public void visit(FieldDeclaration n, List<NameWrapper> arg) {
+	public void visit(FieldDeclaration n, Set<NameWrapper> arg) {
 		if (n.isStatic() && n.isFinal()) {
 			n.getVariables().stream()
-							.map(mapper)
+							.map(toNameWrapper)
 							.collect(Collectors.toCollection(() -> arg));
 		}
 
@@ -28,7 +28,7 @@ public class ConstantNameVisitor extends VoidVisitorAdapter<List<NameWrapper>> {
 	}
 
 	@Override
-	public void visit(EnumConstantDeclaration n, List<NameWrapper> arg) {
+	public void visit(EnumConstantDeclaration n, Set<NameWrapper> arg) {
 		String name = n.getNameAsString();
 		int line = Utils.getLine(n.getBegin()); 
 		arg.add(new NameWrapper(name, line));

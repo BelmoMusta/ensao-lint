@@ -1,7 +1,7 @@
 package com.ensao.gi5.lint.rules;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.LinkedHashSet;
+import java.util.Set;
 import java.util.regex.Pattern;
 
 import com.ensao.gi5.lint.constantes.Constantes;
@@ -23,7 +23,7 @@ public class TypeNamingRule extends Rule {
 	@Override
 	public void apply(CompilationUnitWrapper compilationUnit) {
 
-		List<TypeNameWrapper<TypeDeclaration<?>>> typeNames = new ArrayList<>();
+		Set<TypeNameWrapper<TypeDeclaration<?>>> typeNames = new LinkedHashSet<>();
 		compilationUnit.accept(new TypeNamingVisitors(), typeNames);
 
 		typeNames.stream()

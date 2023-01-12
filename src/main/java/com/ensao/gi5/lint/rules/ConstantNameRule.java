@@ -1,7 +1,7 @@
 package com.ensao.gi5.lint.rules;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.LinkedHashSet;
+import java.util.Set;
 import java.util.regex.Pattern;
 
 import com.ensao.gi5.lint.constantes.Constantes;
@@ -26,8 +26,7 @@ public class ConstantNameRule extends Rule {
 
 	@Override
 	public void apply(CompilationUnitWrapper compilationUnit) {
-		List<NameWrapper> constants = new ArrayList<>(); 
-		
+		Set<NameWrapper> constants = new LinkedHashSet<>(); 
 		compilationUnit.accept(new ConstantNameVisitor(), constants);
 		
 		constants.stream()
