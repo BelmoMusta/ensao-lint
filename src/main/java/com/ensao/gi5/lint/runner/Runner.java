@@ -3,6 +3,7 @@ package com.ensao.gi5.lint.runner;
 import com.ensao.gi5.lint.Linter;
 import com.ensao.gi5.lint.printer.CSVFileWriter;
 import com.ensao.gi5.lint.printer.ConsolePrinter;
+import com.ensao.gi5.lint.printer.JsonPrinter;
 import com.ensao.gi5.lint.rules.*;
 
 public class Runner {
@@ -34,7 +35,8 @@ public class Runner {
         linter.registerRule(new BooleanExpressionOperandRule());
 
 //        linter.registerPrinter(new ConsolePrinter());
-        linter.registerPrinter(new CSVFileWriter());
+//        linter.registerPrinter(new CSVFileWriter());
+        linter.registerPrinter(new JsonPrinter());
         linter.registerSource(directory);
         linter.run();
     }
