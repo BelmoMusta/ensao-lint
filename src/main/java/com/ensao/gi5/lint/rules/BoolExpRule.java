@@ -13,31 +13,35 @@ import com.ensao.gi5.lint.wrapper.StmtWrapper;
 
 public class BoolExpRule extends Rule{
 
-	  public BoolExpRule() {
-	        super(Constantes.LINT_REG_006, Level.HIGHEST);
-	    }
+	public BoolExpRule() {
+		super(Constantes.LINT_REG_006, Level.HIGHEST);
+	}
 
-	    @Override
-	    public void apply(CompilationUnitWrapper compilationUnit) {
-	        List<StmtWrapper> BoolExpWrappers = new ArrayList<>();
-	        compilationUnit.accept(new IfElseVisitor(),BoolExpWrappers);
+	@Override
+	public void apply(CompilationUnitWrapper compilationUnit) {
+		List<StmtWrapper> BoolExpWrappers = new ArrayList<>();
+		compilationUnit.accept(new IfElseVisitor(), BoolExpWrappers);
 
-	        for(StmtWrapper BoolExpWrapper: BoolExpWrappers){
-	            Matcher matcher = Pattern.compile("(([\\\\w\\\\d\\\\s.])+(==|!=|<|>|>=|<=)[\\\\w\\\\d\\\\s.]+([&\\\\|]{2})?)+").matcher(BoolExpWrapper.getStatement().toString());
+		for (StmtWrapper BoolExpWrapper : BoolExpWrappers) {
+			Matcher matcher = Pattern
+					.compile("(([\\\\w\\\\d\\\\s.])+(==|!=|<|>|>=|<=)[\\\\w\\\\d\\\\s.]+([&\\\\|]{2})?)+")
+					.matcher(BoolExpWrapper.getStatement().toString());
 
-	            if(!matcher.find()){
-	                final Violation violation = new Violation();
-	                violation.setDescription("Boolean expressions must have no more than 2 operands" );
-	                violation.setFileName(compilationUnit.getFileName());
-	                violation.setLine(BoolExpWrapper.getLigne());
-	                addViolation(violation);
-	            }
-	        }
-	    }
+			if (!matcher.find()) {
+				final Violation violation = new Violation();
+				violation.setDescription("Boolean expressions must have no more than 2 operands");
+				violation.setFileName(compilationUnit.getFileName());
+				violation.setLine(BoolExpWrapper.getLigne());
+                violation.setRuleId(Constantes.LINT_REG_006);
+                violation.setLevel(Level.HIGHEST);
+				addViolation(violation);
+			}
+		}
+	}
 
-	    @Override
-	    public boolean isActive() {
-	        return true;
-	    }
+	@Override
+	public boolean isActive() {
+		return true;
+	}
 
 }

@@ -56,7 +56,7 @@ public class Utils {
     }
     
     public static int getLine(SimpleName simpleName){
-        return simpleName.getBegin().map(p -> p.line).orElse(-1);
+        return simpleName.getBegin().map(sN -> sN.line).orElse(-1);
    }
 
 }

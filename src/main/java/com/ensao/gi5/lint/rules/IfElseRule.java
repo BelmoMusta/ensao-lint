@@ -30,6 +30,8 @@ public class IfElseRule extends Rule{
 	                violation.setDescription("if/else clauses must have braces" );
 	                violation.setFileName(compilationUnit.getFileName());
 	                violation.setLine(ifElseWrapper.getLigne());
+	                violation.setRuleId(Constantes.LINT_REG_018);
+	                violation.setLevel(Level.LOW);
 	                addViolation(violation);
 	            }
 	        }
