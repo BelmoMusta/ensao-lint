@@ -1,0 +1,2 @@
+[{"level":"HIGHEST","description":"Too many parameters in constructor","ruleId":"LINT_REG_012"},
+  {"level":"HIGHEST","description":"Too many parameters in method","ruleId":"LINT_REG_012"}]

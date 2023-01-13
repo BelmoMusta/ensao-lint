@@ -8,5 +8,10 @@ public class MethodAndConstructorParamsTest{
         this.y = y;
         this.z = z;
     }
+    public void affect(int x, int y, int z){
+        this.x = x;
+        this.y = y;
+        this.z = z;
+    }
 
 }
