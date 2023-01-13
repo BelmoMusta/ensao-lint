@@ -25,8 +25,11 @@ public class UnusedImportsRule extends Rule {
                 .map(ImportWrapper::new)
                 .collect(Collectors.toSet());
 
+
         final Set<ImportWrapper> usedImports = new LinkedHashSet<>();
         compilationUnit.accept(new UnusedImportsVisitors(), usedImports);
+
+
         for (ImportWrapper declaredImport : declaredImports) {
             if (!usedImports.contains(declaredImport)) {
                 final Violation violation = new Violation();
