@@ -1,4 +1,4 @@
-public class missingBracketsTest{
+public class MissingBracketsTest{
     public void sayHello(String name){
         if(!name.equals(""))
             System.out.println("Hello "+name);
