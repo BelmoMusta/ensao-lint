@@ -1,5 +1,5 @@
 package com.ensao.gi5.lint.rules.violations;
-import com.ensao.gi5.lint.rules.CatchLogExceptions;
+
 import com.ensao.gi5.lint.rules.EnumsShouldBeAllUpperCaseAndUnderscoreSeparator;
 import com.ensao.gi5.lint.wrapper.CompilationUnitWrapper;
 import org.junit.jupiter.api.Test;

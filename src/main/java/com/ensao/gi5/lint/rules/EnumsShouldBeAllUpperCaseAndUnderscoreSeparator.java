@@ -4,8 +4,6 @@ import com.ensao.gi5.lint.constantes.Constantes;
 import com.ensao.gi5.lint.rules.violations.Violation;
 import com.ensao.gi5.lint.wrapper.CompilationUnitWrapper;
 import com.github.javaparser.ast.body.EnumDeclaration;
-import com.github.javaparser.ast.body.MethodDeclaration;
-import com.github.javaparser.ast.body.VariableDeclarator;
 
 import java.util.List;
 
