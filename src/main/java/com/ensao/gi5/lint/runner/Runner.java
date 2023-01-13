@@ -30,6 +30,7 @@ public class Runner {
         linter.registerRule(new RoleQuatre());
         linter.registerRule(new RoleHuit());
         linter.registerRule(new RoleSept());
+        linter.registerRule(new RoleDouze());
         linter.registerPrinter(new ConsolePrinter());
         linter.registerSource(directory);
         linter.run();
