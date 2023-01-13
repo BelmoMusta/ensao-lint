@@ -18,7 +18,7 @@ public class LocalVariableNameRule extends Rule{
     public void apply(CompilationUnitWrapper compilationUnit) {
 
         Set<LocalVariableNameWrapper> allLocalVariables = new LinkedHashSet<>();
-        compilationUnit.accept(new LocalVariablesNameVisitor(), allLocalVariables);
+        compilationUnit.    accept(new LocalVariablesNameVisitor(), allLocalVariables);
         allLocalVariables.stream().filter(localVar->!localVar.getName().matches("^[a-z].*")).forEach(localVar->{
             final Violation violation = new Violation();
             violation.setDescription("Variable '" + localVar.getName() + "' does not start with lowercase !");

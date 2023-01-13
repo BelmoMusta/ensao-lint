@@ -1,5 +1,6 @@
 package com.ensao.gi5.lint.wrapper;
 
+import com.ensao.gi5.lint.util.Utils;
 import com.github.javaparser.ast.body.VariableDeclarator;
 
 public class LocalVariableNameWrapper {
@@ -7,6 +8,9 @@ public class LocalVariableNameWrapper {
 
     private final int line;
     private final String name;
+
+
+
 
 
     public LocalVariableNameWrapper(VariableDeclarator variableDeclarator) {
@@ -21,5 +25,6 @@ public class LocalVariableNameWrapper {
     public String getName() {
         return name;
     }
+
 
 }

@@ -19,9 +19,9 @@ public class ClassConstantsNameRule extends Rule{
     public void apply(CompilationUnitWrapper compilationUnit) {
         Set<ClassAttributsNameWrapper> allClassConstants = new LinkedHashSet<>();
         compilationUnit.accept(new ClassConstantsNameVisitor(), allClassConstants);
-        allClassConstants.stream().filter(attribute->!attribute.getName().equals(attribute.getName().toUpperCase())).forEach(att->{
+        allClassConstants.stream().filter(attribute->!attribute.getName().matches("^[A-Z0-9_]*")).forEach(att->{
             final Violation violation = new Violation();
-            violation.setDescription("La constante '"+att.getName() +"' de la class '"+att.getClassName()+"' it's not all Uppercase!");
+            violation.setDescription("La constante '"+att.getName() +"' de la class '"+att.getClassName()+"' it's not all Uppercase !");
             violation.setFileName(compilationUnit.getFileName());
             violation.setLine(att.getLine());
             addViolation(violation);

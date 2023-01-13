@@ -7,6 +7,7 @@ import com.github.javaparser.ParseResult;
 import com.github.javaparser.ast.CompilationUnit;
 import com.github.javaparser.ast.body.ClassOrInterfaceDeclaration;
 import com.github.javaparser.ast.body.FieldDeclaration;
+import com.github.javaparser.ast.body.VariableDeclarator;
 import com.github.javaparser.ast.expr.SimpleName;
 import org.apache.commons.io.FileUtils;
 
@@ -36,9 +37,9 @@ public class Utils {
         for (Violation violation : violations) {
             writer.append(violation.toString()).append('\n');
         }
-        violations.stream().map(Violation::toString).forEach(t -> {
+        violations.stream().map(Violation::toString).forEach(violation -> {
             try {
-                writer.write(t);
+                writer.write(violation);
             } catch (IOException e) {
                 e.printStackTrace();
             }

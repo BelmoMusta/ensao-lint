@@ -25,7 +25,7 @@ public class IfElseRule  extends Rule{
         compilationUnit.accept(new IfElseVisitor(),ifElseWrapperList);
 
         for(GeneralStatementWrapper ifElseWrapper: ifElseWrapperList){
-            Matcher matcher = Pattern.compile(".*\\{([\\S\\s]*)\\}").matcher(ifElseWrapper.getStatement().toString());
+            Matcher matcher = Pattern.compile(".*\\{([\\S\\s]*)*\\}").matcher(ifElseWrapper.getStatement().toString());
 
             if(!matcher.find()){
                 final Violation violation = new Violation();

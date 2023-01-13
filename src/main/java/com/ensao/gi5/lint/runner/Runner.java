@@ -53,7 +53,7 @@ public class Runner {
         System.out.println("Please chose the output format");
         System.out.println("CSV | HTML |MarkDown");
         String format = scanner.nextLine();
-        File outputFile = new File("resultFiles/");
+        File outputFile = new File("ResultFile."+format.toLowerCase());
             Writer writer = new FileWriter(outputFile);
             switch (format) {
                 case "CSV":

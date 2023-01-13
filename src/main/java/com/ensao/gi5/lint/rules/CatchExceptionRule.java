@@ -22,11 +22,11 @@ public class CatchExceptionRule extends Rule{
         compilationUnit.accept(new CatchExceptionVisitor(),catchClauseWrapperList);
 
         for(GeneralStatementWrapper ifElseWrapper: catchClauseWrapperList){
-            Matcher matcher = Pattern.compile("(log)").matcher(ifElseWrapper.getStatement().toString());
+            Matcher matcher = Pattern.compile("(printStackTrace)|(log)|(print)").matcher(ifElseWrapper.getStatement().toString());
 
             if(!matcher.find()){
                 final Violation violation = new Violation();
-                violation.setDescription("Catch statment don't have a logger '" );
+                violation.setDescription("Catch block don't have a logger" );
                 violation.setFileName(compilationUnit.getFileName());
                 violation.setLine(ifElseWrapper.getLine());
                 addViolation(violation);
