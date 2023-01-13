@@ -2,6 +2,8 @@ package com.ensao.gi5.lint.rules.violations;
 
 import org.junit.jupiter.api.Test;
 
+import com.ensao.gi5.lint.rules.Level;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ViolationTest {
@@ -88,9 +90,15 @@ public class ViolationTest {
 
     @Test
     public void testSetLevel() {
+    	Violation violation = new Violation();
+    	violation.setLevel(Level.HIGH);
+    	assertEquals(Level.HIGH, violation.getLevel());
     }
 
     @Test
     public void testGetLevel() {
+    	Violation violation = new Violation();
+    	violation.setLevel(Level.LOW);
+    	assertEquals(Level.LOW, violation.getLevel());
     }
 }
