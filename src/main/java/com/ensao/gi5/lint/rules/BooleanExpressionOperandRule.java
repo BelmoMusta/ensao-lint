@@ -6,6 +6,13 @@ import com.ensao.gi5.lint.wrapper.CompilationUnitWrapper;
 import com.github.javaparser.ast.expr.BinaryExpr;
 import com.github.javaparser.ast.visitor.VoidVisitorAdapter;
 
+/**
+ This class extends the {@link Rule} class and checks for violations of the rule that states boolean expressions should not have more than 2 operands.
+ The rule is identified by the constant {@link Constantes#LINT_REG_006} and has the highest level of severity.
+ The {@link #apply(CompilationUnitWrapper)} method uses the visitor pattern to traverse the abstract syntax tree of the compilation unit and checks for logical operators (&& and ||) with more than 2 operands.
+ If a violation is found, an instance of {@link Violation} is created with the appropriate description, file name, and line number and is added to the list of violations.
+ The {@link #isActive()} method is overridden to always return true, indicating that this rule is always active.
+ */
 public class BooleanExpressionOperandRule extends Rule{
     public BooleanExpressionOperandRule() {
         super(Constantes.LINT_REG_006, Level.HIGHEST);
