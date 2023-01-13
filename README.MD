@@ -13,7 +13,7 @@ Implémenter les règles suivantes :
 | LINT_REG_002 |HIGHEST|Les types java `(class, interface, annotation, enum)` commence par une majuscule, elles ne doivent pas avoir des sous-tirets `_`  |
 | LINT_REG_003 |HIGH|Les variables locales commencent par une minuscule  |
 | LINT_REG_004 |HIGH|Les attributs d'une classe commencent par une minuscule  |
-| LINT_REG_005 |MEDIUM|Les constantes d'une classe sont écrites en majuscule, avec des `_` comme séparateur|
+~~| LINT_REG_005 |MEDIUM|Les constantes d'une classe sont écrites en majuscule, avec des `_` comme séparateur|
 | LINT_REG_006 |HIGHEST|Les expressions booléennes ne doivent avoir plus que `2` opérandes |
 | LINT_REG_007 |LOW|Les éléments d'une énumeration sont en majuscule, avec des `_` comme séparateur|
 | LINT_REG_008 |HIGHEST|Le corps d'une méthode ne doit pas dépasser `30` lignes|
@@ -26,7 +26,7 @@ Implémenter les règles suivantes :
 | LINT_REG_015|LOW|Ne pas catcher les exceptions sans les logger|
 | LINT_REG_016|MEDIUM|Les variables non utilisées sont à supprimer|
 | LINT_REG_017|MEDIUM|Les méthodes privées non utilisées sont à supprimer|
-| LINT_REG_018 |LOW|les clauses `if` , `else` doivent avoir des accolades |
+| LINT_REG_018 |LOW|les clauses `if` , `else` doivent avoir des accolades |~~
 
 Si une règle est bloquante, alors remonter l'erreur est mettre fin à l'analyse du fichier en cours.
 ### INPUT :
