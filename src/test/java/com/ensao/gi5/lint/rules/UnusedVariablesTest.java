@@ -11,12 +11,12 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class InstanciationsAnonymesTest {
-    private InstanciationsAnonymes rule = new InstanciationsAnonymes();
+public class UnusedVariablesTest {
+    private UnusedVariables rule = new UnusedVariables();
 
     @Test
     public void testApply() {
-        File file = new File("testFiles/normalExecution/InstanciationsAnonymesExample.java");
+        File file = new File("testFiles/normalExecution/UnusedVariablesExample.java");
         CompilationUnitWrapper cu = new CompilationUnitWrapper(file);
         rule.apply(cu);
 
@@ -27,7 +27,7 @@ public class InstanciationsAnonymesTest {
         assertEquals(1, violations.size());
 
         // Assert that the violation has the correct description
-        assertEquals("Anonymous class should be replaced by lambda expression" , violations.get(0).getDescription());
+        assertEquals("Unused variable" , violations.get(0).getDescription());
     }
 
     @Test

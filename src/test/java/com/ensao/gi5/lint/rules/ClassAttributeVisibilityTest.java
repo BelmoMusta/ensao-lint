@@ -15,7 +15,7 @@ public class ClassAttributeVisibilityTest {
     private ClassAttributeVisibility rule = new ClassAttributeVisibility();
 
     @Test
-    public void testRule() {
+    public void testApply() {
         File file = new File("testFiles/normalExecution/ClassAttributeVisibilityExample.java");
         CompilationUnitWrapper cu = new CompilationUnitWrapper(file);
         rule.apply(cu);

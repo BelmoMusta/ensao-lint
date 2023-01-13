@@ -15,7 +15,7 @@ public class JavaTypesNamigTest {
     private TypeJavaNaming rule = new TypeJavaNaming();
 
     @Test
-    public void testRule() {
+    public void testApply() {
         File file = new File("testFiles/normalExecution/javaTypesNamigExample.java");
         CompilationUnitWrapper cu = new CompilationUnitWrapper(file);
         rule.apply(cu);

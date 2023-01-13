@@ -1,0 +1,3 @@
+LEVEL,RULE,DESCRIPTION
+HIGHEST,LINT_REG_012,Too many parameters in constructor
+HIGHEST,LINT_REG_012,Too many parameters in method
