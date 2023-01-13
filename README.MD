@@ -1,4 +1,4 @@
-## java linter
+## Binôme: Malika Ouadoud & Touria Abbou
 Le but de ce mini-projet est de créer un linter sous java.
 Définition du linter : [Wikipedia](https://en.wikipedia.org/wiki/Lint_%28software%29)
 
