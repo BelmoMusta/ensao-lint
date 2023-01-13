@@ -16,7 +16,7 @@ public class EnumsShouldBeAllUpperCaseAndUnderscoreSeparatorTest {
     @Test
     public void testApply_EnumsShouldBeAllUpperCaseAndUnderscoreSeparator_AddsViolation() {
         // Arrange
-        File file = new File("testFiles/normalExecution/EnumsShouldBeAllUpperCaseAndUnderscoreSeparatorTest.txt");
+        File file = new File("testFiles/normalExecution/EnumsShouldBeAllUpperCaseAndUnderscoreSeparatorTest.java");
         compilationUnit = new CompilationUnitWrapper(file);
 
         // Act
@@ -26,7 +26,7 @@ public class EnumsShouldBeAllUpperCaseAndUnderscoreSeparatorTest {
         List<Violation> violation = rule.getViolations().stream().collect(Collectors.toList());
         assertEquals(1, rule.getViolations().size());
         assertEquals("color must have all characters to uppercase while using underscore separator", violation.get(0).getDescription());
-        assertEquals("EnumsShouldBeAllUpperCaseAndUnderscoreSeparatorTest.txt", violation.get(0).getFileName());
+        assertEquals("EnumsShouldBeAllUpperCaseAndUnderscoreSeparatorTest.java", violation.get(0).getFileName());
         assertEquals(1, violation.get(0).getLine());
     }
 
