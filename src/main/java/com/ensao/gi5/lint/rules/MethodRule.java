@@ -7,9 +7,7 @@ import com.ensao.gi5.lint.wrapper.ClassWrapper;
 import com.ensao.gi5.lint.wrapper.CompilationUnitWrapper;
 
 import java.util.ArrayList;
-import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Set;
 
 public class MethodRule extends Rule {
     public  MethodRule(){

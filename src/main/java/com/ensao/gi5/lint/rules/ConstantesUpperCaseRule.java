@@ -10,7 +10,7 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 
 public class ConstantesUpperCaseRule extends Rule{
-    ConstantesUpperCaseRule(){
+    public ConstantesUpperCaseRule(){
         super(Constantes.LINT_REG_005, Level.MEDIUM);
     }
 

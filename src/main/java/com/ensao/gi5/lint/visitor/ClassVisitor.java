@@ -1,10 +1,11 @@
 package com.ensao.gi5.lint.visitor;
 
 import com.ensao.gi5.lint.util.Method;
-import com.ensao.gi5.lint.wrapper.ClassWrapper;
 import com.github.javaparser.ast.body.ClassOrInterfaceDeclaration;
 import com.github.javaparser.ast.visitor.VoidVisitorAdapter;
 import com.github.javaparser.ast.expr.SimpleName;
+import com.ensao.gi5.lint.wrapper.ClassWrapper;
+
 
 
 import java.util.List;

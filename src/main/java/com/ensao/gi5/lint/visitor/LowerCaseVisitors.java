@@ -8,7 +8,6 @@ import com.github.javaparser.ast.expr.VariableDeclarationExpr;
 
 import com.github.javaparser.ast.visitor.VoidVisitorAdapter;
 
-import java.util.Set;
 
 public class LowerCaseVisitors extends VoidVisitorAdapter<Set<LowerCaseWrapper>> {
     @Override
