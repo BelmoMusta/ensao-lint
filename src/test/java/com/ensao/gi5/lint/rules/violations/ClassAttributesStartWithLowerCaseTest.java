@@ -1,6 +1,7 @@
 package com.ensao.gi5.lint.rules.violations;
 
 import com.ensao.gi5.lint.rules.CatchLogExceptions;
+import com.ensao.gi5.lint.rules.ClassAttributesStartWithLowerCase;
 import com.ensao.gi5.lint.wrapper.CompilationUnitWrapper;
 import org.junit.jupiter.api.Test;
 
@@ -10,13 +11,13 @@ import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-public class CatchLogExceptionsTest {
-    CatchLogExceptions rule = new CatchLogExceptions();
+public class ClassAttributesStartWithLowerCaseTest {
+    ClassAttributesStartWithLowerCase rule = new ClassAttributesStartWithLowerCase();
     CompilationUnitWrapper compilationUnit;
     @Test
-    public void testApply_CatchBlockDoesNotContainLog_AddsViolation() {
+    public void testApply_ClassAttributesStartWithLowerCase_AddsViolation() {
         // Arrange
-        File file = new File("testFiles/normalExecution/CatchLogExceptionsTest.java");
+        File file = new File("testFiles/normalExecution/ClassAttributesStartWithLowerCaseTest.java");
         compilationUnit = new CompilationUnitWrapper(file);
 
         // Act
@@ -25,9 +26,9 @@ public class CatchLogExceptionsTest {
         // Assert
         List<Violation> violation = rule.getViolations().stream().collect(Collectors.toList());
         assertEquals(1, rule.getViolations().size());
-        assertEquals("Catch block does not contain log statement", violation.get(0).getDescription());
-        assertEquals("CatchLogExceptionsTest.java", violation.get(0).getFileName());
-        assertEquals(5, violation.get(0).getLine());
+        assertEquals("AttributeName must start with lower case", violation.get(0).getDescription());
+        assertEquals("ClassAttributesStartWithLowerCaseTest.java", violation.get(0).getFileName());
+        assertEquals(2, violation.get(0).getLine());
     }
 
 
@@ -36,4 +37,5 @@ public class CatchLogExceptionsTest {
         // Act & Assert
         assertTrue(rule.isActive());
     }
+
 }

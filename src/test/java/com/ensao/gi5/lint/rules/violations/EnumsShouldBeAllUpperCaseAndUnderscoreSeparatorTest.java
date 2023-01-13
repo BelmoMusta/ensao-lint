@@ -1,6 +1,6 @@
 package com.ensao.gi5.lint.rules.violations;
-
 import com.ensao.gi5.lint.rules.CatchLogExceptions;
+import com.ensao.gi5.lint.rules.EnumsShouldBeAllUpperCaseAndUnderscoreSeparator;
 import com.ensao.gi5.lint.wrapper.CompilationUnitWrapper;
 import org.junit.jupiter.api.Test;
 
@@ -10,13 +10,13 @@ import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-public class CatchLogExceptionsTest {
-    CatchLogExceptions rule = new CatchLogExceptions();
+public class EnumsShouldBeAllUpperCaseAndUnderscoreSeparatorTest {
+    EnumsShouldBeAllUpperCaseAndUnderscoreSeparator rule = new EnumsShouldBeAllUpperCaseAndUnderscoreSeparator();
     CompilationUnitWrapper compilationUnit;
     @Test
-    public void testApply_CatchBlockDoesNotContainLog_AddsViolation() {
+    public void testApply_EnumsShouldBeAllUpperCaseAndUnderscoreSeparator_AddsViolation() {
         // Arrange
-        File file = new File("testFiles/normalExecution/CatchLogExceptionsTest.java");
+        File file = new File("testFiles/normalExecution/EnumsShouldBeAllUpperCaseAndUnderscoreSeparatorTest.txt");
         compilationUnit = new CompilationUnitWrapper(file);
 
         // Act
@@ -25,9 +25,9 @@ public class CatchLogExceptionsTest {
         // Assert
         List<Violation> violation = rule.getViolations().stream().collect(Collectors.toList());
         assertEquals(1, rule.getViolations().size());
-        assertEquals("Catch block does not contain log statement", violation.get(0).getDescription());
-        assertEquals("CatchLogExceptionsTest.java", violation.get(0).getFileName());
-        assertEquals(5, violation.get(0).getLine());
+        assertEquals("color must have all characters to uppercase while using underscore separator", violation.get(0).getDescription());
+        assertEquals("EnumsShouldBeAllUpperCaseAndUnderscoreSeparatorTest.txt", violation.get(0).getFileName());
+        assertEquals(1, violation.get(0).getLine());
     }
 
 
