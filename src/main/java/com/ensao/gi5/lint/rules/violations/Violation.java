@@ -12,6 +12,16 @@ public class Violation implements Comparable<Violation>{
 	private int line;
     private Level level;
 
+    public Violation(Violation violation) {
+        this.description = violation.description;
+        this.fileName = violation.fileName;
+        this.line = violation.line;
+        this.level=violation.level;
+        this.ruleId= violation.ruleId;
+    }
+
+    public Violation(){}
+
     public void setFileName(String fileName) {
 		this.fileName = fileName;
 	}

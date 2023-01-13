@@ -1,6 +1,7 @@
 package com.ensao.gi5.lint.rules;
 
 import com.ensao.gi5.lint.rules.violations.Violation;
+import com.ensao.gi5.lint.rules.violations.ViolationBuilder;
 import com.ensao.gi5.lint.wrapper.CompilationUnitWrapper;
 
 import java.util.Objects;
@@ -13,9 +14,12 @@ public abstract class Rule {
 
     protected final Set<Violation> violations = new TreeSet<>();
 
+    protected final ViolationBuilder violationBuilder;
+
     protected Rule(String id, Level level) {
         this.id = id;
         this.level = level;
+        this.violationBuilder = new ViolationBuilder();
     }
 
     public final void addViolation(Violation violation) {
