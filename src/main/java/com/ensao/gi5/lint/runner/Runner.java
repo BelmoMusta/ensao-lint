@@ -22,7 +22,7 @@ public class Runner {
         }
 
         //Please replace the directory of tests here
-        String directory = "C:\\Users\\pc\\Desktop\\JavaAvanceProject\\ensao-lint\\testFiles\\parseError\\ParseErrorExample.java";
+        String directory = "testFiles";
 
         for (int i = 0; i < args.length; i++) {
             String argument = args[i];
