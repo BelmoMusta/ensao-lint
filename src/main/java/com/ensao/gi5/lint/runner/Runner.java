@@ -7,7 +7,7 @@ import com.ensao.gi5.lint.rules.*;
 public class Runner {
     public static void main(String[] args) {
 
-        String directory = "C:/Users/bouch/Documents/GitHub/ensao-lint/testFiles/normalExecution/Example.java";
+        String directory = "testFiles/normalExecution/Example.java";
 
         for (int i = 0; i < args.length; i++) {
             String argument = args[i];
