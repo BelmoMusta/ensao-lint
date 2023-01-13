@@ -1,7 +1,7 @@
 package com.ensao.gi5.lint.wrapper;
 
 
-import java.util.Objects;
+
 
 
 import com.github.javaparser.ast.expr.SimpleName;
@@ -19,24 +19,7 @@ public class VariableStartByLowerCaseWrapper {
 
 		   
 	}
-	
-	@Override
-	public boolean equals(Object o) {
-		if (this == o) {
-            return true;
-        }
-
-		if (!(o instanceof VariableStartByLowerCaseWrapper)) {
-            return false;
-        }
-		VariableStartByLowerCaseWrapper that = (VariableStartByLowerCaseWrapper) o;
-		return Objects.equals(fieldName, that.getFieldName());
-	}
-	
-	@Override
-	public int hashCode() {
-		return Objects.hash(fieldName);
-	}	
+		
 	
 	public String getFieldName() {
 		return this.fieldName;

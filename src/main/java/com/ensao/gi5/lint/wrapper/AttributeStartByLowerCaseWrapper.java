@@ -1,6 +1,6 @@
 package com.ensao.gi5.lint.wrapper;
 
-import java.util.Objects;
+
 
 import com.github.javaparser.ast.body.FieldDeclaration;
 import com.github.javaparser.ast.expr.SimpleName;
@@ -22,23 +22,7 @@ public class AttributeStartByLowerCaseWrapper {
 		this.fieldName = fieldName.toString();
 		this.line = fieldName.getBegin().map(p ->p.line).orElse(-1);
 	}
-	@Override
-	public boolean equals(Object o) {
-		if (this == o) {
-            return true;
-        }
-
-		if (!(o instanceof AttributeStartByLowerCaseWrapper)) {
-            return false;
-        }
-		AttributeStartByLowerCaseWrapper that = (AttributeStartByLowerCaseWrapper) o;
-		return Objects.equals(fieldName, that.getFieldName());
-	}
 	
-	@Override
-	public int hashCode() {
-		return Objects.hash(fieldName);
-	}
 	
 	@Override
 	public String toString() {

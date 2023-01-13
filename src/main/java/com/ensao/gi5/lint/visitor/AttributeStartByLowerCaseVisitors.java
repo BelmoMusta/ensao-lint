@@ -1,21 +1,20 @@
 package com.ensao.gi5.lint.visitor;
 
-import java.util.Set;
-
+import java.util.List;
 
 import com.ensao.gi5.lint.wrapper.AttributeStartByLowerCaseWrapper;
-import com.github.javaparser.ast.body.ClassOrInterfaceDeclaration;
 import com.github.javaparser.ast.body.FieldDeclaration;
 import com.github.javaparser.ast.visitor.VoidVisitorAdapter;
 
-public class AttributeStartByLowerCaseVisitors extends VoidVisitorAdapter<Set<AttributeStartByLowerCaseWrapper>> {
+public class AttributeStartByLowerCaseVisitors extends VoidVisitorAdapter<List<AttributeStartByLowerCaseWrapper>> {
 	  @Override
-	    public void visit(ClassOrInterfaceDeclaration classOrInterfaceDeclaration, Set<AttributeStartByLowerCaseWrapper> arg) {
-		  for(FieldDeclaration field: classOrInterfaceDeclaration.getFields())
-		    {	if(!field.isFinal()) {
+	    public void visit(FieldDeclaration field, List<AttributeStartByLowerCaseWrapper> arg) {
+		
+		 	if(!field.isFinal()) {
 			    	arg.add(new AttributeStartByLowerCaseWrapper(field.getVariable(0).getName()));
+			    	
 		        }
-		    }
-	        super.visit(classOrInterfaceDeclaration, arg);
+		    
+	        super.visit(field, arg);
 	    }
 }

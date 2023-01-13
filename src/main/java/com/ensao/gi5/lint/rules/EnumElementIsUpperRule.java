@@ -1,7 +1,9 @@
 package com.ensao.gi5.lint.rules;
 
-import java.util.LinkedHashSet;
-import java.util.Set;
+import java.util.ArrayList;
+
+import java.util.List;
+
 
 import com.ensao.gi5.lint.constantes.Constantes;
 import com.ensao.gi5.lint.rules.violations.Violation;
@@ -17,17 +19,17 @@ public class EnumElementIsUpperRule extends Rule {
 
 	@Override
 	public void apply(CompilationUnitWrapper compilationUnit) {
-		 final Set<VariableWrapper> fieldNames = new LinkedHashSet<>();
+		 final List<VariableWrapper> fieldNames = new ArrayList<>();
 			compilationUnit.accept(new EnumerationVisitors(), fieldNames);
-			for (VariableWrapper fieldName : fieldNames) {
-		            if (!fieldName.getFieldName().matches("[A-Z]*")) {
+			 fieldNames.forEach(p ->  {
+		            if (!p.getFieldName().matches("[A-Z]*")) {
 		                final Violation violation = new Violation();		                
-		                violation.setDescription("elements of the enumeration must be in  uppercase '" + fieldName.getFieldName()+ "'");
+		                violation.setDescription("elements of the enumeration must be in  uppercase '" + p.getFieldName()+ "'");
 		                violation.setFileName(compilationUnit.getFileName());
-		                violation.setLine(fieldName.getLine());
+		                violation.setLine(p.getLine());
 		                addViolation(violation);
 		            }
-		    }
+		    });
 		
 	}
 

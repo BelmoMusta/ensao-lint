@@ -1,7 +1,9 @@
 package com.ensao.gi5.lint.rules;
 
-import java.util.LinkedHashSet;
-import java.util.Set;
+import java.util.ArrayList;
+
+import java.util.List;
+
 
 import com.ensao.gi5.lint.constantes.Constantes;
 import com.ensao.gi5.lint.rules.violations.Violation;
@@ -20,18 +22,17 @@ public class AttributeStartByLowerCaseRule extends Rule {
 
 	@Override
 	public void apply(CompilationUnitWrapper compilationUnit) {
-        final Set<AttributeStartByLowerCaseWrapper> fieldNames = new LinkedHashSet<>();
+        final List<AttributeStartByLowerCaseWrapper> fieldNames = new ArrayList<>();
 		compilationUnit.accept(new AttributeStartByLowerCaseVisitors(), fieldNames);
-		for (AttributeStartByLowerCaseWrapper fieldName : fieldNames) {
-	            if (!fieldName.getFieldName().matches("^[a-z].*")) {
+		fieldNames.forEach ( p -> {
+	            if (!p.getFieldName().matches("^[a-z].*")) {
 	                final Violation violation = new Violation();
-	                violation.setDescription("attribute name starts with upper case '" + fieldName.getFieldName() + "'");
+	                violation.setDescription("attribute name starts with upper case '" + p.getFieldName() + "'");
 	                violation.setFileName(compilationUnit.getFileName());
-	                violation.setLine(fieldName.getLine());
+	                violation.setLine(p.getLine());
 	                addViolation(violation);
 	            }
-	    }
-		
+	    });		
 	}
 
 	@Override

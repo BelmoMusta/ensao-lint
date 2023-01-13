@@ -1,7 +1,8 @@
 package com.ensao.gi5.lint.rules;
 
-import java.util.LinkedHashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
+
 
 import com.ensao.gi5.lint.constantes.Constantes;
 import com.ensao.gi5.lint.rules.violations.Violation;
@@ -18,17 +19,17 @@ public class ConstantsInUpperCaseRule extends Rule {
 
 	@Override
 	public void apply(CompilationUnitWrapper compilationUnit) {
-		 final Set<VariableWrapper> fieldNames = new LinkedHashSet<>();
+		 final List<VariableWrapper> fieldNames = new ArrayList<>();
 			compilationUnit.accept(new ConstantsInUpperCaseVisitors(), fieldNames);
-			for (VariableWrapper fieldName : fieldNames) {
-		            if (!fieldName.getFieldName().matches("^[A-Z_]*")) {
+			fieldNames.forEach ( p ->  {
+		            if (!p.getFieldName().matches("^[A-Z_]*")) {
 		                final Violation violation = new Violation();		                
-		                violation.setDescription("constant name must be in  upper case and concatenated with (_) '" + fieldName.getFieldName()+ "'");
+		                violation.setDescription("constant name must be in  upper case and concatenated with (_) '" + p.getFieldName()+ "'");
 		                violation.setFileName(compilationUnit.getFileName());
-		                violation.setLine(fieldName.getLine());
+		                violation.setLine(p.getLine());
 		                addViolation(violation);
 		            }
-		    }
+		    });
 		
 	}
 
