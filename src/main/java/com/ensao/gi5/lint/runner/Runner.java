@@ -26,6 +26,7 @@ public class Runner {
         }
         final Linter linter = new Linter();
         linter.registerRule(new UnusedImportsRule());
+        linter.registerRule(new RoleDeux());
         linter.registerRule(new RoleTrois());
         linter.registerRule(new RoleQuatre());
         linter.registerRule(new RoleHuit());
