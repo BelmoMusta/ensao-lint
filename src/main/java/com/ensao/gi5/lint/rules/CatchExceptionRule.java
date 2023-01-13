@@ -2,6 +2,7 @@ package com.ensao.gi5.lint.rules;
 
 import com.ensao.gi5.lint.constantes.Constantes;
 import com.ensao.gi5.lint.rules.violations.Violation;
+import com.ensao.gi5.lint.rules.violations.ViolationFactory;
 import com.ensao.gi5.lint.visitor.CatchExceptionVisitor;
 import com.ensao.gi5.lint.wrapper.CompilationUnitWrapper;
 import com.ensao.gi5.lint.wrapper.GeneralStatementWrapper;
@@ -25,10 +26,11 @@ public class CatchExceptionRule extends Rule{
             Matcher matcher = Pattern.compile("(printStackTrace)|(log)|(print)").matcher(ifElseWrapper.getStatement().toString());
 
             if(!matcher.find()){
-                final Violation violation = new Violation();
-                violation.setDescription("Catch block don't have a logger" );
-                violation.setFileName(compilationUnit.getFileName());
-                violation.setLine(ifElseWrapper.getLine());
+
+                final Violation violation = ViolationFactory.ViolationFactory(
+                                            compilationUnit.getFileName(),
+                                    "Catch block don't have a logger",
+                                                 ifElseWrapper.getLine());
                 addViolation(violation);
             }
         }
