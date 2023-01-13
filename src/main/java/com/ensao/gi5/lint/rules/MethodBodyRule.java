@@ -6,6 +6,22 @@ import com.ensao.gi5.lint.wrapper.CompilationUnitWrapper;
 import com.github.javaparser.ast.body.MethodDeclaration;
 import com.github.javaparser.ast.visitor.VoidVisitorAdapter;
 
+/**
+
+ This class extends the {@link Rule} class and checks for violations of the rule that states a method body should not exceed
+
+ 30 lines. The rule is identified by the constant {@link Constantes#LINT_REG_008} and has the highest level of severity.
+
+ The {@link #apply(CompilationUnitWrapper)} method uses the visitor pattern to traverse the abstract syntax tree
+
+ of the compilation unit and checks for method declarations with a body that exceeds 30 lines. If a violation is found,
+
+ an instance of {@link Violation} is created with the appropriate description, file name, and line number and is added
+
+ to the list of violations.
+
+ The {@link #isActive()} method is overridden to always return true, indicating that this rule is always active.
+ */
 public class MethodBodyRule extends Rule{
     public MethodBodyRule() {
         super(Constantes.LINT_REG_008, Level.HIGHEST);
