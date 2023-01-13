@@ -2,11 +2,7 @@ package com.ensao.gi5.lint.runner;
 
 import com.ensao.gi5.lint.Linter;
 import com.ensao.gi5.lint.printer.ConsolePrinter;
-import com.ensao.gi5.lint.rules.RoleHuit;
-import com.ensao.gi5.lint.rules.RoleQuatre;
-
-import com.ensao.gi5.lint.rules.RoleTrois;
-import com.ensao.gi5.lint.rules.UnusedImportsRule;
+import com.ensao.gi5.lint.rules.*;
 
 
 public class Runner {
@@ -33,6 +29,7 @@ public class Runner {
         linter.registerRule(new RoleTrois());
         linter.registerRule(new RoleQuatre());
         linter.registerRule(new RoleHuit());
+        linter.registerRule(new RoleSept());
         linter.registerPrinter(new ConsolePrinter());
         linter.registerSource(directory);
         linter.run();
