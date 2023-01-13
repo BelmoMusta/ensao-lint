@@ -7,10 +7,12 @@ import com.github.javaparser.ast.Node;
 import com.github.javaparser.ast.NodeList;
 import com.github.javaparser.ast.body.BodyDeclaration;
 import com.github.javaparser.ast.body.ClassOrInterfaceDeclaration;
+import com.github.javaparser.ast.body.ConstructorDeclaration;
 import com.github.javaparser.ast.body.FieldDeclaration;
 import com.github.javaparser.ast.body.MethodDeclaration;
 import com.github.javaparser.ast.body.TypeDeclaration;
 import com.github.javaparser.ast.body.VariableDeclarator;
+import com.github.javaparser.ast.expr.MethodCallExpr;
 import com.github.javaparser.ast.expr.VariableDeclarationExpr;
 import com.github.javaparser.ast.nodeTypes.NodeWithSimpleName;
 import com.github.javaparser.ast.visitor.VoidVisitor;
@@ -85,6 +87,16 @@ public class CompilationUnitWrapper {
 
 	public List<MethodDeclaration> getMethods() {
 		return compilationUnit.findAll(MethodDeclaration.class);
+	}
+	
+	public boolean isMethodUsed(MethodDeclaration method) {
+		// Check if a method is used
+		return compilationUnit.findAll(MethodCallExpr.class).stream()
+				.anyMatch(methodCallExpr -> methodCallExpr.getNameAsString().equals(method.getNameAsString()));
+	}
+	
+	public List<ConstructorDeclaration> getConstructors() {
+	    return compilationUnit.findAll(ConstructorDeclaration.class);
 	}
 
 }
