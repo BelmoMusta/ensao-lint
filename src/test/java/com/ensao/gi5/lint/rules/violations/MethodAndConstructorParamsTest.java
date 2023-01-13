@@ -2,7 +2,6 @@ package com.ensao.gi5.lint.rules.violations;
 
 import com.ensao.gi5.lint.rules.MethodAndConstructorParams;
 import com.ensao.gi5.lint.wrapper.CompilationUnitWrapper;
-import com.github.javaparser.ast.body.MethodDeclaration;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
@@ -26,10 +25,17 @@ public class MethodAndConstructorParamsTest {
         rule.apply(compilationUnit);
 
         // Assert
+
         List<Violation> violation = rule.getViolations().stream().collect(Collectors.toList());
-        assertEquals("Too many parameters in constructor", violation.get(0).getDescription());
+        for(Violation violation1 : violation){
+            if(violation1.getDescription().contains("method")){
+                assertEquals("Too many parameters in method", violation1.getDescription());
+            } else{
+                assertEquals("Too many parameters in constructor", violation1.getDescription());
+            }
+        }
         assertEquals("MethodAndConstructorParamsTest.java", violation.get(0).getFileName());
-        assertEquals(1, violation.size());
+        assertEquals(2, violation.size());
     }
 
 
