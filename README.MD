@@ -8,13 +8,12 @@ Implémenter les règles suivantes :
 
 | Identifiant |Niveau  | Description |
 |--|--|--|
-| <span style="color:green">LINT_REG_000 </span>|BLOCKER|Les erreurs de syntaxe ne sont pas autorisées|
+| <div style="color:green">LINT_REG_000 </div>|BLOCKER|Les erreurs de syntaxe ne sont pas autorisées|
 | <span style="color:green">LINT_REG_001 </span> |MEDIUM |Les imports non utilisés sont à supprimer |
 | <span style="color:green">LINT_REG_002 </span> |HIGHEST|Les types java `(class, interface, annotation, enum)` commence par une majuscule, elles ne doivent pas avoir des sous-tirets `_`  |
 | <span style="color:green">LINT_REG_003 </span> |HIGH|Les variables locales commencent par une minuscule  |
 | <span style="color:green">LINT_REG_004 </span> |HIGH|Les attributs d'une classe commencent par une minuscule  |
 | <span style="color:green">LINT_REG_005 </span> |MEDIUM|Les constantes d'une classe sont écrites en majuscule, avec des `_` comme séparateur|
-| <span style="color:red">LINT_REG_006 </span> |HIGHEST|Les expressions booléennes ne doivent avoir plus que 2 opérandes|
 | <span style="color:green">LINT_REG_007 </span> |LOW|Les éléments d'une énumeration sont en majuscule, avec des `_` comme séparateur|
 | <span style="color:green">LINT_REG_008 </span> |HIGHEST|Le corps d'une méthode ne doit pas dépasser `30` lignes|
 | <span style="color:green">LINT_REG_009 </span> |HIGH|Les instanciations anonymes sont à remplacer par des expressions `lambda`|
@@ -24,7 +23,6 @@ Implémenter les règles suivantes :
 | <span style="color:green">LINT_REG_013 </span> |HIGHEST|Les attributs de classe doivent avoir une visibilité déclarée|
 | <span style="color:green">LINT_REG_014 </span> |LOW|Préférer l'utilisation d'une seule instruction de sortie `(return, throw)` dans les méthodes|
 | <span style="color:green">LINT_REG_015 </span>|LOW|Ne pas catcher les exceptions sans les logger|
-| <span style="color:red">LINT_REG_016 </span> |MEDIUM|Les variables non utilisées sont à supprimer|
 | <span style="color:green">LINT_REG_017 </span>|MEDIUM|Les méthodes privées non utilisées sont à supprimer|
 | <span style="color:green">LINT_REG_018 </span> |LOW|les clauses `if` , `else` doivent avoir des accolades |
 
