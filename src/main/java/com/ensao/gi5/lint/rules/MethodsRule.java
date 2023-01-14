@@ -10,7 +10,7 @@ import com.ensao.gi5.lint.wrapper.MethodsWrapper;
 
 public class MethodsRule extends Rule {
     public MethodsRule() {
-        super(Constantes.LINT_REG_009, Level.HIGHEST);
+        super(Constantes.LINT_REG_011, Level.HIGHEST);
     }
 
     @Override
