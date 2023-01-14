@@ -19,6 +19,7 @@ Implémenter les règles suivantes :
 | LINT_REG_012 |HIGHEST|Le nombre de paramètres d'une méthode/constructeur ne doit dépasser `2`|
 | LINT_REG_013 |HIGHEST|Les attributs de classe doivent avoir une visibilité déclarée|
 
+PS: Les régles ci-dessus sont les régles implementées.
 
 Si une règle est bloquante, alors remonter l'erreur est mettre fin à l'analyse du fichier en cours.
 ### INPUT :
