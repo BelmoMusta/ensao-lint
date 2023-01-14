@@ -1,0 +1,9 @@
+com.ensao.gi5.lint
+com.ensao.gi5.lint.constantes
+com.ensao.gi5.lint.printer
+com.ensao.gi5.lint.rules
+com.ensao.gi5.lint.rules.violations
+com.ensao.gi5.lint.runner
+com.ensao.gi5.lint.util
+com.ensao.gi5.lint.visitor
+com.ensao.gi5.lint.wrapper
