@@ -36,6 +36,13 @@ public class Utils {
         });
         return nameOfEnum[0];
     }
+    public static String findClassName(MethodDeclaration methodDeclaration) {
+        final String[] nameOfClass = new String[1];
+        methodDeclaration.getParentNode().ifPresent(p->{
+            nameOfClass[0] = ((ClassOrInterfaceDeclaration) p).getFullyQualifiedName().orElse(null);
+        });
+        return nameOfClass[0];
+    }
 
     //Creation des methodes de generation de sortie
     public static void writeCsv(Collection<Violation> violations, Writer writer) throws IOException {

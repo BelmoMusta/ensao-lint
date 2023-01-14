@@ -14,6 +14,8 @@ import java.util.regex.Pattern;
 
 
 /**
+ * @author Hmama Mohammed
+ * @version 1.0.0
  *
  * The CatchExceptionRule class is a Java class that extends the {Rule} abstract class.
  * It is used to check for the presence of logging statements in catch blocks within a compilation unit.

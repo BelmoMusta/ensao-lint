@@ -12,7 +12,10 @@ import java.util.Set;
 
 
 /**
- *The LocalVariableNameRule class is a Java class that extends the Rule abstract class.
+ *@author Hmama Mohammed
+ *@version 1.0.0
+ *
+ * The LocalVariableNameRule class is a Java class that extends the Rule abstract class.
  * It is used to check the naming convention of local variables within a compilation unit.
  *
  * The apply method is an implementation of the abstract method in the Rule class.

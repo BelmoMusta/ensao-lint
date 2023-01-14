@@ -12,6 +12,8 @@ import java.util.Set;
 
 
 /**
+ * @author Hmama Mohammed
+ * @version 1.0.0
  *
  * The ClassAttributsNameRule class is a Java class that extends the Rule abstract class.
  * It is used to check the naming convention of class attributes within a compilation unit.

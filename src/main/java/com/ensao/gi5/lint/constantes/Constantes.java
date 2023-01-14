@@ -8,12 +8,12 @@ public class Constantes {
     public static final String LINT_REG_004 = "LINT_REG_004";
     public static final String LINT_REG_005 = "LINT_REG_005";
     public static final String LINT_REG_007 = "LINT_REG_007";
-
+    public static final String LINT_REG_008 = "LINT_REG_008";
+    public static final String LINT_REG_009 = "LINT_REG_009";
+    public static final String LINT_REG_010 = "LINT_REG_010";
     public static final String LINT_REG_015 = "LINT_REG_015";
-
     public static final String LINT_REG_018 = "LINT_REG_018";
 
-    public static final String LINT_REG_010 = "LINT_REG_10";
 
     private Constantes() {
         throw new IllegalStateException("not to be instantiated");

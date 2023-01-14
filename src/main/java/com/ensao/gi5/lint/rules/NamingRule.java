@@ -12,7 +12,10 @@ import java.util.Set;
 
 
 /**
- * The NamingRule class is a Java class that extends the Rule abstract class.
+ *@author Hmama Mohammed
+ * @version 1.0.0
+ *
+ *  The NamingRule class is a Java class that extends the Rule abstract class.
  * It is used to check the naming convention of class, methods,
  * variables and other elements within a compilation unit.
  *

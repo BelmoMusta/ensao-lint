@@ -12,6 +12,9 @@ import java.util.Set;
 
 
 /**
+ * @author Hmama Mohammed
+ * @version 1.0.0
+ *
  *The EnumElementsRule class is a Java class that extends the Rule abstract class.
  * It is used to check the naming convention of enum elements within a compilation unit.
  *

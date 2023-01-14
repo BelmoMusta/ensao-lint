@@ -14,7 +14,10 @@ import java.util.regex.Pattern;
 
 
 /**
- * The IfElseRule class is a Java class that extends the Rule abstract class.
+ * @author Hmama Mohammed
+ * @version 1.0.0
+ *
+ * The IfElseRule class is a Java class that extends the @link Rule abstract class.
  * It is used to check the format of if-else statements within a compilation unit.
  *
  * The apply method is an implementation of the abstract method in the Rule class.
