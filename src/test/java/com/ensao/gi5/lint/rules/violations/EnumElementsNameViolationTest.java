@@ -1,7 +1,5 @@
 package com.ensao.gi5.lint.rules.violations;
 
-import com.ensao.gi5.lint.rules.ClassAttributsNameRule;
-import com.ensao.gi5.lint.rules.ClassConstantsNameRule;
 import com.ensao.gi5.lint.rules.EnumElementsRule;
 import com.ensao.gi5.lint.wrapper.CompilationUnitWrapper;
 import org.junit.jupiter.api.Test;
