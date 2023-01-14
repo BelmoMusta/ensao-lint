@@ -26,7 +26,7 @@ Implémenter les règles suivantes :
 | ~~LINT_REG_015~~|LOW|Ne pas catcher les exceptions sans les logger|
 | ~~LINT_REG_016~~|MEDIUM|Les variables non utilisées sont à supprimer|
 | ~~LINT_REG_017~~|MEDIUM|Les méthodes privées non utilisées sont à supprimer|
-| ~~LINT_REG_018 ~~|LOW|les clauses `if` , `else` doivent avoir des accolades |
+| ~~LINT_REG_018~~|LOW|les clauses `if` , `else` doivent avoir des accolades |
 
 Si une règle est bloquante, alors remonter l'erreur est mettre fin à l'analyse du fichier en cours.
 ### INPUT :
