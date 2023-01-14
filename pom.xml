@@ -34,13 +34,21 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>9</source>
+                    <target>9</target>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
     <dependencies>
         <dependency>
             <groupId>com.github.javaparser</groupId>
             <artifactId>javaparser-core</artifactId>
-            <version>3.24.7</version>
+            <version>3.24.10</version>
         </dependency>
 
         <dependency>
@@ -51,10 +59,23 @@
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
-            <version>5.8.2</version>
+            <version>5.9.0</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>datalog</groupId>
+            <artifactId>datalog</artifactId>
+            <version>0.1.1</version>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
+    <repositories>
+        <repository>
+            <id>clojars</id>
+            <name>Clojars</name>
+            <url>https://repo.clojars.org/</url>
+        </repository>
+    </repositories>
 
 
 </project>
