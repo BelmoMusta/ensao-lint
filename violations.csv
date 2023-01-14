@@ -1,0 +1,2 @@
+HIGH [LINT_REG_003] Local Variable Name should start with a lowercase letter at 'C:\Users\pc\Documents\GitHub\ensao-lint\testFiles\normalExecution\LocalVariableExample.java:3'
+HIGH [LINT_REG_003] Local Variable Number should start with a lowercase letter at 'C:\Users\pc\Documents\GitHub\ensao-lint\testFiles\normalExecution\LocalVariableExample.java:4'
