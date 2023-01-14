@@ -1,9 +1,13 @@
 package com.ensao.gi5.lint.rules;
 import com.ensao.gi5.lint.constantes.Constantes;
 import com.ensao.gi5.lint.rules.violations.Violation;
+import com.ensao.gi5.lint.visitor.ruleHuitVisitor;
 import com.ensao.gi5.lint.wrapper.CompilationUnitWrapper;
-import com.github.javaparser.ast.body.MethodDeclaration;
-import com.github.javaparser.ast.visitor.VoidVisitorAdapter;
+import com.ensao.gi5.lint.wrapper.ruleHuitWrapper;
+import com.github.javaparser.ast.stmt.BlockStmt;
+
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 public class ruleHuit extends Rule {
 
@@ -14,22 +18,18 @@ public class ruleHuit extends Rule {
 	@Override
 	public void apply(CompilationUnitWrapper compilationUnit) {
 		// TODO Auto-generated method stub
-		   compilationUnit.accept(new VoidVisitorAdapter<Void>() {
-	            @Override
-	            public void visit(MethodDeclaration n, Void arg) {
-	                if (n.getBody().isPresent()) {
-	                    int lines = n.getBody().get().toString().split("\r\n|\r|\n").length;
-	                    if (lines > 30) {
-	                        final Violation violation = new Violation();
-	                        violation.setDescription("Method body should not exceed 30 lines");
-	                        violation.setFileName(compilationUnit.getFileName());
-	                        violation.setLine(n.getBegin().get().line);
-	                        addViolation(violation);
-	                    }
-	                }
-	                super.visit(n, arg);
-	            }
-	        }, null);
+		// le corps d'une méthode ne dépasse pas 30 lignes
+        Set<ruleHuitWrapper> roleHuitWrappers = new LinkedHashSet<>();
+        compilationUnit.accept(new ruleHuitVisitor(), roleHuitWrappers);
+        for (ruleHuitWrapper roleHuitWrapper : roleHuitWrappers) {
+            if (roleHuitWrapper.getLigne() > 30) {
+                Violation violation = new Violation();
+                violation.setFileName(compilationUnit.getFileName());
+                violation.setLine(roleHuitWrapper.getLigne());
+                violation.setDescription("Le corps de la méthode " + roleHuitWrapper.getNom() + " dépasse 30 lignes");
+                addViolation(violation);
+            }
+        }
 		
 	}
 

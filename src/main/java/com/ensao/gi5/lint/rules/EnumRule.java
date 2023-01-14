@@ -2,10 +2,12 @@ package com.ensao.gi5.lint.rules;
 
 import com.ensao.gi5.lint.constantes.Constantes;
 import com.ensao.gi5.lint.rules.violations.Violation;
+import com.ensao.gi5.lint.visitor.RoleSeptVisitor;
 import com.ensao.gi5.lint.wrapper.CompilationUnitWrapper;
-import com.github.javaparser.ast.body.EnumConstantDeclaration;
-import com.github.javaparser.ast.body.EnumDeclaration;
-import com.github.javaparser.ast.visitor.VoidVisitorAdapter;
+import com.ensao.gi5.lint.wrapper.RoleSeptWrapper;
+import java.util.LinkedHashSet;
+import java.util.Set;
+
 
 public class EnumRule extends Rule {
 
@@ -17,22 +19,17 @@ public class EnumRule extends Rule {
 	@Override
 	public void apply(CompilationUnitWrapper compilationUnit) {
 		// TODO Auto-generated method stub
-		 compilationUnit.accept(new VoidVisitorAdapter<Void>() {
-			 @Override
-	            public void visit(EnumDeclaration n, Void arg) {
-				 for (EnumConstantDeclaration enumConstant : n.getEntries()) {
-	                    String name = enumConstant.getNameAsString();
-	                    if (!name.equals(name.toUpperCase()) || name.contains("_")) {
-	                        final Violation violation = new Violation();
-	                        violation.setDescription("Enumeration elements must be in uppercase and use _ as separator");
-	                        violation.setFileName(compilationUnit.getFileName());
-	                        violation.setLine(enumConstant.getBegin().get().line);
-	                        addViolation(violation);
-	                    }
-	                }
-	                super.visit(n, arg);
+		 Set<RoleSeptWrapper> roleSeptWrappers = new LinkedHashSet<>();
+	        compilationUnit.accept(new RoleSeptVisitor(), roleSeptWrappers);
+	        for (RoleSeptWrapper roleSeptWrapper : roleSeptWrappers){
+	            if (!roleSeptWrapper.getNom().matches(".*[A-Z].*")){
+	                Violation violation = new Violation();
+	                violation.setFileName(compilationUnit.getFileName());
+	                violation.setLine(roleSeptWrapper.getLigne());
+	                violation.setDescription("Le nom de l'enum " + roleSeptWrapper.getNom() + " ne respecte pas la convention de nommage");
+	                addViolation(violation);
 	            }
-	        }, null);
+	        }
 		
 	}
 
