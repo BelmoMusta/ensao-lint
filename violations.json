@@ -1,0 +1,27 @@
+[
+  {
+    "level": "MEDIUM",
+    "description": "Unused import 'java.util.List'",
+    "ruleId": "LINT_REG_001"
+  },
+  {
+    "level": "MEDIUM",
+    "description": "Unused import 'com.github.javaparser.ast.ImportDeclaration'",
+    "ruleId": "LINT_REG_001"
+  },
+  {
+    "level": "HIGHEST",
+    "description": "Field toto in class Example does not have a visibility declaration.",
+    "ruleId": "LINT_REG_013"
+  },
+  {
+    "level": "HIGHEST",
+    "description": "If statement in method IfElseStatementAndMultipleOperands has more than 2 logical operands.",
+    "ruleId": "LINT_REG_006"
+  },
+  {
+    "level": "HIGHEST",
+    "description": "Method NumberLinesLessThanThirty has more than 30 lines.",
+    "ruleId": "LINT_REG_008"
+  }
+]
