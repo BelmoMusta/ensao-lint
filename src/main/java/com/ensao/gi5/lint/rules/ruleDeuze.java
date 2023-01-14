@@ -35,7 +35,7 @@ public class ruleDeuze extends Rule{
 	@Override
 	public boolean isActive() {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 }

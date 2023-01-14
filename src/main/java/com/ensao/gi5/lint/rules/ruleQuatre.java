@@ -34,7 +34,7 @@ public class ruleQuatre extends Rule {
 	@Override
 	public boolean isActive() {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 }

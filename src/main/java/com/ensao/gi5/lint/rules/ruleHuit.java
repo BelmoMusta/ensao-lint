@@ -18,7 +18,7 @@ public class ruleHuit extends Rule {
 	@Override
 	public void apply(CompilationUnitWrapper compilationUnit) {
 		// TODO Auto-generated method stub
-		// le corps d'une méthode ne dépasse pas 30 lignes
+		
         Set<ruleHuitWrapper> roleHuitWrappers = new LinkedHashSet<>();
         compilationUnit.accept(new ruleHuitVisitor(), roleHuitWrappers);
         for (ruleHuitWrapper roleHuitWrapper : roleHuitWrappers) {
@@ -36,7 +36,7 @@ public class ruleHuit extends Rule {
 	@Override
 	public boolean isActive() {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 }
