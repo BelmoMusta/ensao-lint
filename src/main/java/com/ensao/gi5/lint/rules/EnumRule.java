@@ -36,7 +36,7 @@ public class EnumRule extends Rule {
 	@Override
 	public boolean isActive() {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 }
