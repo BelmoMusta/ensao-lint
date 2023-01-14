@@ -5,6 +5,7 @@ import com.ensao.gi5.lint.printer.ConsolePrinter;
 import com.ensao.gi5.lint.rules.UnusedImportsRule;
 import com.ensao.gi5.lint.rules.EnumRule;
 import com.ensao.gi5.lint.rules.ruleHuit;
+import com.ensao.gi5.lint.rules.ruleTrois;
 public class Runner {
     public static void main(String[] args) {
 
@@ -28,6 +29,7 @@ public class Runner {
         linter.registerRule(new UnusedImportsRule());
         linter.registerRule(new EnumRule());
         linter.registerRule(new ruleHuit());
+        linter.registerRule(new ruleTrois());
         linter.registerPrinter(new ConsolePrinter());
         linter.registerSource(directory);
         linter.run();
