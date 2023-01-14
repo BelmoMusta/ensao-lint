@@ -53,7 +53,7 @@ public class Runner {
 
 
         //Generation de fichier de Sortie
-        /*Collection<Violation> violations = linter.getAllViolations();
+        Collection<Violation> violations = linter.getAllViolations();
         Scanner scanner = new Scanner(System.in);
         System.out.println("Please chose the output format");
         System.out.println("CSV | HTML |MarkDown");
@@ -74,6 +74,6 @@ public class Runner {
                     System.out.println("No output Found");
 
 
-    }*/
+    }
     }
 }
