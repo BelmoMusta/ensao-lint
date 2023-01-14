@@ -12,11 +12,10 @@ import java.util.TreeSet;
 public abstract class Rule {
     private final String id;
     private final Level level;
-    protected final ViolationBuilder violationBuilder;
+    protected static final ViolationBuilder violationBuilder = new ViolationBuilder();
     protected final Set<Violation> violations = new TreeSet<>();
 
     protected Rule(String id, Level level) {
-        this.violationBuilder = new ViolationBuilder();
         this.id = id;
         this.level = level;
     }
@@ -42,6 +41,15 @@ public abstract class Rule {
     }
 
     public abstract boolean isActive();
+
+    public void buildViolationThenAddToCollection(int line, String description, String fileName) {
+        final Violation violation = violationBuilder
+                .withDescription(description)
+                .withFileName(fileName)
+                .withLine(line)
+                .build();
+        addViolation(violation);
+    }
 
     @Override
     public boolean equals(Object o) {

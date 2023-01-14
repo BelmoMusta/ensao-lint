@@ -2,7 +2,6 @@ package com.ensao.gi5.lint.rules;
 
 import com.ensao.gi5.lint.constantes.Constantes;
 import com.ensao.gi5.lint.enumeration.Level;
-import com.ensao.gi5.lint.rules.violations.Violation;
 import com.ensao.gi5.lint.wrapper.CompilationUnitWrapper;
 import com.github.javaparser.JavaToken;
 import com.github.javaparser.Problem;
@@ -24,12 +23,11 @@ public class ParseErrorRule extends Rule {
                     .map(range -> range.begin)
                     .map(position -> position.line)
                     .orElse(-1);
-            final Violation violation = violationBuilder
-                    .withDescription(problem.getMessage())
-                    .withFileName(compilationUnit.getFileName())
-                    .withLine(line)
-                    .build();
-            addViolation(violation);
+            buildViolationThenAddToCollection(
+                    line,
+                    problem.getMessage(),
+                    compilationUnit.getFileName()
+            );
         }
     }
 

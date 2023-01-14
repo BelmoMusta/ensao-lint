@@ -8,6 +8,8 @@ public class AttributeWrapper extends AbstractWrapper {
 
     private final String accessModifier;
     private final String fieldName;
+    private final boolean isStatic;
+    private final boolean isFinal;
     private final String className;
 
     public AttributeWrapper(FieldDeclaration fieldDeclaration) {
@@ -19,10 +21,20 @@ public class AttributeWrapper extends AbstractWrapper {
                 .orElse(new VariableDeclarator())
                 .getNameAsString();
         this.accessModifier = fieldDeclaration.getAccessSpecifier().asString();
+        this.isFinal = fieldDeclaration.isFinal();
+        this.isStatic = fieldDeclaration.isStatic();
     }
 
     public String getAccessModifier() {
         return this.accessModifier;
+    }
+
+    public boolean isStatic() {
+        return this.isStatic;
+    }
+
+    public boolean isFinal() {
+        return this.isFinal;
     }
 
     public String getFieldName() {

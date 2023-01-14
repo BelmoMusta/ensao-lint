@@ -4,7 +4,6 @@ import com.ensao.gi5.lint.wrapper.BooleanExpressionWrapper;
 import com.github.javaparser.ast.expr.ConditionalExpr;
 import com.github.javaparser.ast.stmt.DoStmt;
 import com.github.javaparser.ast.stmt.IfStmt;
-import com.github.javaparser.ast.stmt.ReturnStmt;
 import com.github.javaparser.ast.stmt.WhileStmt;
 import com.github.javaparser.ast.visitor.VoidVisitorAdapter;
 

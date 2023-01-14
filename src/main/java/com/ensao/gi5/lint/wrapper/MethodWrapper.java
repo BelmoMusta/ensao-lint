@@ -3,7 +3,6 @@ package com.ensao.gi5.lint.wrapper;
 import com.ensao.gi5.lint.util.Utils;
 import com.github.javaparser.ast.NodeList;
 import com.github.javaparser.ast.body.MethodDeclaration;
-import com.github.javaparser.ast.body.TypeDeclaration;
 import com.github.javaparser.ast.stmt.Statement;
 
 

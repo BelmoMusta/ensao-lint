@@ -16,7 +16,6 @@ import java.io.FileNotFoundException;
 import java.util.Collection;
 import java.util.List;
 import java.util.regex.Pattern;
-import java.util.stream.Collectors;
 
 public class Utils {
      Utils() {
@@ -87,9 +86,9 @@ public class Utils {
     }
 
     public static List<TypeWrapper> checkIfNamesDontFollowsRule(List<TypeWrapper> typeNames) {
-        String regex = "^[A-Z][a-z0-9]*(?:[A-Z][a-z0-9]*)*(?:[A-Z]?)$";
+        String regex = "^[A-Z][A-Za-z0-9]*";
         return typeNames.stream()
                 .filter(type -> !Pattern.matches(regex, type.getTypeName()))
-                .collect(Collectors.toList());
+                .toList();
     }
 }
