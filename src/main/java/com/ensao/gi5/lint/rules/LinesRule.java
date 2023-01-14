@@ -23,7 +23,7 @@ public class LinesRule extends Rule {
                 Violation violation = new Violation();
                 violation.setFileName(compilationUnit.getFileName());
                 violation.setDescription("The body of a method shouldn't exceed 30 lines");
-                violation.setLine(linesWrapper.getStartLine());
+                violation.setLine(linesWrapper.getLine());
                 addViolation(violation);
             }
         }
