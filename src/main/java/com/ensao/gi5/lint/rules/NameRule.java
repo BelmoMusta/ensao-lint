@@ -8,7 +8,7 @@ import com.ensao.gi5.lint.wrapper.NameWrapper;
 
 public class NameRule extends Rule {
     public NameRule() {
-        super(Constantes.LINT_REG_002, Level.HIGH);
+        super(Constantes.LINT_REG_002, Level.HIGHEST);
     }
     @Override
     public void apply(CompilationUnitWrapper compilationUnit) {
@@ -17,8 +17,8 @@ public class NameRule extends Rule {
             String typeName = NameWrapper.getName();
             if (!Character.isUpperCase(typeName.charAt(0)) || typeName.contains("_")){
                 final Violation violation = new Violation();
-                violation.setDescription(" Java types should start with uppercase and should not contain underscores");
                 violation.setFileName(compilationUnit.getFileName());
+                violation.setDescription(" Java types should start with uppercase and should not contain underscores");
                 violation.setLine(NameWrapper.getLine());
                 addViolation(violation);
             }

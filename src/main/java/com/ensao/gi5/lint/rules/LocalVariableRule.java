@@ -22,8 +22,9 @@ public class LocalVariableRule extends Rule {
             if(!LocalVariableWrapper.getName().matches("^[\t*a-z].*")){
                 Violation violation = new Violation();
                 violation.setFileName(compilationUnit.getFileName());
-                violation.setLine(LocalVariableWrapper.getLine());
                 violation.setDescription("Local variable should start with lowercase");
+                violation.setLine(LocalVariableWrapper.getLine());
+
                 addViolation(violation);
             }
         }
