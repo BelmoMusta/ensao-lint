@@ -29,18 +29,6 @@ public class MethodsNumbersLessThanTwinty extends Rule{
                 addViolation(vio);
             }
         }
-
-        for (MethodDeclaration method : compilationUnit.getMethods()) {
-            if (method.getBody().isPresent()) {
-                if (method.getBody().get().getStatements().isEmpty()) {
-                    Violation vio = new Violation();
-                    vio.setDescription("The Method " + method.getNameAsString() + " is missing curly braces.");
-                    vio.setFileName(compilationUnit.getFileName());
-                    vio.setLine(method.getBegin().get().line);
-                    addViolation(vio);
-                }
-            }
-        }
     }
 
 

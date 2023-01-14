@@ -16,7 +16,6 @@ public class ClearVisibilityOfClasses extends Rule{
     public void apply(CompilationUnitWrapper compilationUnit) {
         for (ClassOrInterfaceDeclaration classDeclaration : compilationUnit.getClasses()) {
             for (FieldDeclaration field : classDeclaration.getFields()) {
-                System.out.println(field.getModifiers());
                 if (field.getModifiers().isEmpty()) {
                     Violation vio = new Violation();
                     vio.setDescription("Field " + field.getVariables().get(0).getNameAsString() + " in class " + classDeclaration.getNameAsString() + " does not have a visibility declaration.");

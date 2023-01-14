@@ -16,7 +16,7 @@ public class CheckExpression extends Rule {
             for (Statement statement : method.getBody().get().getStatements()) {
                 if (statement instanceof IfStmt) {
                     IfStmt ifStmt = (IfStmt) statement;
-                    if (ifStmt.getCondition().findAll(BinaryExpr.class).size() > 2) {
+                    if (ifStmt.getCondition().findAll(BinaryExpr.class).size() >= 2) {
                         Violation vio = new Violation();
                         vio.setDescription("If statement in method " + method.getNameAsString() + " has more than 2 logical operands.");
                         vio.setFileName(compilationUnit.getFileName());

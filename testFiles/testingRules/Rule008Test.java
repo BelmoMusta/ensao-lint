@@ -1,0 +1,33 @@
+public class Rule008Test {
+    public void methodForTest() {
+        System.out.println("This is a line");
+        System.out.println("This is a line");
+        System.out.println("This is a line");
+        System.out.println("This is a line");
+        System.out.println("This is a line");
+        System.out.println("This is a line");
+        System.out.println("This is a line");
+        System.out.println("This is a line");
+        System.out.println("This is a line");
+        System.out.println("This is a line");
+        System.out.println("This is a line");
+        System.out.println("This is a line");
+        System.out.println("This is a line");
+        System.out.println("This is a line");
+        System.out.println("This is a line");
+        System.out.println("This is a line");
+        System.out.println("This is a line");
+        System.out.println("This is a line");
+        System.out.println("This is a line");
+        System.out.println("This is a line");
+        System.out.println("This is a line");
+        System.out.println("This is a line");
+        System.out.println("This is a line");
+        System.out.println("This is a line");
+        System.out.println("This is a line");
+        System.out.println("This is a line");
+        System.out.println("This is a line");
+        System.out.println("This is a line");
+        System.out.println("This is a line");
+    }
+}
