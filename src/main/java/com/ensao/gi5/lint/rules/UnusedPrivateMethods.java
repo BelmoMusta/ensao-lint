@@ -29,6 +29,6 @@ public class UnusedPrivateMethods extends Rule{
 
     @Override
     public boolean isActive() {
-        return false;
+        return true;
     }
 }

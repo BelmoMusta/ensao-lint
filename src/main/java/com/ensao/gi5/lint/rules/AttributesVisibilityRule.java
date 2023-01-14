@@ -7,9 +7,9 @@ import com.github.javaparser.ast.body.FieldDeclaration;
 
 import java.util.List;
 
-public class DeclaredVisibilityOfAttributes extends Rule{
+public class AttributesVisibilityRule extends Rule{
 
-    public DeclaredVisibilityOfAttributes(){
+    public AttributesVisibilityRule(){
         super(Constantes.LINT_REG_013, Level.HIGHEST);
     }
 
@@ -21,12 +21,14 @@ public class DeclaredVisibilityOfAttributes extends Rule{
         for(FieldDeclaration attribute : fieldDeclarations){
 
             if(attribute.getModifiers().isEmpty()){
-                Violation violation = new Violation();
+                final Violation violation = new Violation();
                 violation.setFileName(compilationUnit.getFileName());
                 violation.setLine(attribute.getBegin().get().line);
                 violation.setLevel(Level.HIGHEST);
+                violation.setRuleId(Constantes.LINT_REG_013);
                 violation.setDescription("Field must have a declared visibility");
                 violations.add(violation);
+               // addViolation(violation);
             }
         }
 
@@ -34,6 +36,6 @@ public class DeclaredVisibilityOfAttributes extends Rule{
 
     @Override
     public boolean isActive() {
-        return false;
+        return true;
     }
 }

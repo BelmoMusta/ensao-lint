@@ -9,9 +9,9 @@ import com.github.javaparser.ast.body.Parameter;
 
 import java.util.List;
 
-public class TotalParametersInMethodRule extends Rule{
+public class MethodParemetersRule extends Rule{
 
-    public TotalParametersInMethodRule(){
+    public MethodParemetersRule(){
         super(Constantes.LINT_REG_012, Level.HIGHEST);
     }
 
@@ -29,6 +29,7 @@ public class TotalParametersInMethodRule extends Rule{
                 Violation violation = new Violation();
                 violation.setFileName(compilationUnit.getFileName());
                 violation.setLine(method.getBegin().get().line);
+                violation.setRuleId(Constantes.LINT_REG_012);
                 violation.setLevel(Level.HIGHEST);
                 violation.setDescription("Method " + method.getName() + " must not have more than 2 parameters");
                 violations.add(violation);
@@ -39,6 +40,7 @@ public class TotalParametersInMethodRule extends Rule{
 
             if(compilationUnit.getParameters(constructor).size() > 2){
                 Violation violation = new Violation();
+                violation.setRuleId(Constantes.LINT_REG_012);
                 violation.setFileName(compilationUnit.getFileName());
                 violation.setLine(constructor.getBegin().get().line);
                 violation.setLevel(Level.HIGHEST);
@@ -51,6 +53,6 @@ public class TotalParametersInMethodRule extends Rule{
 
     @Override
     public boolean isActive() {
-        return false;
+        return true;
     }
 }

@@ -28,8 +28,9 @@ public class EnumElementRule extends Rule {
                     Violation violation = new Violation();
                     violation.setFileName(compilationUnit.getFileName());
                     violation.setLevel(Level.LOW);
+                    violation.setRuleId(Constantes.LINT_REG_007);
                     violation.setLine(element.getBegin().get().line);
-                    violation.setDescription(enume.getName() +  "must have elements in upper case and separated by a _");
+                    violation.setDescription(enume.getName() +  " must have elements in upper case and separated by a _");
                     violations.add(violation);
                 }
             }
@@ -39,6 +40,6 @@ public class EnumElementRule extends Rule {
 
     @Override
     public boolean isActive() {
-        return false;
+        return true;
     }
 }

@@ -9,9 +9,9 @@ import com.github.javaparser.ast.body.VariableDeclarator;
 import java.beans.MethodDescriptor;
 import java.util.List;
 
-public class LocalVariableRule extends Rule{
+public class LocalVariableNamingRule extends Rule{
 
-    public LocalVariableRule(){
+    public LocalVariableNamingRule(){
         super(Constantes.LINT_REG_003, Level.HIGH);
     }
 
@@ -26,6 +26,7 @@ public class LocalVariableRule extends Rule{
 
                 if (!Character.isLowerCase(variable.getNameAsString().charAt(0))){
                     Violation violation = new Violation();
+                    violation.setRuleId(Constantes.LINT_REG_003);
                     violation.setFileName(compilationUnit.getFileName());
                     violation.setLevel(Level.HIGH);
                     violation.setLine(variable.getBegin().get().line);
@@ -39,6 +40,6 @@ public class LocalVariableRule extends Rule{
 
     @Override
     public boolean isActive() {
-        return false;
+        return true;
     }
 }

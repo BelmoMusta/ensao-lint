@@ -7,9 +7,9 @@ import com.github.javaparser.ast.body.MethodDeclaration;
 
 import java.util.List;
 
-public class UnderTwentyMethods extends Rule{
+public class MethodsInTotalRule extends Rule{
 
-    public UnderTwentyMethods(){
+    public MethodsInTotalRule(){
         super(Constantes.LINT_REG_011, Level.HIGHEST);
     }
 
@@ -20,6 +20,7 @@ public class UnderTwentyMethods extends Rule{
 
         if(methodDeclarations.size()>20){
             Violation violation = new Violation();
+            violation.setRuleId(Constantes.LINT_REG_011);
             violation.setFileName(compilationUnit.getFileName());
             violation.setDescription("Total number of methods should not be more than 20 ");
             violation.setLevel(Level.HIGHEST);
@@ -29,6 +30,6 @@ public class UnderTwentyMethods extends Rule{
 
     @Override
     public boolean isActive() {
-        return false;
+        return true;
     }
 }

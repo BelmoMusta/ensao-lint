@@ -5,11 +5,11 @@ import com.ensao.gi5.lint.rules.violations.Violation;
 import com.ensao.gi5.lint.wrapper.CompilationUnitWrapper;
 import com.github.javaparser.ast.body.FieldDeclaration;
 import com.github.javaparser.ast.body.VariableDeclarator;
-import com.sun.org.apache.bcel.internal.Const;
 
 import java.util.List;
 
 public class ClassConstantesRule extends Rule{
+
 
     public ClassConstantesRule(){
         super(Constantes.LINT_REG_005, Level.MEDIUM);
@@ -26,8 +26,9 @@ public class ClassConstantesRule extends Rule{
 
                 for(VariableDeclarator variable : compilationUnit.getVariables(element)){
 
-                    if(variable.getNameAsString().matches("^[A-Z][A-Z_]*")){
+                    if(!variable.getNameAsString().matches("^[A-Z][A-Z_]*")){
                         Violation violation = new Violation();
+                        violation.setRuleId(Constantes.LINT_REG_005);
                         violation.setFileName(compilationUnit.getFileName());
                         violation.setLine(variable.getBegin().get().line);
                         violation.setLevel(Level.MEDIUM);
@@ -43,6 +44,6 @@ public class ClassConstantesRule extends Rule{
 
     @Override
     public boolean isActive() {
-        return false;
+        return true;
     }
 }

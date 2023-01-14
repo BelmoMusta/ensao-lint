@@ -8,9 +8,9 @@ import com.github.javaparser.ast.body.VariableDeclarator;
 
 import java.util.List;
 
-public class LowerCaseAttributes extends Rule{
+public class AttributesNamingRule extends Rule{
 
-    public LowerCaseAttributes() {
+    public AttributesNamingRule() {
         super(Constantes.LINT_REG_004, Level.HIGH);
     }
 
@@ -30,8 +30,9 @@ public class LowerCaseAttributes extends Rule{
                     violation.setFileName(compilationUnit.getFileName());
                     violation.setLine(variable.getBegin().get().line);
                     violation.setLevel(Level.HIGH);
-                    violation.setDescription(name + "is starting with an upper case , while expected to be in upper case");
-                    addViolation(violation);
+                    violation.setRuleId(Constantes.LINT_REG_004);
+                    violation.setDescription(name + " is starting with an upper case , while expected to be in upper case");
+                    violations.add(violation);
                 }
             }
         }
@@ -40,6 +41,6 @@ public class LowerCaseAttributes extends Rule{
 
     @Override
     public boolean isActive() {
-        return false;
+        return true;
     }
 }

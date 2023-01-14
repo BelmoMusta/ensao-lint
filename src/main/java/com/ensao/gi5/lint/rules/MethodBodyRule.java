@@ -24,15 +24,17 @@ public class MethodBodyRule extends Rule{
             if (size > 30 ){
                 Violation violation = new Violation();
                 violation.setFileName(compilationUnit.getFileName());
+                violation.setRuleId(Constantes.LINT_REG_008);
                 violation.setLevel(Level.HIGHEST);
                 violation.setLine(method.getBegin().get().line);
                 violation.setDescription(method.getName() + "must not be in the total of more than 30 lines");
+                violations.add(violation);
             }
         }
 
     }
     @Override
     public boolean isActive() {
-        return false;
+        return true;
     }
 }
