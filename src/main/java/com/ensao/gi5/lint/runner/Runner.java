@@ -28,7 +28,7 @@ public class Runner {
         linter.registerRule(new LambdaExpressionsRule());
         linter.registerRule(new ParamsNumberRule());
         linter.registerRule(new IfElseRule());
-        linter.registerRule(new MethodBody());
+        linter.registerRule(new MethodBodyRule());
         linter.registerRule(new MethodsNumberRule());
         linter.registerRule(new AttributeVisibilityRule());
         linter.registerPrinter(new ConsolePrinter());

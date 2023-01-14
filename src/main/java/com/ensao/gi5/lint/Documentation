@@ -1,0 +1,42 @@
+AttributeVisibilyRule:
+    "apply" function goes through all the fields of a compilation unit
+     and checks if they have a visibility declared.
+     If not, it records a violation with information about the detected
+     error.
+     It uses the getTypes() method to get a list of all the classes contained
+     in the compilation unit. For each class, it then uses the getFields() method
+     to get a list of all the attributes of that type.Then, for each field, it checks
+     if the modifiers are empty. If this is the case, it means that the field does
+     not have a visibility declared, and a violation is created. Finally, this violation
+     is added to a list of violations with the addViolation() method.
+
+IfElseRule:
+    This rule checks for missing curly braces in if and else statements within methods
+    of a compilation unit. The rule iterates through the methods and statements of the
+    compilation unit, checks if the statement is an instance of IfStmt, and if so, checks
+    if the thenStmt or elseStmt is missing. If either is missing, it creates a Violation
+    object and adds it to a collection of violations.
+
+LambdaExpressionRule:
+    This is a rule that checks for lambda expressions that can be replaced by method references
+    within a compilation unit. The rule iterates through all the lambda expressions in the compilation
+    unit and for each lambda expression it creates a Violation object.It specifically points out that
+    the lambda expression can be replaced by a method reference.
+
+MethodBodyRule:
+    This is a rule that checks for methods in a compilation unit that have more than 30 lines.
+    The rule iterates through all the methods in the compilation unit, it calculates the number
+    of lines in a method by subtracting the end line from the begin line, and if the number of
+    lines is greater than 30, it creates a Violation object.
+
+MethodsNumberRule:
+    This is a rule that checks for classes in a compilation unit that have more than 20 methods
+    declared. The rule iterates through all the types (classes, interfaces, etc.) in the compilation
+    unit, it calculates the number of methods in a class by filtering the members of the class by
+     instances of MethodDeclaration and counting them. If the number of methods is greater than 20,
+     it creates a Violation object.
+
+ParamsNumberRule:
+    This is a rule that checks for methods in a compilation unit that have more than 2 parameters.
+     The rule iterates through all the methods in the compilation unit, and it checks the number of
+     parameters a method have. If the number of parameters is greater than 2, it creates a Violation object.
