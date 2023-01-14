@@ -15,8 +15,8 @@ public class Runner {
     public static void getViolations(Linter linter) throws IOException {
         Collection<Violation> violations = linter.getAllViolations();
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Please chose the output format");
-        System.out.println("JSON | CSV | HTML | MarkDown");
+        System.out.println("++++++++++++++++++++++++++++ Please chose the output format ++++++++++++++++++++++++++++++++++++++++++");
+        System.out.println("++++++++++ JSON ++++++++++ CSV ++++++++++ HTML ++++++++++ MarkDown ++++++++++ TXT ++++++++++");
         String format = scanner.nextLine();
         File outputFile = null;
         System.out.println("violations."+format.toLowerCase());
@@ -39,6 +39,11 @@ public class Runner {
                 break;
             case "HTML":
                 outputFile = new File("violations.html");
+                writer = new FileWriter(outputFile);
+                Utils.htmlOutputFile(violations, writer);
+                break;
+            case "TXT":
+                outputFile = new File("violations.txt");
                 writer = new FileWriter(outputFile);
                 Utils.htmlOutputFile(violations, writer);
                 break;

@@ -11,7 +11,15 @@ import com.github.javaparser.ast.body.TypeDeclaration;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * This code defines a rule class called "ClassNameRule" that extends the "Rule" class.
+ *  The "apply" method takes a "CompilationUnitWrapper" object and uses it to check for the name of all classes in the code.
+ * The method iterates over all the types in the compilation unit,
+ * it checks whether the first letter of the type's name is uppercase and if the name contains an underscore "_",
+ * if either of these conditions is true, it creates a new "Violation" object and sets its description,
+ * file name, and line number as arguments and then add this violation to the list of violations.
+ * The isActive method is overriding the parent class method, returns always true, it means that this rule is always active.
+ * */
 public class ClassNameRule extends Rule {
 
     public ClassNameRule() {

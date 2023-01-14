@@ -13,15 +13,22 @@ import com.github.javaparser.ast.body.FieldDeclaration;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * AttributesVisibilityRule is a Java class that defines a rule for linting  of Java code.
+ *  It is a specific rule for analyzing the visibility of attributes in a Java class.
+ *  The linter is made up of two classes: AttributesVisibilityVisitor and AttributesVisibilityRule.
+ *  The apply method checks for the visibility of attributes by using an instance of AttributesVisibilityVisitor to visit
+ *  the CompilationUnitWrapper and adding any violations to a list of violations if the size of attributes list is != 0
+ *  The AttributesVisibilityVisitor cheks all field declarations in a class if the field have no modifier(visibility) the name and line
+ *  of the field are added to a list of RuleWrapper that will be returned by the visitor.
+ *  The isActive method is overriding the parent class method, returns always true, it means that this rule is always active.
+ * */
 public class AttributesVisibilityRule extends Rule{
     public AttributesVisibilityRule() {
         super(Constantes.LINT_REG_013, Level.HIGHEST);
     }
     @Override
     public void apply(CompilationUnitWrapper compilationUnit) {
-        try{
-
             List<RuleWrapper> attributes = new ArrayList<>();
             compilationUnit.accept(new AttributesVisibilityVisitor(attributes),null);
             if(attributes.size()!=0){
@@ -34,9 +41,6 @@ public class AttributesVisibilityRule extends Rule{
                     addViolation(violation);
                 }
             }
-        }
-        catch (Exception e){
-        }
     }
 
     @Override

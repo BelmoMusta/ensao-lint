@@ -5,7 +5,6 @@ import com.github.javaparser.ast.body.MethodDeclaration;
 import com.github.javaparser.ast.stmt.CatchClause;
 import com.github.javaparser.ast.visitor.VoidVisitorAdapter;
 import java.util.List;
-
 public class CatchExceptionVisitor extends VoidVisitorAdapter<List<RuleWrapper>> {
     private final List<RuleWrapper> exceptions;
     public CatchExceptionVisitor(List<RuleWrapper> exceptions){

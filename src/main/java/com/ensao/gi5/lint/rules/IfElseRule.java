@@ -12,7 +12,13 @@ import com.github.javaparser.ast.CompilationUnit;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * This code defines a class called "IfElseRule" that extends a parent class called "Rule".
+ * The "apply" method is overridden from the parent class and it is used to check for missing brackets in if and else statements.
+ * It uses the "IfElseVisitor" class to identify missing brackets and creates a "Violation" object for each missing bracket
+ * it finds.
+ * The "isActive" method returns "true" which means the rule is active and will be applied.
+ * */
 public class IfElseRule extends Rule{
     public IfElseRule() {
         super(Constantes.LINT_REG_018, Level.LOW);

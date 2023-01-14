@@ -1,7 +1,6 @@
 package com.ensao.gi5.lint.visitor;
 
 import com.ensao.gi5.lint.wrapper.RuleWrapper;
-import com.github.javaparser.ast.Modifier;
 import com.github.javaparser.ast.body.FieldDeclaration;
 import com.github.javaparser.ast.visitor.VoidVisitorAdapter;
 
