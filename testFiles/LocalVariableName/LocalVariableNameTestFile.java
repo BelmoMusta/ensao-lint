@@ -8,6 +8,7 @@ public class LocalVariableNameTestFile {
      * so according to my rule this is an error
     **/
     public void methode1(){
+
         int NonValidLocalVaribale1;
 
         //Some code
@@ -16,6 +17,7 @@ public class LocalVariableNameTestFile {
         int NONVALIDVARIABLE;
 
         //Some code
+
     }
 
 

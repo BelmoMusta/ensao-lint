@@ -43,6 +43,7 @@ public class Runner {
         linter.registerRule(new LocalVariableNameRule());
         linter.registerRule(new ClassAttributsNameRule());
         linter.registerRule(new ClassConstantsNameRule());
+        linter.registerRule(new EnumElementsRule());
         linter.registerSource(directory);
         linter.run();
 

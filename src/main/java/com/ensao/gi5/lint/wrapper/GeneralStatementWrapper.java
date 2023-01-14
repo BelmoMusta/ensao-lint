@@ -2,23 +2,17 @@ package com.ensao.gi5.lint.wrapper;
 
 import com.github.javaparser.ast.stmt.Statement;
 
-public class GeneralStatementWrapper {
-
-    private int line;
+public class GeneralStatementWrapper extends Wrapper{
 
     private Statement statement;
 
 
-
     public GeneralStatementWrapper(Statement statement){
+        super("",statement.getBegin().map(character->character.line).orElse(-1));
         this.statement=statement;
-        this.line = statement.getBegin().map(character->character.line).orElse(-1);
     }
 
     public Statement getStatement() {
         return statement;
-    }
-    public int getLine(){
-        return  line;
     }
 }

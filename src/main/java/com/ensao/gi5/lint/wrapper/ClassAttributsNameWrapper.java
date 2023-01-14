@@ -6,26 +6,16 @@ import com.github.javaparser.ast.body.FieldDeclaration;
 import com.github.javaparser.ast.body.MethodDeclaration;
 import com.github.javaparser.ast.body.VariableDeclarator;
 
-public class ClassAttributsNameWrapper {
+public class ClassAttributsNameWrapper extends Wrapper{
 
-    private final int line;
-    private final String name;
+
     private final String className;
 
 
     public ClassAttributsNameWrapper(FieldDeclaration fieldDeclaration) {
-        this.line = fieldDeclaration.getBegin().map(p->p.line).orElse(-1);
-        this.name = fieldDeclaration.getVariable(0).getNameAsString();
+        super(fieldDeclaration.getVariable(0).getNameAsString(),fieldDeclaration.getBegin().map(p->p.line).orElse(-1));
         this.className = Utils.findClassName(fieldDeclaration);
 
-    }
-
-    public int getLine() {
-        return line;
-    }
-
-    public String getName() {
-        return name;
     }
 
     public String getClassName() {

@@ -5,9 +5,7 @@ import com.ensao.gi5.lint.wrapper.CompilationUnitWrapper;
 import com.github.javaparser.JavaParser;
 import com.github.javaparser.ParseResult;
 import com.github.javaparser.ast.CompilationUnit;
-import com.github.javaparser.ast.body.ClassOrInterfaceDeclaration;
-import com.github.javaparser.ast.body.FieldDeclaration;
-import com.github.javaparser.ast.body.VariableDeclarator;
+import com.github.javaparser.ast.body.*;
 import com.github.javaparser.ast.expr.SimpleName;
 import org.apache.commons.io.FileUtils;
 
@@ -30,6 +28,13 @@ public class Utils {
             nameOfClass[0] = ((ClassOrInterfaceDeclaration) p).getFullyQualifiedName().orElse(null);
         });
         return nameOfClass[0];
+    }
+    public static String findClassName(EnumConstantDeclaration enumDeclaration) {
+        final String[] nameOfEnum = new String[1];
+        enumDeclaration.getParentNode().ifPresent(p->{
+            nameOfEnum[0] = ((EnumDeclaration) p).getFullyQualifiedName().orElse(null);
+        });
+        return nameOfEnum[0];
     }
 
     //Creation des methodes de generation de sortie
@@ -103,4 +108,6 @@ public class Utils {
     public static int getLine(SimpleName simpleName){
         return simpleName.getBegin().map(i->i.line).orElse(-1);
     }
+
+
 }
