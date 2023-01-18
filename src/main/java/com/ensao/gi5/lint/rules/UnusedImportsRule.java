@@ -1,7 +1,7 @@
 package com.ensao.gi5.lint.rules;
 
 import com.ensao.gi5.lint.constantes.Constantes;
-import com.ensao.gi5.lint.rules.violations.Violation;
+import com.ensao.gi5.lint.enumeration.Level;
 import com.ensao.gi5.lint.visitor.UnusedImportsVisitors;
 import com.ensao.gi5.lint.wrapper.CompilationUnitWrapper;
 import com.ensao.gi5.lint.wrapper.ImportWrapper;
@@ -29,11 +29,11 @@ public class UnusedImportsRule extends Rule {
         compilationUnit.accept(new UnusedImportsVisitors(), usedImports);
         for (ImportWrapper declaredImport : declaredImports) {
             if (!usedImports.contains(declaredImport)) {
-                final Violation violation = new Violation();
-                violation.setDescription("Unused import '" + declaredImport + "'");
-                violation.setFileName(compilationUnit.getFileName());
-                violation.setLine(declaredImport.getLine());
-                addViolation(violation);
+                buildViolationThenAddToCollection(
+                        declaredImport.getLine(),
+                        "Unused import '" + declaredImport + "'",
+                        compilationUnit.getFileName()
+                );
             }
         }
     }

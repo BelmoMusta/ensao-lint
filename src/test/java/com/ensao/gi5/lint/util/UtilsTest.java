@@ -21,7 +21,6 @@ public class UtilsTest {
 
     @Test
     public void testGetFilesFromDirectoryAsString(){
-
         Utils.getFilesFromDirectory("testFiles");
     }
 
