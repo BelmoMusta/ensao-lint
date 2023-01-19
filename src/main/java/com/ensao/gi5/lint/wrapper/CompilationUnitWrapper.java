@@ -1,11 +1,14 @@
 package com.ensao.gi5.lint.wrapper;
 
 import com.github.javaparser.Problem;
+import com.github.javaparser.StaticJavaParser;
 import com.github.javaparser.ast.CompilationUnit;
 import com.github.javaparser.ast.ImportDeclaration;
 import com.github.javaparser.ast.NodeList;
 import com.github.javaparser.ast.visitor.VoidVisitor;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -36,4 +39,7 @@ public class CompilationUnitWrapper {
     public List<Problem> getProblems() {
         return problems;
     }
+	public CompilationUnit getParser() throws FileNotFoundException {
+		return StaticJavaParser.parse(new File(fileName));
+	}
 }

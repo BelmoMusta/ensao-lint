@@ -1,0 +1,35 @@
+public class MethodLengthTest1{
+    public void methodWithMoreThan30Line(){
+        System.out.println("1");
+        System.out.println("-");
+        System.out.println("-");
+        System.out.println("-");
+        System.out.println("-");
+        System.out.println("-");
+        System.out.println("-");
+        System.out.println("-");
+        System.out.println("-");
+        System.out.println("-");
+        System.out.println("-");
+        System.out.println("-");
+        System.out.println("-");
+        System.out.println("-");
+        System.out.println("-");
+        System.out.println("-");
+        System.out.println("-");
+        System.out.println("-");
+        System.out.println("-");
+        System.out.println("-");
+        System.out.println("-");
+        System.out.println("-");
+        System.out.println("-");
+        System.out.println("-");
+        System.out.println("-");
+        System.out.println("-");
+        System.out.println("-");
+        System.out.println("-");
+        System.out.println("-");
+        System.out.println("-");
+        System.out.println("30");
+    }
+}

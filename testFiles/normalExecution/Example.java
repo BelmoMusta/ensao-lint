@@ -9,7 +9,6 @@ import static com.github.javaparser.ast.StaticMethod;
 @Component(type=10)
 public class Example {
     private String toto;
-    
     public String getToto() {
         return toto;
     }
