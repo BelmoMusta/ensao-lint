@@ -1,0 +1,3 @@
+LEVEL,RULE,DESCRIPTION
+HIGH,LINT_REG_004,XVariable must start with lower case
+HIGH,LINT_REG_004,YVariable must start with lower case
