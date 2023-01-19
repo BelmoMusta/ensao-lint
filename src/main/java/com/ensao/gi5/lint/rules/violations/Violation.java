@@ -41,7 +41,7 @@ public class Violation implements Comparable<Violation>{
     }
 
     public String toString(){
-		return level+" [" +ruleId +"] " + description + " at '" +fileName +":"+ line+"'";
+		return level+"\t[" +ruleId +"] " + description + " at '" +fileName +":"+ line+"'";
 	}
 
     @Override

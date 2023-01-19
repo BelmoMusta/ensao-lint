@@ -4,6 +4,7 @@ import com.ensao.gi5.lint.wrapper.CompilationUnitWrapper;
 import com.github.javaparser.JavaParser;
 import com.github.javaparser.ParseResult;
 import com.github.javaparser.ast.CompilationUnit;
+import com.github.javaparser.ast.expr.SimpleName;
 import org.apache.commons.io.FileUtils;
 
 import java.io.File;
@@ -43,6 +44,10 @@ public class Utils {
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public static int getLine(SimpleName simpleName){
+         return simpleName.getBegin().map(p -> p.line).orElse(-1);
     }
 
     public static Collection<File> getFilesFromDirectory(String directoryPath) {
