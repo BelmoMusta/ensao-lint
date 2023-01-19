@@ -3,12 +3,14 @@ package com.ensao.gi5.lint.runner;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.io.IOException;
+
 public class RunnerTest {
 
     public static final String ARG_PARAM = "-s";
 
     @Test
-    public void testMain() {
+    public void testMain() throws IOException {
         Runner.main(new String[]{ARG_PARAM, "testFiles"});
     }
 
