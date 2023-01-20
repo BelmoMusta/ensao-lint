@@ -1,9 +1,9 @@
 package com.ensao.gi5.lint.rules.violations;
 
-import com.ensao.gi5.lint.rules.Level;
-
 import java.util.Comparator;
 import java.util.Objects;
+
+import com.ensao.gi5.lint.rules.Level;
 
 public class Violation implements Comparable<Violation>{
 	private String description;
