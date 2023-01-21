@@ -2,6 +2,7 @@ package com.ensao.gi5.lint.rules;
 
 import com.ensao.gi5.lint.rules.violations.Violation;
 import com.ensao.gi5.lint.wrapper.CompilationUnitWrapper;
+import com.github.javaparser.ast.body.ClassOrInterfaceDeclaration;
 
 import java.util.Objects;
 import java.util.Set;
@@ -17,6 +18,7 @@ public abstract class Rule {
         this.id = id;
         this.level = level;
     }
+
 
     public final void addViolation(Violation violation) {
         violation.setRuleId(getId());

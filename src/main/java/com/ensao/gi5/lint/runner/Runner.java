@@ -2,7 +2,7 @@ package com.ensao.gi5.lint.runner;
 
 import com.ensao.gi5.lint.Linter;
 import com.ensao.gi5.lint.printer.ConsolePrinter;
-import com.ensao.gi5.lint.rules.UnusedImportsRule;
+import com.ensao.gi5.lint.rules.*;
 
 public class Runner {
     public static void main(String[] args) {
@@ -11,7 +11,7 @@ public class Runner {
             System.out.println("Usage example -s  D:/Test/Example.java");
             throw new IllegalStateException("arguments are empty");
         }
-
+// enter the file path
         String directory = null;
 
         for (int i = 0; i < args.length; i++) {
@@ -26,6 +26,20 @@ public class Runner {
         final Linter linter = new Linter();
         linter.registerRule(new UnusedImportsRule());
         linter.registerPrinter(new ConsolePrinter());
+        linter.registerRule(new ClassOrInterfaceNameRule());
+        linter.registerRule(new LocalVariableSyntaxRule());
+        linter.registerRule(new ClassVariableNameRule());
+        linter.registerRule(new ConstantClassNameRule());
+        linter.registerRule(new BooleanExpressionRule());
+        linter.registerRule(new MethodBodyLengthRule());
+        linter.registerRule(new MethodCountRule());
+        linter.registerRule(new MethodParametersRule());
+        linter.registerRule(new ClassFieldVisibilityRule());
+        linter.registerRule(new EnumElementRule());
+        linter.registerRule(new ClausesRule());
+        linter.registerRule(new UnusedVariableRule());
+
+
         linter.registerSource(directory);
         linter.run();
     }
