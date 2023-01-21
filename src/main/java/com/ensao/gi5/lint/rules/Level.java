@@ -7,7 +7,6 @@ public enum Level {
     MEDIUM,
     LOW,
     LOWEST,
-
     ;
 
 }
