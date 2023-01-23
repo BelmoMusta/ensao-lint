@@ -13,7 +13,6 @@ public class ImportWrapper {
 	private final String importDeclaration;
 	private final int line;
 	
-	
 	public ImportWrapper(ImportDeclaration importDeclaration) {
 		this.importDeclarationFQN = importDeclaration.getNameAsString();
 		this.importDeclaration = Utils.convertFQNToSimpleClassName(importDeclaration.getNameAsString());
@@ -43,7 +42,6 @@ public class ImportWrapper {
 		if (this == o) {
             return true;
         }
-
 		if (!(o instanceof ImportWrapper)) {
             return false;
         }
