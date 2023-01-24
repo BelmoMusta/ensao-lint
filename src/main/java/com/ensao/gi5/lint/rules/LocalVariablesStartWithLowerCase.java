@@ -25,7 +25,7 @@ public class LocalVariablesStartWithLowerCase extends Rule {
             public void visit(VariableDeclarator n, Void arg) {
 
                 // check if the first character of the local variable is not lowercase
-                if (!Character.isLowerCase(n.getNameAsString().charAt(0))) {
+                if (Character.isLowerCase(n.getNameAsString().charAt(0))) {
                     final Violation violation = new Violation();
 
                     // set filename, line number, and description
