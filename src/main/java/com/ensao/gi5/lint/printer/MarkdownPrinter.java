@@ -29,7 +29,7 @@ public class MarkdownPrinter implements Printer{
 
             writer.flush();
         } catch (IOException e) {
-            e.printStackTrace();
+            writer.write("An error occured while trying to load file");
         }
     }
 
