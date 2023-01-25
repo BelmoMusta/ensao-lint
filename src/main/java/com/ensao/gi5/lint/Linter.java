@@ -7,6 +7,7 @@ import com.ensao.gi5.lint.util.Utils;
 import com.ensao.gi5.lint.wrapper.CompilationUnitWrapper;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
@@ -57,7 +58,11 @@ public class Linter implements Runnable {
         }
 
         for (Printer printer : printers) {
-            printer.printViolations(getAllViolations());
+            try {
+                printer.printViolations(getAllViolations());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 

@@ -4,7 +4,11 @@ import com.ensao.gi5.lint.wrapper.CompilationUnitWrapper;
 import com.github.javaparser.JavaParser;
 import com.github.javaparser.ParseResult;
 import com.github.javaparser.ast.CompilationUnit;
+import com.github.javaparser.ast.body.ClassOrInterfaceDeclaration;
+import com.github.javaparser.ast.body.FieldDeclaration;
 import org.apache.commons.io.FileUtils;
+
+
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -51,5 +55,14 @@ public class Utils {
 
     public static Collection<File> getFilesFromDirectory(File directory) {
         return FileUtils.listFiles(directory, new String[]{"java"}, true);
+    }
+
+
+    public static String getClassName(FieldDeclaration fieldDeclaration){
+        final String[] nameOfClass = new String[1];
+        fieldDeclaration.getParentNode().ifPresent(p->{
+            nameOfClass[0] = ((ClassOrInterfaceDeclaration) p).getFullyQualifiedName().orElse(null);
+        });
+        return nameOfClass[0];
     }
 }
