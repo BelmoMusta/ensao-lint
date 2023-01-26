@@ -33,6 +33,9 @@ public class ViolationFactory {
 		case Constantes.LINT_REG_009:
 			violation.setDescription("Anonymous class instantiation found, consider using a lambda expression instead at line");
 			break;
+		case Constantes.LINT_REG_010:
+			violation.setDescription("Intuitive ‘lambda’ expressions should be replaced by ‘method reference’ at line");
+			break;
 		default:
 			break;
 		}
