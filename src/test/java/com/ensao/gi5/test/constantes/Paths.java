@@ -13,6 +13,8 @@ public class Paths {
 	public static final String METHOD_BODY_FILE_PATH = ROOT_PATH + "methodBody/Test.java";
 	public static final String ANONYMOUS_INSTANTIATION_FILE_PATH = ROOT_PATH + "anonymousInstantiation/Test.java";
 	public static final String INTUITIVE_LAMBDA_EXPRESSION_FILE_PATH = ROOT_PATH + "lambdaExpression/Test.java";
+	public static final String HIGHT_NUMBER_OF_METHODS_BODY_FILE_PATH = ROOT_PATH + "numberOfMethods/Test.java";
+	public static final String HIGHT_NUMBER_OF_PARAMETERS_FILE_PATH = ROOT_PATH + "numberOfParameters/Test.java";
 
 	public Paths() {
 		throw new IllegalStateException("not to be instantiated");

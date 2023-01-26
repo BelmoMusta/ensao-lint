@@ -1,7 +1,7 @@
 package com.ensao.gi5.lint.rules;
 
-import java.util.LinkedHashSet;
-import java.util.Set;
+import java.util.LinkedList;
+import java.util.List;
 
 import com.ensao.gi5.lint.constantes.Constantes;
 import com.ensao.gi5.lint.rules.violations.Violation;
@@ -18,7 +18,7 @@ public class MethodBodyRule extends Rule {
 
 	@Override
 	public void apply(CompilationUnitWrapper compilationUnit) {
-		Set<MethodDeclaration> mds = new LinkedHashSet<>();
+		List<MethodDeclaration> mds = new LinkedList<>();
 		compilationUnit.accept(new MethodVisitor(), mds);
 		mds.stream().filter(m -> {
 			int e = m.getEnd().map(p -> p.line).orElse(-1);

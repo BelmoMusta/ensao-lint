@@ -10,7 +10,7 @@ import com.ensao.gi5.lint.rules.IntuitiveLambdaExpressionRule;
 import com.ensao.gi5.test.constantes.Paths;
 import com.ensao.gi5.test.utils.Utils;
 
-public class IntuitiveLambdaExressionRuleTest {
+public class IntuitiveLambdaExpressionRuleTest {
 
 	@Test
 	public void testIntuitiveLambdaExressionRule() {
