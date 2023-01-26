@@ -73,14 +73,9 @@ public class Utils {
 	}
 
 	public static void writeJson(Collection<Violation> violations, Writer writer) throws IOException {
-		writer.append("{");
-		for (Violation violation : violations) {
-			Gson gson = new Gson();
-			String obj = gson.toJson(violation);
-			writer.append(obj);
-			writer.append(",");
-		}
-		writer.append("}");
+		Gson gson = new Gson();
+		String obj = gson.toJson(violations);
+		writer.append(obj);
 		writer.flush();
 		writer.close();
 	}

@@ -20,10 +20,15 @@ public class TypeNameRule extends Rule {
 	public void apply(CompilationUnitWrapper compilationUnit) {
 		final Set<ElementWrapper> names = new LinkedHashSet<>();
 		compilationUnit.accept(new TypeNameVisitor(), names);
-		names.stream().filter(n->!Character.isUpperCase(n.getName().charAt(0))).forEach(n->{
-			final Violation violation = ViolationFactory.createViolation(getId(), n.getName(),
-					compilationUnit.getFileName(), n.getLine());
-			addViolation(violation);
+		names.stream()
+			 .filter(n -> Character.isLowerCase(n.getName().charAt(0)))
+			 .forEach(n -> {
+				 final Violation violation = ViolationFactory.createViolation(
+						 getId(),
+						 n.getName(),
+						 compilationUnit.getFileName(),
+						 n.getLine());
+				 addViolation(violation);
 		});
 	}
 

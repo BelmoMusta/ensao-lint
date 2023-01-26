@@ -10,6 +10,7 @@ public class BooleanExpressionsVisitor extends VoidVisitorAdapter<Set<BinaryExpr
 	@Override
 	public void visit(BinaryExpr be,Set<BinaryExpr> arg) {
 		arg.add(be);
+		super.visit(be, arg);
 	}
 	
 }

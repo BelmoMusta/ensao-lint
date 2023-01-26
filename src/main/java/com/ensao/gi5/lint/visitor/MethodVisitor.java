@@ -10,5 +10,6 @@ public class MethodVisitor extends VoidVisitorAdapter<Set<MethodDeclaration>>{
 	@Override
 	public void visit(MethodDeclaration md,Set<MethodDeclaration> arg) {
 		arg.add(md);
+		super.visit(md, arg);
 	}
 }

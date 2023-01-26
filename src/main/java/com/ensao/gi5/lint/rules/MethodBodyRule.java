@@ -1,6 +1,6 @@
 package com.ensao.gi5.lint.rules;
 
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 import com.ensao.gi5.lint.constantes.Constantes;
@@ -18,15 +18,17 @@ public class MethodBodyRule extends Rule {
 
 	@Override
 	public void apply(CompilationUnitWrapper compilationUnit) {
-		Set<MethodDeclaration> mds = new HashSet<MethodDeclaration>();
+		Set<MethodDeclaration> mds = new LinkedHashSet<>();
 		compilationUnit.accept(new MethodVisitor(), mds);
-		mds.stream()
-				.filter(m -> m.getEnd().map(p -> p.line).orElse(-1) - m.getBegin().map(p -> p.line).orElse(-1) + 1 > 30)
-				.forEach(e -> {
-					final Violation violation = ViolationFactory.createViolation(getId(), e.getNameAsString(),
-							compilationUnit.getFileName(), e.getBegin().map(p -> p.line).orElse(-1));
-					addViolation(violation);
-				});
+		mds.stream().filter(m -> {
+			int e = m.getEnd().map(p -> p.line).orElse(-1);
+			int b = m.getBegin().map(p -> p.line).orElse(-1);
+			return e - b + 1 > 30;
+		}).forEach(e -> {
+			final Violation violation = ViolationFactory.createViolation(getId(), e.getNameAsString(),
+					compilationUnit.getFileName(), e.getBegin().map(p -> p.line).orElse(-1));
+			addViolation(violation);
+		});
 	}
 
 	@Override
