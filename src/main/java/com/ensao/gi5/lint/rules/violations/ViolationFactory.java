@@ -36,6 +36,30 @@ public class ViolationFactory {
 		case Constantes.LINT_REG_010:
 			violation.setDescription("Intuitive ‘lambda’ expressions should be replaced by ‘method reference’ at line");
 			break;
+		case Constantes.LINT_REG_011:
+			violation.setDescription("The number of methods must not exceed 20 declared methods per class at line");
+			break;
+		case Constantes.LINT_REG_012:
+			violation.setDescription("The number of parameters of a method/manufacturer must not exceed 2 at line");
+			break;
+		case Constantes.LINT_REG_013:
+			violation.setDescription("Class attributes must have declared visibility at line");
+			break;
+		case Constantes.LINT_REG_014:
+			violation.setDescription("Prefer the use of a single output instruction (return, throw) in the methods at line");
+			break;
+		case Constantes.LINT_REG_015:
+			violation.setDescription("Do not catch exceptions without loggers at line");
+			break;
+		case Constantes.LINT_REG_016:
+			violation.setDescription("Unused variables are to be deleted at line");
+			break;
+		case Constantes.LINT_REG_017:
+			violation.setDescription("Private methods not used should be deleted at line");
+			break;
+		case Constantes.LINT_REG_018:
+			violation.setDescription("clauses if , else must have braces at line");
+			break;
 		default:
 			break;
 		}

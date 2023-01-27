@@ -15,6 +15,7 @@ public class Paths {
 	public static final String INTUITIVE_LAMBDA_EXPRESSION_FILE_PATH = ROOT_PATH + "lambdaExpression/Test.java";
 	public static final String HIGHT_NUMBER_OF_METHODS_BODY_FILE_PATH = ROOT_PATH + "numberOfMethods/Test.java";
 	public static final String HIGHT_NUMBER_OF_PARAMETERS_FILE_PATH = ROOT_PATH + "numberOfParameters/Test.java";
+	public static final String ATTRIBUTES_VISIBILITY_FILE_PATH = ROOT_PATH + "attributesVisibility/Test.java";
 
 	public Paths() {
 		throw new IllegalStateException("not to be instantiated");
