@@ -1,4 +1,4 @@
-## Binôme: Malika Ouadoud & Touria Abbou
+## java linter
 Le but de ce mini-projet est de créer un linter sous java.
 Définition du linter : [Wikipedia](https://en.wikipedia.org/wiki/Lint_%28software%29)
 
@@ -18,14 +18,14 @@ Implémenter les règles suivantes :
 | LINT_REG_007 |LOW|Les éléments d'une énumeration sont en majuscule, avec des `_` comme séparateur|
 | LINT_REG_008 |HIGHEST|Le corps d'une méthode ne doit pas dépasser `30` lignes|
 | LINT_REG_009 |HIGH|Les instanciations anonymes sont à remplacer par des expressions `lambda`|
-| ~~LINT_REG_010~~ |MEDIUM|~~Les expressions `lambda` intuitives sont à remplacer par `method reference`~~ |
+| LINT_REG_010 |MEDIUM|Les expressions `lambda` intuitives sont à remplacer par `method reference` |
 | LINT_REG_011 |HIGHEST|Le nombre de méthodes ne doit pas dépasser `20` méthodes déclarées par classe|
 | LINT_REG_012 |HIGHEST|Le nombre de paramètres d'une méthode/constructeur ne doit dépasser `2`|
 | LINT_REG_013 |HIGHEST|Les attributs de classe doivent avoir une visibilité déclarée|
 | LINT_REG_014 |LOW|Préférer l'utilisation d'une seule instruction de sortie `(return, throw)` dans les méthodes|
 | LINT_REG_015|LOW|Ne pas catcher les exceptions sans les logger|
-| ~~LINT_REG_016~~|MEDIUM|~~Les variables non utilisées sont à supprimer~~|
-| ~~LINT_REG_017~~ |MEDIUM|~~Les méthodes privées non utilisées sont à supprimer~~|
+| LINT_REG_016|MEDIUM|Les variables non utilisées sont à supprimer|
+| LINT_REG_017|MEDIUM|Les méthodes privées non utilisées sont à supprimer|
 | LINT_REG_018 |LOW|les clauses `if` , `else` doivent avoir des accolades |
 
 Si une règle est bloquante, alors remonter l'erreur est mettre fin à l'analyse du fichier en cours.
@@ -62,7 +62,7 @@ Procéder par un fork de ce répo, ensuite préparer un pull request vers le mê
 1. Utiliser maven pour exécuter les tests unitaires :
  ```
 mvn clean test
- ```
+```
 
 2. le plugin `jacoco` est intégré et est configuré pour être exécuté pendant la phase de test, il permet d'établir le taux de la couverture des tests.
 Une fois le rapport est établi, vous pouvez le consulter sur `target/site/jacoco/index.html`
