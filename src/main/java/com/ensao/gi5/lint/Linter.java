@@ -46,6 +46,7 @@ public class Linter implements Runnable {
         final List<CompilationUnitWrapper> compilationUnitWrappers = new ArrayList<>();
         for (File source : sources) {
             compilationUnitWrappers.add(Utils.getCompilationUnit(source));
+            System.out.println(Utils.getCompilationUnit(source));
         }
 
         for (CompilationUnitWrapper compilationUnit : compilationUnitWrappers) {

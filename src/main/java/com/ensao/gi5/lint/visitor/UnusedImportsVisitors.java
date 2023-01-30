@@ -1,6 +1,7 @@
 package com.ensao.gi5.lint.visitor;
 
 import com.ensao.gi5.lint.wrapper.ImportWrapper;
+import com.github.javaparser.ast.body.ClassOrInterfaceDeclaration;
 import com.github.javaparser.ast.expr.Expression;
 import com.github.javaparser.ast.expr.FieldAccessExpr;
 import com.github.javaparser.ast.expr.MarkerAnnotationExpr;
@@ -19,9 +20,16 @@ public class UnusedImportsVisitors extends VoidVisitorAdapter<Set<ImportWrapper>
     @Override
     public void visit(ClassOrInterfaceType classOrInterfaceType, Set<ImportWrapper> arg) {
         arg.add(new ImportWrapper(classOrInterfaceType.getName()));
+
         super.visit(classOrInterfaceType, arg);
     }
 
+    @Override
+    public void visit(ClassOrInterfaceDeclaration classOrInterface, Set<ImportWrapper> arg) {
+        arg.add(new ImportWrapper(classOrInterface.getName()));
+
+        super.visit(classOrInterface, arg);
+    }
 
     @Override
     public void visit(MarkerAnnotationExpr n, Set<ImportWrapper> arg) {
