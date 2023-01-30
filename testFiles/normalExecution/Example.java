@@ -8,11 +8,49 @@ import static com.github.javaparser.ast.StaticMethod;
 @Service("test")
 @Component(type=10)
 public class Example {
-    private String toto;
-    
+     String toto;
+
     public String getToto() {
         return toto;
     }
+    public void IfElseStatementAndMultipleOperands(String a , String b ){
+        if((a && b && a) || b) {
+            System.out.println("true")
+        };
+    }
+    public void NumberLinesLessThanThirty(){
+        System.out.println("Oussama");
+        System.out.println("Mustapha");
+        System.out.println("Oussama");
+        System.out.println("Mustapha");
+        System.out.println("Oussama");
+        System.out.println("Mustapha");
+        System.out.println("Oussama");
+        System.out.println("Mustapha");
+        System.out.println("Oussama");
+        System.out.println("Mustapha");
+        System.out.println("Oussama");
+        System.out.println("Mustapha");
+        System.out.println("Oussama");
+        System.out.println("Mustapha");
+        System.out.println("Oussama");
+        System.out.println("Mustapha");
+        System.out.println("Oussama");
+        System.out.println("Mustapha");
+        System.out.println("Oussama");
+        System.out.println("Mustapha");
+        System.out.println("Oussama");
+        System.out.println("Mustapha");
+        System.out.println("Oussama");
+        System.out.println("Mustapha");
+        System.out.println("Oussama");
+        System.out.println("Mustapha");
+        System.out.println("Oussama");
+        System.out.println("Mustapha");
+        System.out.println("Oussama");
+        System.out.println("Mustapha");
+    }
+
     
     public static void main(String[] args) {
         TestClass test = new TestClass();
