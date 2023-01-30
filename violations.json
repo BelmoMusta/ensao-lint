@@ -1,0 +1,1 @@
+[{"level":"HIGHEST","description":"Attribut toto in class Example does not have a visibility declared.","ruleId":"LINT_REG_013"},{"level":"HIGHEST","description":"Method display has more than 2 parameters","ruleId":"LINT_REG_012"},{"level":"MEDIUM","description":"Lambda expresssion (a, b) -> (a + b) can be replaced by method reference.","ruleId":"LINT_REG_010"}]
