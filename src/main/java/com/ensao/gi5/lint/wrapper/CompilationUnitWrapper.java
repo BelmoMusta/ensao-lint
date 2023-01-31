@@ -4,6 +4,7 @@ import com.github.javaparser.Problem;
 import com.github.javaparser.ast.CompilationUnit;
 import com.github.javaparser.ast.ImportDeclaration;
 import com.github.javaparser.ast.NodeList;
+import com.github.javaparser.ast.body.TypeDeclaration;
 import com.github.javaparser.ast.visitor.VoidVisitor;
 
 import java.util.ArrayList;
@@ -21,6 +22,9 @@ public class CompilationUnitWrapper {
 	}
 	
 	public NodeList<ImportDeclaration> getImports() {return compilationUnit.getImports();}
+	public List<TypeDeclaration<?>> getTypes() {
+		return compilationUnit.getTypes();
+	}
 
 	public <A> void accept(VoidVisitor<A> v, A arg) {
 		compilationUnit.accept(v, arg);}
