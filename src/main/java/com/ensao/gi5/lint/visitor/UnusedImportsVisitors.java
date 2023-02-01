@@ -22,7 +22,6 @@ public class UnusedImportsVisitors extends VoidVisitorAdapter<Set<ImportWrapper>
         super.visit(classOrInterfaceType, arg);
     }
 
-
     @Override
     public void visit(MarkerAnnotationExpr n, Set<ImportWrapper> arg) {
         arg.add(new ImportWrapper(n.getName()));

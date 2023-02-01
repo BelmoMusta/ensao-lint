@@ -1,5 +1,6 @@
-package com.ensao.gi5.lint;
+package com.ensao.gi5.rules;
 
+import com.ensao.gi5.lint.Linter;
 import com.ensao.gi5.lint.printer.ConsolePrinter;
 import com.ensao.gi5.lint.rules.ParseErrorRule;
 import com.ensao.gi5.lint.rules.Rule;

@@ -10,6 +10,5 @@ public class ConsolePrinter implements Printer {
 		for (Violation violation : violations) {
 			System.out.println(violation);
 		}
-		
 	}
 }
