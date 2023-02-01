@@ -20,6 +20,7 @@ public class Paths {
 	public static final String EXEPTION_HANDLING_FILE_PATH = ROOT_PATH + "exeptions/Test.java";
 	public static final String UNUSED_VARIABLES_FILE_PATH = ROOT_PATH + "unusedVariables/Test.java";
 	public static final String UNUSED_PRIVATE_METHODS_FILE_PATH = ROOT_PATH + "unusedPrivateMethods/Test.java";
+	public static final String IF_ELSE_FILE_PATH = ROOT_PATH + "ifElseStatements/Test.java";
 
 	public Paths() {
 		throw new IllegalStateException("not to be instantiated");
